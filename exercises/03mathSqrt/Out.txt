@@ -1,0 +1,2 @@
+The sqrt of 2 is 1.4142135623731
+sqrt2^2 = 2 (should equal 2)
