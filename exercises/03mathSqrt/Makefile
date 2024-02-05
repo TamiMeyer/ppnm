@@ -1,8 +1,8 @@
-Out.txt : sqrt.exe              # Out.txt depends on hello.exe
-	mono sqrt.exe > Out.txt # run hello.exe, send output to Out.txt
+Out.txt : main.exe
+	mono main.exe > Out.txt
 
-sqrt.exe : sqrt.cs             # hello.exe depends on hello.cs
-	mcs sqrt.cs             # compile hello.cs into hello.exe
+sfuns.dll : sfuns.cs
+	mcs -target:library -out:sfuns.dll sfuns.cs
 
-clean:                           # a phoney target, no dependencies
-	rm -f Out.txt sqrt.exe  # remove secondary files
+main.exe : main.cs sfuns.dll
+	mcs -target:exe -out:main.exe -reference:sfuns.dll main.cs
