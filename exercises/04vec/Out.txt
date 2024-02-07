@@ -7,3 +7,6 @@ Test the print methods:
     1 2 3
     This is my v vector:1 2 3
 dot product: v*w=32
+Test the approx methods:
+    v==w ? --> False
+    v==v+(2.22044604925031E-16,0,0) ? --> True

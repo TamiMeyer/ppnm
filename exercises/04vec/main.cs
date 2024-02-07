@@ -1,4 +1,5 @@
 using static System.Console;
+using static System.Math;
 using static vec;
 
 public class main{
@@ -20,6 +21,15 @@ public class main{
         v.print("This is my v vector:");
 
         WriteLine($"dot product: v*w={(v.dot(w)).ToString()}");
+
+        WriteLine($"Test the approx methods:");
+        double epsilon=Pow(2,-52);
+        vec q = new vec(epsilon+1,2,3);
+        Write($"    ");
+        WriteLine($"v==w ? --> {v.approx(w)}");
+        Write($"    ");
+        WriteLine($"v==v+({epsilon},0,0) ? --> {v.approx(q)}");
+
 
 
     return 0;
