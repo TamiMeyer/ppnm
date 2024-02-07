@@ -1,0 +1,9 @@
+initial values: u=(0 0 0), v=(1 2 3), w=(4 5 6) 
+Sum: w+v=(5 7 9)
+Product: 3*v = (3 6 9) and v*3 = (3 6 9)
+Difference: w-v=(3 3 3)
+-v=(-1 -2 -3)
+Test the print methods:
+    1 2 3
+    This is my v vector:1 2 3
+dot product: v*w=32
