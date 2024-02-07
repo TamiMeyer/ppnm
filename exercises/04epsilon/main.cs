@@ -48,7 +48,7 @@ static int Main(){
     Write($"d2={d2:e15}\n");
     Write($"d1==d2 ? => {d1==d2}\n");
 
-    Write($"{approx(d1, d2)}\n");
+    Write($"d1==d2 with abs or rel precision? => {approx(d1, d2)}\n");
 
 return 0;
 }//Main
