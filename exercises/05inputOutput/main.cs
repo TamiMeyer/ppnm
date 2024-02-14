@@ -40,8 +40,8 @@ class main{
 
         /*
         Read a sequence of numbers, separated by a combination of blanks (' '), tabs ('\t'), and newline
-        characters ('\n'), from the standard input and print these numbers together with their sines and
-        cosines (in a table form) to the standard error.
+        characters ('\n'), from the standard input (e.g. from echo in Makefile) and print these numbers
+        together with their sines and cosines (in a table form) to the standard error.
         */
         char[] split_delimiters = {' ','\t','\n'};
         #var split_options = StringSplitOptions.RemoveEmptyEntries; //
