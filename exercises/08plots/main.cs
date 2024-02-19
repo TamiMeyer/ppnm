@@ -8,8 +8,14 @@ class main{
 
         var outstream=new System.IO.StreamWriter("gamma.data", append:false);
         for(double x = -5; x<=5; x+=0.005){  
-            outstream.WriteLine($"{x} {sfuns.fgamma(x)}");
+            outstream.WriteLine($"{x} {sfuns.gamma(x)}");
         }
         outstream.Close();
+
+        var outstream2=new System.IO.StreamWriter("lngamma.data", append:false);
+        for(double x = 0.005; x<=5; x+=0.005){  
+            outstream2.WriteLine($"{x} {sfuns.lngamma(x)}");
+        }
+        outstream.Close();        
     }//Main
 }//main

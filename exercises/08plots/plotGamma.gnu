@@ -1,13 +1,18 @@
-set terminal png                #plot will be saved as png
+set terminal svg                #plot will be saved as svg
 set key bottom right            #positions the legend
-set output "OutGamma.png"         #specifies the output file name
-set xlabel "x"                  
-set ylabel "y"
-#set tics out                   #Draws the tics outside the plot area
-set xzeroaxis                   #Draws the x-axis line through the origin (x = 0)
-set yzeroaxis                   #Draws the y-axis line through the origin (y = 0)
-set samples 800                 # 800 points will be sampled along the function
+set output "OutGamma.svg"
+#set xlabel "x"                  
+#set ylabel "y"
+set xtics axis
+set ytics axis
+set zeroaxis linetype 1 linecolor rgb '#222222'
+set samples 800
 set title "Gamma function"
+set arrow from 0, graph 0 to 0, graph 1 nohead dt 2 linecolor rgb "blue"
+set arrow from -1, graph 0 to -1, graph 1 nohead dt 2 linecolor rgb "blue"
+set arrow from -2, graph 0 to -2, graph 1 nohead dt 2 linecolor rgb "blue"
+set arrow from -3, graph 0 to -3, graph 1 nohead dt 2 linecolor rgb "blue"
+set arrow from -4, graph 0 to -4, graph 1 nohead dt 2 linecolor rgb "blue"
 plot [-5:5][-5:5] \
- "gamma.data" with lines linetype 1 title "gamma"\
+ "gamma.data" with lines linetype 1 linecolor rgb "red" title "gamma"\
  ,"gammaTabulated.txt" with points pointtype 4 title "tabulated gamma"

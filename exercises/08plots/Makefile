@@ -1,4 +1,4 @@
-default: OutErr.png OutGamma.png
+default: OutErr.png OutGamma.png OutLngamma.png
 
 OutErr.png: plotErr.gnu data
 	gnuplot plotErr.gnu
@@ -6,6 +6,9 @@ OutErr.png: plotErr.gnu data
 OutGamma.png: plotGamma.gnu data
 	gnuplot plotGamma.gnu
 
+OutLngamma.png: plotLngamma.gnu data
+	gnuplot plotLngamma.gnu
+	
 data: main.exe
 	mono $< > err.data
 
