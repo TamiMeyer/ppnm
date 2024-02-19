@@ -1,0 +1,15 @@
+set terminal png                #plot will be saved as png
+#set key bottom right            #positions the legend
+set style function pm3d
+set palette model HSV defined ( 0 0 1 1, 1 1 1 1 )
+#set palette rgbformulae 33,13,10
+set output "Out.png"         #specifies the output file name
+set xlabel "Re(z)"                  
+set ylabel "Im(z)"
+set zlabel "|G(z)|"
+set cbrange [-pi:pi]
+set cbtics ( "-π" -pi, "-π/2" -pi/2, "0" 0, "π/2" pi/2, "π" pi )
+set view 60, 320 #Rotate the plot
+#set title "Gamma complex"
+splot [-4:5][-5:5][0:6] \
+ "GammaComplex.data" using 1:2:(sqrt($3**2+$4**2)):(atan2($4,$3)) title "Gamma complex" with pm3d\
