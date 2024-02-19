@@ -1,5 +1,5 @@
-set terminal svg                #plot will be saved as svg
-set key bottom right            #positions the legend
+set terminal svg background "white"
+set key bottom right
 set output "OutGamma.svg"
 #set xlabel "x"                  
 #set ylabel "y"

@@ -19,4 +19,4 @@ sfuns.dll: sfuns.cs
 	mcs -out:$@ -target:library sfuns.cs
 
 clean:
-	$(RM)  [Oo]ut* *.exe *.dll *.png *.data
+	$(RM)  [Oo]ut* *.exe *.dll *.png *.svg *.data

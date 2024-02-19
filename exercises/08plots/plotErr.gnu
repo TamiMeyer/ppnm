@@ -10,4 +10,5 @@ set samples 800                 # 800 points will be sampled along the function
 set title "Error function"
 plot [-3:3][] \
  "err.data" with lines linetype 1 title "err"\
- ,"errTabulated.txt" with points pointtype 4 title "tabulated err"
+ ,"errTabulated.txt" with points pointtype 4 title "tabulated err"\
+ ,"errTabulated.txt" using (-($1)):(-($2)) with points pointtype 4 title "tabulated err neg"
