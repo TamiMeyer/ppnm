@@ -1,6 +1,6 @@
 //using static data;
 public class data{
-    public int a,b;
+    public long a,b;
     public double sum;
 }
 
@@ -8,16 +8,16 @@ class main{
     public static void harm(object obj){
 	    var arg = (data)obj;
 	    arg.sum=0;
-	    for(int i=arg.a;i<arg.b;i++)arg.sum+=1.0/i;
+	    for(long i=arg.a;i<arg.b;i++)arg.sum+=1.0/i;
 	}
 
     public static void Main(string[] args){
         int nthreads = 1;
-        int nterms = (int)1e8;
+        long nterms = (long)1e8;
         foreach(var arg in args){
             var words = arg.Split(':');
             if(words[0]=="-threads") nthreads=int.Parse(words[1]);
-            if(words[0]=="-terms"  ) nterms  =(int)float.Parse(words[1]);
+            if(words[0]=="-terms"  ) nterms  =(long)float.Parse(words[1]);
         }
 
         data[] parameters = new data[nthreads];
@@ -38,6 +38,6 @@ class main{
         double total=0;
         foreach(var p in parameters) total+=p.sum;
         
-        System.Console.WriteLine("Sum: " + total);
+        System.Console.Write($"Sum:{total} {nthreads} ");
     }
 }

@@ -1,0 +1,6 @@
+set terminal png
+set out "Out_ManMulti.times.png"
+set xlabel "number of threads"
+set ylabel "real time"
+set title "Running time as function of number of threads"
+plot "Out_ManMulti.txt" using 2:3 with lp
