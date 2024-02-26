@@ -1,0 +1,27 @@
+Task A:
+Generate a random tall (n>m) matrix A (of a modest size):
+A = 
+      8.22       4.73 
+     0.337       4.18 
+      7.29       5.93 
+      9.13       4.48 
+
+Factorize A into QR:
+Q = 
+     0.575    -0.0629 
+    0.0236      0.905 
+      0.51       0.34 
+     0.639     -0.248 
+R = 
+      14.3       8.71 
+         0       4.39 
+
+Is R upper triangular ? => True
+
+Q^T*Q=1 ? => False
+Q^TQ = 
+         1  -5.55e-16 
+ -5.55e-16          1 
+
+         1          0 
+         0          1 
