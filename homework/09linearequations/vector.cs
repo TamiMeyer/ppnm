@@ -148,4 +148,16 @@ public bool approx(vector o){
 	return true;
 	}
 
+/*create random vectors for tests*/
+
+public static vector random_vector(int n){
+    var rnd = new System.Random();
+    vector v = new vector(n);
+    for(int i = 0; i<n; i++){
+        v[i] = 10*rnd.NextDouble();
+    }
+    return v;
+}
+
+
 }//vector

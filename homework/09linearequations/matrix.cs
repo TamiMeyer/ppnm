@@ -237,6 +237,18 @@ public bool approx(matrix B,double acc=1e-6, double eps=1e-6){
 	return true;
 }
 
+public static bool approx(matrix A, matrix B, double acc=1e-9, double eps=1e-9){
+    if(A.size1 != B.size1) return false;
+    if(A.size2 != B.size2) return false;
+    for(int i = 0; i<A.size1; i++){
+        for(int j = 0; j<A.size2; j++){
+            if(!approx(A[i,j],B[i,j],acc,eps)) return false;
+        }
+    }
+    return true;
+}
+
+
 /*create random matrices for tests*/
 
 public static matrix random_matrix(int n, int m){
@@ -253,9 +265,15 @@ public static matrix random_matrix(int n, int m){
 
 public static matrix random_tall_matrix(){
     var rnd = new System.Random();
-    int n = rnd.Next(3, 10);
+    int n = rnd.Next(3, 8);
     int m = rnd.Next(2,n-1);
     return random_matrix(n, m);
+}
+
+public static matrix random_square_matrix(){
+    var rnd = new System.Random();
+    int n = rnd.Next(3, 8);
+    return random_matrix(n, n);
 }
 
 /*test matrix properties*/
@@ -264,19 +282,6 @@ public bool isUpperTriangular(){
     for(int i = 1; i<this.size1; i++){
         for(int j = 0; j<i; j++){
             if(this[i, j] != 0) return false;
-        }
-    }
-    return true;
-}
-
-public static bool approx(matrix A, matrix B, double acc=1e-9, double eps=1e-9)
-{
-    if(A.size1 != B.size1) return false;
-    if(A.size2 != B.size2) return false;
-
-    for(int i = 0; i<A.size1; i++){
-        for(int j = 0; j<A.size2; j++){
-            if(Abs(B[i,j]-A[i,j]) < acc & Abs(B[i,j]-A[i,j]) > Max(Abs(A[i,j]),Abs(B[i,j]))*eps) return false;
         }
     }
     return true;
