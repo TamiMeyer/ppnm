@@ -10,8 +10,8 @@ public class main{
         test_solve();
         WriteLine("---Task B--------");
         test_inverse();
-
-
+        WriteLine("---Task C--------");
+        WriteLine("See Out.times.svg. The time it takes to QR-factorize an NxN matrix for several values of N is plot and fit with N³.");
     }
 
     public static void test_decomp(){
