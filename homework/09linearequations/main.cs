@@ -1,6 +1,5 @@
 using System;
-using static System.Console;
-using static System.Math;
+using static System.Console; 
 
 public class main{
     public static void Main(){
@@ -10,6 +9,7 @@ public class main{
         WriteLine("A2: Test the function solve:");
         test_solve();
         WriteLine("---Task B--------");
+        test_inverse();
 
 
     }
@@ -64,12 +64,37 @@ public class main{
         x.print("solution x = ");
         WriteLine();
 
-        WriteLine($"Ax=b ? => {b.approx(A*x)}");
         vector Ax = A*x;
+        WriteLine($"Ax=b ? => {b.approx(Ax)}");
         Ax.print("Ax = ");
         WriteLine();
     }
 
+    public static void test_inverse(){
+        WriteLine("Generate a random square matrix A (of a modest size):");
+        matrix A = matrix.random_square_matrix();
+        A.print("A = ");
+        WriteLine();
+
+        WriteLine("Factorize A into QR:");
+        var (Q, R) = QRGS.decomp(A);
+        Q.print("Q = ");
+        R.print("R = ");
+        WriteLine();
+
+
+        WriteLine("Calculate the inverse B of A");
+        matrix B = QRGS.inverse(Q, R);
+        B.print("B = ");
+        WriteLine();
+
+        matrix I = new matrix(A.size1);
+        I.set_unity();
+        matrix AB = A*B;
+        WriteLine($"AB=identity ? => {matrix.approx(AB, I)}");
+        AB.print("AB = ");
+        WriteLine();
+    }
 
 
 

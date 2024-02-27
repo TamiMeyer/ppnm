@@ -29,9 +29,15 @@ public static class QRGS{
         return det;
     }
 
-    //public static matrix inverse(matrix Q,matrix R){ 
-         
-   // }
+    public static matrix inverse(matrix Q,matrix R){ 
+        matrix I = new matrix(Q.size1);
+        I.set_unity();
+        for(int i = 0; i<Q.size1; i++){
+            I[i] = solve(Q, R, I[i]);
+        }
+        return I;
+
+    }
 
     static void backsub(matrix U, vector c){
         for(int i = c.size-1; i >= 0; i--){

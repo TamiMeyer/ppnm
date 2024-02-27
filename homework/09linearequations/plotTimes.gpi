@@ -1,0 +1,12 @@
+set terminal svg background "white"
+set key top left
+set output outputname
+set xlabel "N"                  
+set ylabel "time [s]"
+set title "Operations count for QR-decomposition"
+
+f(x) = a*x**3+b
+fit f(x) "out.times.data" using 1:2 via a,b
+plot [][] \
+ "out.times.data" with points pointtype 7 title "measured"\
+ , f(x) title "fit with a*N^3+b"
