@@ -33,7 +33,7 @@ public static class QRGS{
         matrix I = new matrix(Q.size1);
         I.set_unity();
         for(int i = 0; i<Q.size1; i++){
-            I[i] = solve(Q, R, I[i]);
+            I[i] = solve(Q, R, I[i]); //solves the equation QRx_i=e_i in place; the solutions x_i are the coloumns of the inverse of QR
         }
         return I;
 

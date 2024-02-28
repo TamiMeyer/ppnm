@@ -248,6 +248,15 @@ public static bool approx(matrix A, matrix B, double acc=1e-9, double eps=1e-9){
     return true;
 }
 
+/*returns a diagonal matrix composed of the entries of a given vector*/
+public static matrix new_matrix_diagonal(vector dia){
+	matrix D = new matrix(dia.size);
+	for(int i = 0; i<dia.size; i++){
+		D[i,i]=dia[i];
+	}
+	return D;
+}
+
 
 /*create random matrices for tests*/
 
@@ -274,6 +283,20 @@ public static matrix random_square_matrix(){
     var rnd = new System.Random();
     int n = rnd.Next(3, 8);
     return random_matrix(n, n);
+}
+
+public static matrix random_symmetric_matrix(){
+    var rnd = new System.Random();
+    int n = rnd.Next(3, 8);
+    matrix A = new matrix(n);
+    for(int i = 0; i<n; i++){
+        for(int j = 0; j<=i; j++)
+        {
+            A[i,j] = 10*rnd.NextDouble();
+			A[j,i] = A[i,j];
+        }
+    }
+    return A;	
 }
 
 /*test matrix properties*/
