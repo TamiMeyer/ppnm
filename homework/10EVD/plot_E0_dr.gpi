@@ -1,0 +1,9 @@
+set terminal svg background "white"
+set key top left
+set output outputname
+set xlabel "dr [Bohr radius]"                  
+set ylabel "E0 [Hatree]"
+set title "Convergence of energies with respect to dr with fixed rmax=10"
+
+plot [][] \
+ "Out.E0_dr.data" using 2:3 with linespoints linestyle 2\

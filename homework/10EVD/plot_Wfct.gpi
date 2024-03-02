@@ -1,0 +1,11 @@
+set terminal svg background "white"
+set output outputname
+set xlabel "r [Bohr radius]"                  
+set ylabel "probability amplitude"
+set title "Wavefunctions"
+
+
+plot [][] \
+ "Out.Wfct.data" using 1:2 every ::1 with points pointtype 1 title "k=0"\
+ , "Out.Wfct.data" using 1:3 every ::1 with points pointtype 1 title "k=1"\
+ , "Out.Wfct.data" using 1:4 every ::1 with points pointtype 1 title "k=2"

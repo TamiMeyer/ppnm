@@ -49,10 +49,9 @@ public static (vector,matrix) cyclic(matrix M){
 			}
 		}
 	}while(changed);
-	/* !!! copy diagonal elements into w */
-	for(int i=0; i<n; i++){
+	for(int i=0; i<n; i++){ /*copy diagonal elements into w */
 		w[i]=A[i,i];
 	}
-	return (w,V);
+	return (w,V); //returns the diagonal elements w (i.e. eigenvalues) and the orthogonal matrix of eigenvectors V
 }
 }
