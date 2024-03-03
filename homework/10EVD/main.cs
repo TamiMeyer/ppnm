@@ -43,9 +43,8 @@ public class main{
         V.print("orthogonal matrix of eigenvectors V = ");
         WriteLine();
 
-        WriteLine("See E0_dr.svg: Fix rmax to a reasonable value and calculate E0 for several different values of dr ; plot the resulting curve.");
-        WriteLine("See E0_rmax.svg: Fix dr to a reasonable value and calculate E0 for several different values of rmax ; plot the resulting curve.");
-
-
+        WriteLine("See Out.E0_dr.svg: Fix rmax to a reasonable value and calculate E0 for several different values of dr ; plot the resulting curve.");
+        WriteLine("See Out.E0_rmax.svg: Fix dr to a reasonable value and calculate E0 for several different values of rmax ; plot the resulting curve.");
+        WriteLine("See Out.Wfct.svg: Plot several lowest eigen-functions and compare with analytical results.");
     }
 }

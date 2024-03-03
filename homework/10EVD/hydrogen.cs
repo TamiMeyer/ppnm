@@ -42,7 +42,7 @@ public class hydrogen{
         double[,] wfct= new double[2,npoints];
         for(int i = 0; i<npoints; i++){
             wfct[0,i] = (i+1)*dr;
-            wfct[1,i] = 1/Sqrt(dr) * V[i,k];
+            wfct[1,i] =  V[i,k] * 1/Sqrt(dr);
         }
         return wfct;
     }

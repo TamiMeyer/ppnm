@@ -1,9 +1,9 @@
-default: OutTaskA.txt Out.E0_dr.svg Out.E0_rmax.svg
+default: Out.txt Out.E0_dr.svg Out.E0_rmax.svg Out.Wfct.svg
 
 CODE = $(filter %.cs,$^)
 LIBS = $(addprefix -reference:,$(filter %.dll,$^))
 
-OutTaskA.txt : mainTaskA.exe Makefile
+Out.txt : main.exe Makefile
 	mono $< -rmax:10 -dr:0.5 >$@
 
 Out.E0_dr.svg: plot_E0_dr.gpi Out.E0_dr.data
@@ -28,12 +28,9 @@ Out.E0_rmax.data : mainTaskBConvergence.exe Makefile
 	done
 
 Out.Wfct.data : mainTaskBWfct.exe Makefile
-	>$@
-	for rmax in $$(seq 9 1 9); do \
-		mono $< -dr:0.1 -rmax:$$rmax >> Out.Wfct.data ;\
-	done
+	mono $< -dr:0.1 -rmax:22 > Out.Wfct.data
 
-mainTaskA.exe : mainTaskA.cs matrix.dll hydrogen.dll
+main.exe : main.cs matrix.dll hydrogen.dll
 	mcs -target:exe -out:$@ $(LIBS) $(CODE)
 
 mainTaskBConvergence.exe : mainTaskBConvergence.cs matrix.dll hydrogen.dll

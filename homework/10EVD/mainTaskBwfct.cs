@@ -13,7 +13,7 @@ public class wavefunctions{
         double[,] wfct1 = hydrogen.wavefunction(1, rmax, dr);
         double[,] wfct2 = hydrogen.wavefunction(2, rmax, dr);
         double[,] wfct3 = hydrogen.wavefunction(3, rmax, dr);
-        //WriteLine($"rmax={rmax} and dr={dr}");
+        WriteLine($"Lowest Hydrogen eigenfunctions, rmax={rmax} and dr={dr}");
         for(int j = 0; j<wfct0.GetLength(1); j++)
             WriteLine($"{wfct0[0,j]} {wfct0[1,j]} {wfct1[1,j]} {wfct2[1,j]} {wfct3[1,j]}");
         WriteLine();
