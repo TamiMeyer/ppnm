@@ -1,8 +1,7 @@
 set terminal svg background "white"
 set output outputname
-set xlabel "r [Bohr radius]"                  
-set ylabel "probability amplitude"
-#set title "Wavefunctions"
+set xlabel "r/a_{B}"                  
+set ylabel "rR_{n0}(r)"
 set title "`head -1 Out.Wfct.data`"
 
 f1(x) = 2*exp(-x)*x
