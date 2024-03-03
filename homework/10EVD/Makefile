@@ -17,7 +17,7 @@ Out.Wfct.svg: plot_Wfct.gpi Out.Wfct.data
 	
 Out.E0_dr.data : mainTaskBConvergence.exe Makefile
 	>$@
-	for dr in $$(seq 0.05 0.05 0.5); do \
+	for dr in $$(seq 0.025 0.025 0.5); do \
 		mono $< -rmax:10 -dr:$$dr >> Out.E0_dr.data ;\
 	done 
 
