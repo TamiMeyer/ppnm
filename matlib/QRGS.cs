@@ -21,6 +21,11 @@ public static class QRGS{
         return c;
     }
 
+    public static vector solve(matrix A, vector b){
+        var (Q,R) = decomp(A);
+        return solve(Q,R,b);
+    }
+
     public static double det(matrix R){ /*determinant of R is + or - the determinant of A*/
         double det = 1;
         for(int i = 0; i<R.size2; i++){
@@ -36,7 +41,11 @@ public static class QRGS{
             I[i] = solve(Q, R, I[i]); //solves the equation QRx_i=e_i in place; the solutions x_i are the coloumns of the inverse of QR
         }
         return I;
+    }
 
+    public static matrix inverse(matrix A){
+        var (Q,R) = decomp(A);
+        return inverse(Q,R);
     }
 
     static void backsub(matrix U, vector c){
