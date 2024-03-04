@@ -1,5 +1,8 @@
 default: Out.txt out.times.data Out.times.svg
 
+CODE = $(filter %.cs,$^)
+LIBS = $(addprefix -reference:,$(filter %.dll,$^))
+
 Out.txt: main.exe
 	mono $< > $@
 
@@ -13,14 +16,14 @@ out.times.data : timeQR.exe Makefile
 		mono $< -size:$$N 2>err ;\
 	done 
 
-main.exe : main.cs QRGS.cs matrix.dll
-	mcs -target:exe -out:$@ $(addprefix -reference:,$(filter %.dll,$^)) $(filter %.cs,$^)
+main.exe : main.cs matrix.dll
+	mcs -target:exe -out:$@ $(LIBS) $(CODE)
 
-timeQR.exe : timeQR.cs QRGS.cs matrix.dll
-	mcs -target:exe -out:$@ $(addprefix -reference:,$(filter %.dll,$^)) $(filter %.cs,$^)
+timeQR.exe : timeQR.cs matrix.dll
+	mcs -target:exe -out:$@ $(LIBS) $(CODE)
 
-matrix.dll :  ../../matlib/vector.cs  ../../matlib/matrix.cs
+matrix.dll :  ../../matlib/vector.cs  ../../matlib/matrix.cs ../../matlib/QRGS.cs
 	mcs -target:library -out:./matrix.dll $^
 
 clean:
-	$(RM) *.dll *.exe [Oo]ut* *.data *.svg err log
+	$(RM) *.dll *.exe [Oo]ut* *.data *.svg err
