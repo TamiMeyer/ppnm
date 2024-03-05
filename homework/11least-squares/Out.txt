@@ -1,8 +1,1 @@
 ---Task A--------
-Fit the experimental data with exponential function in the usual logarithmic way: (See Out.experiment_fitted.data)
-    ln(t)=ln(a)-lambda*t with ln(a)=4.959 and lambda=0.171
-
-Half-life time of ThX from fitted experimental data: T½ = ln(2)/λ = 4.062 days
-Half-life time of 224Ra: 3.632 days
-
-See Out.fit.svg: Plot the experimental data (with error-bars) and your best fit.

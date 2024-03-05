@@ -53,6 +53,7 @@ public static class main{
         //for(int i=0;i<x_raw.size;i++){
         //    outstream.WriteLine($"{x_raw[i]} {y_raw[i]} {dy_raw[i]}");
         //}
+        outstream.Close();
         WriteLine("Fit the experimental data with exponential function in the usual logarithmic way: (See Out.experiment_fitted.data)");
         WriteLine($"    ln(t)=ln(a)-lambda*t with ln(a)={c[0]:0.000} and lambda={c[1]:0.000}");
         WriteLine();
@@ -63,8 +64,10 @@ public static class main{
 
         WriteLine("See Out.fit.svg: Plot the experimental data (with error-bars) and your best fit.");
 
+        WriteLine("---Task B--------");
+        S.print("Covariance matrix S = ");
 
-        outstream.Close();
+
         return 0;
         
     }
