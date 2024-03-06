@@ -10,11 +10,13 @@ public static class main{
         List<double> y_raw_list = new List<double>{};
         List<double> dy_raw_list = new List<double>{};
         string infile=null;
+        string outfile=null;
         foreach(var arg in args){
 	        var words = arg.Split(':');
     	    if(words[0]=="-input"){infile=words[1];}
+    	    if(words[0]=="-output"){outfile=words[1];}
 	    }
-        if(infile==null){
+        if(infile==null || outfile==null){
             Error.WriteLine("wrong filename argument");
             return 1;
         }
@@ -54,7 +56,6 @@ public static class main{
         WriteLine($"ln(t)=ln(a)-λ*t with ln(a) = {c[0]:0.0000} ± {d_lna:0.0000} and λ = {lambda:0.0000} ± {d_lambda:0.0000}");
         WriteLine();
 
-        string outfile="Out.experiment_fitted.data";
         var outstream=new System.IO.StreamWriter(outfile, append:false);
 
         c.fprint(outstream, "Coefficients of least square fit (z => 1.0, z => -z):\n", "{0,10:g5} ");
@@ -64,7 +65,6 @@ public static class main{
         outstream.WriteLine("Uncertainties:");
         outstream.WriteLine($"{d_lna}     {d_lambda}");
 
-
         double T = Log(2)/c[1]; //Half-life time = ln(2)/λ
         double dT = Sqrt(Pow(Log(2)/Pow(lambda,2),2)*Pow(d_lambda,2));  //error propagation dT=sqrt((∂T(λ)/∂λ)^2 * dλ^2)
         WriteLine($"Half-life time of ThX from fitted experimental data: T½ = ln(2)/λ = {T:0.000} days ± {dT:0.000}");
@@ -72,15 +72,10 @@ public static class main{
         WriteLine("Conclusion: The half-life value for ThX from the given data does not agree with the modern value within the estimated uncertainty.");
         WriteLine();
 
-        WriteLine("See Out.fit.svg: Plot the experimental data (with error-bars) and your best fit.");
+        WriteLine("See Out.fit.svg: Plot of the experimental data (with error-bars) and least-squares fits, where the fitting coefficients are varied by their uncertainties.");
         WriteLine();
 
         outstream.Close();
-
-
-
-        
-
 
         return 0;
         
