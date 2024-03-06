@@ -33,7 +33,7 @@ public static class main{
         double[] y_raw = y_raw_list.ToArray();
         double[] dy_raw = dy_raw_list.ToArray();
 
-        WriteLine("---Task A and B--------");
+        WriteLine("---Task A and B- and C-------");
         double[] d_ln_y_raw = new double[y_raw.Length];
         double[] ln_y_raw = new double[y_raw.Length];
         for(int i = 0; i<y_raw.Length;i++){
@@ -47,19 +47,23 @@ public static class main{
 
         var (c,S) = fit.lsfit(fs, x, ln_y, d_ln_y); //least-square fit
 
-        string outfile="Out.experiment_fitted.data";
-        var outstream=new System.IO.StreamWriter(outfile, append:false);
-
-        c.fprint(outstream, "Coefficients of least square fit (z => 1.0, z => -z):\n", "{0,10:g3} ");
-        //for(int i=0;i<x_raw.size;i++){
-        //    outstream.WriteLine($"{x_raw[i]} {y_raw[i]} {dy_raw[i]}");
-        //}
-        outstream.Close();
         WriteLine("Fit the experimental data with exponential function in the usual logarithmic way and determine the uncertainties in the fitting coefficients: (See Out.experiment_fitted.data)");
         double lambda = c[1];
         double d_lambda = Sqrt(S[1][1]);
-        WriteLine($"ln(t)=ln(a)-lambda*t with ln(a) = {c[0]:0.0000} ± {Sqrt(S[0][0]):0.0000} and lambda = {lambda:0.0000} ± {d_lambda:0.0000}");
+        double d_lna = Sqrt(S[0][0]);
+        WriteLine($"ln(t)=ln(a)-λ*t with ln(a) = {c[0]:0.0000} ± {d_lna:0.0000} and λ = {lambda:0.0000} ± {d_lambda:0.0000}");
         WriteLine();
+
+        string outfile="Out.experiment_fitted.data";
+        var outstream=new System.IO.StreamWriter(outfile, append:false);
+
+        c.fprint(outstream, "Coefficients of least square fit (z => 1.0, z => -z):\n", "{0,10:g5} ");
+        //for(int i=0;i<x_raw.size;i++){
+        //    outstream.WriteLine($"{x_raw[i]} {y_raw[i]} {dy_raw[i]}");
+        //}
+        outstream.WriteLine("Uncertainties:");
+        outstream.WriteLine($"{d_lna}     {d_lambda}");
+
 
         double T = Log(2)/c[1]; //Half-life time = ln(2)/λ
         double dT = Sqrt(Pow(Log(2)/Pow(lambda,2),2)*Pow(d_lambda,2));  //error propagation dT=sqrt((∂T(λ)/∂λ)^2 * dλ^2)
@@ -70,6 +74,8 @@ public static class main{
 
         WriteLine("See Out.fit.svg: Plot the experimental data (with error-bars) and your best fit.");
         WriteLine();
+
+        outstream.Close();
 
 
 

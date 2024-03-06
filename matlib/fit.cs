@@ -14,7 +14,7 @@ public static class fit{
         var (Q,R) = QRGS.decomp(A);
         vector c = QRGS.solve(Q,R,b);
         matrix R_inv = QRGS.inverse(R);
-        matrix S = R_inv * R_inv.transpose(); //covariance matrix S=A^-1*A^-T=R^-1*R^-T
+        matrix S = R_inv * R_inv.transpose(); //covariance matrix S=A^-1*A^-T=R^-1*R^-T (e.q.32)
         return (c,S); 
     }
 }
