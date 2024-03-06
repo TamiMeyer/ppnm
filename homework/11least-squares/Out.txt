@@ -1,1 +1,10 @@
----Task A--------
+---Task A and B--------
+Fit the experimental data with exponential function in the usual logarithmic way and determine the uncertainties in the fitting coefficients: (See Out.experiment_fitted.data)
+ln(t)=ln(a)-lambda*t with ln(a) = 4.9587 ± 0.0354 and lambda = 0.1706 ± 0.0072
+
+Half-life time of ThX from fitted experimental data: T½ = ln(2)/λ = 4.062 days ± 0.170
+Half-life time of 224Ra: 3.632 days (https://en.wikipedia.org/wiki/Isotopes_of_radium)
+Conclusion: The half-life value for ThX from the given data does not agree with the modern value within the estimated uncertainty.
+
+See Out.fit.svg: Plot the experimental data (with error-bars) and your best fit.
+

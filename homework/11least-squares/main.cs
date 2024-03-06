@@ -1,5 +1,6 @@
 using System;
 using static System.Console;
+using static System.Math;
 using System.Collections.Generic;
 
 public static class main{
@@ -32,7 +33,7 @@ public static class main{
         double[] y_raw = y_raw_list.ToArray();
         double[] dy_raw = dy_raw_list.ToArray();
 
-        WriteLine("---Task A--------");
+        WriteLine("---Task A and B--------");
         double[] d_ln_y_raw = new double[y_raw.Length];
         double[] ln_y_raw = new double[y_raw.Length];
         for(int i = 0; i<y_raw.Length;i++){
@@ -54,18 +55,25 @@ public static class main{
         //    outstream.WriteLine($"{x_raw[i]} {y_raw[i]} {dy_raw[i]}");
         //}
         outstream.Close();
-        WriteLine("Fit the experimental data with exponential function in the usual logarithmic way: (See Out.experiment_fitted.data)");
-        WriteLine($"    ln(t)=ln(a)-lambda*t with ln(a)={c[0]:0.000} and lambda={c[1]:0.000}");
+        WriteLine("Fit the experimental data with exponential function in the usual logarithmic way and determine the uncertainties in the fitting coefficients: (See Out.experiment_fitted.data)");
+        double lambda = c[1];
+        double d_lambda = Sqrt(S[1][1]);
+        WriteLine($"ln(t)=ln(a)-lambda*t with ln(a) = {c[0]:0.0000} ± {Sqrt(S[0][0]):0.0000} and lambda = {lambda:0.0000} ± {d_lambda:0.0000}");
         WriteLine();
 
-        WriteLine($"Half-life time of ThX from fitted experimental data: T½ = ln(2)/λ = {Math.Log(2)/c[1]:0.000} days");
-        WriteLine("Half-life time of 224Ra: 3.632 days");
+        double T = Log(2)/c[1]; //Half-life time = ln(2)/λ
+        double dT = Sqrt(Pow(Log(2)/Pow(lambda,2),2)*Pow(d_lambda,2));  //error propagation dT=sqrt((∂T(λ)/∂λ)^2 * dλ^2)
+        WriteLine($"Half-life time of ThX from fitted experimental data: T½ = ln(2)/λ = {T:0.000} days ± {dT:0.000}");
+        WriteLine("Half-life time of 224Ra: 3.632 days (https://en.wikipedia.org/wiki/Isotopes_of_radium)");
+        WriteLine("Conclusion: The half-life value for ThX from the given data does not agree with the modern value within the estimated uncertainty.");
         WriteLine();
 
         WriteLine("See Out.fit.svg: Plot the experimental data (with error-bars) and your best fit.");
+        WriteLine();
 
-        WriteLine("---Task B--------");
-        S.print("Covariance matrix S = ");
+
+
+        
 
 
         return 0;

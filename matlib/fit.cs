@@ -11,9 +11,10 @@ public static class fit{
                 A[i,k] = fs[k](x[i])/dy[i];
             }
         }
-        vector c = QRGS.solve(A,b);
-        matrix A_inv = QRGS.inverse(A);
-        matrix S = A_inv * A_inv.transpose(); //covariance matrix S=A^-1*A^-T
-        return (c,S);
+        var (Q,R) = QRGS.decomp(A);
+        vector c = QRGS.solve(Q,R,b);
+        matrix R_inv = QRGS.inverse(R);
+        matrix S = R_inv * R_inv.transpose(); //covariance matrix S=A^-1*A^-T=R^-1*R^-T
+        return (c,S); 
     }
 }
