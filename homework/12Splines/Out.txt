@@ -1,1 +1,2 @@
 ---Task A-------
+See 'Out.linspline.sin.svg' and 'Out.linspline.exp.svg': The linear spline and integrator are tested for the sin function and exp function.
