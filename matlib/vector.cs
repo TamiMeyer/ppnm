@@ -148,6 +148,11 @@ public bool approx(vector o){
 	return true;
 	}
 
+public double[] toArray(){
+	vector v = this.copy();
+	return v.data;
+}
+
 /*create random vectors for tests*/
 
 public static vector random_vector(int n){

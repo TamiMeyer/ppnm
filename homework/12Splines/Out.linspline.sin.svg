@@ -159,12 +159,12 @@
 </g>
 	<g id="gnuplot_plot_1a" ><title>sin(x)</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(240.33,132.30)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(201.55,131.10)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >sin(x)</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0,   0,   0)'  d='M248.72,128.40 L291.28,128.40 M72.53,118.20 L77.60,113.02 L82.68,107.88 L87.75,102.79 L92.82,97.81 L97.90,92.97
+	<path stroke='rgb(  0,   0,   0)'  d='M209.94,127.20 L252.50,127.20 M72.53,118.20 L77.60,113.02 L82.68,107.88 L87.75,102.79 L92.82,97.81 L97.90,92.97
 		L102.97,88.29 L108.05,83.80 L113.12,79.54 L118.19,75.53 L123.27,71.79 L128.34,68.37 L133.41,65.26 L138.49,62.50
 		L143.56,60.11 L148.63,58.10 L153.71,56.47 L158.78,55.25 L163.86,54.44 L168.93,54.05 L174.00,54.08 L179.08,54.52
 		L184.15,55.38 L189.22,56.65 L194.30,58.32 L199.37,60.38 L204.44,62.82 L209.52,65.63 L214.59,68.77 L219.67,72.24
@@ -180,12 +180,12 @@
 	</g>
 	<g id="gnuplot_plot_2a" ><title>linear spline</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(240.33,150.30)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(201.55,149.10)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >linear spline</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(255,   0,   0)' stroke-dasharray='2.5,4.0'  d='M248.72,146.40 L291.28,146.40 M73.51,117.36 L74.49,116.52 L75.47,115.67 L76.45,114.83 L77.44,113.98 L78.42,113.14
+	<path stroke='rgb(255,   0,   0)' stroke-dasharray='2.5,4.0'  d='M209.94,145.20 L252.50,145.20 M73.51,117.36 L74.49,116.52 L75.47,115.67 L76.45,114.83 L77.44,113.98 L78.42,113.14
 		L79.40,112.30 L80.38,111.45 L81.36,110.61 L82.34,109.76 L83.32,108.92 L84.30,108.08 L85.28,107.23 L86.26,106.39
 		L87.25,105.54 L88.23,104.70 L89.21,103.86 L90.19,103.01 L91.17,102.17 L92.15,101.32 L93.13,100.48 L94.11,99.64
 		L95.09,98.79 L96.07,97.95 L97.06,97.10 L98.04,96.26 L99.02,95.42 L100.00,94.57 L100.98,93.73 L101.96,92.88
@@ -253,6 +253,21 @@
 	</g>
 	<g id="gnuplot_plot_3a" ><title>interpolation nodes</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
+	<g transform="translate(201.55,167.10)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+		<text><tspan font-family="Arial" >interpolation nodes</tspan></text>
+	</g>
+</g>
+<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
+	<use xlink:href='#gpPt1' transform='translate(72.53,118.20) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt1' transform='translate(135.32,64.19) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt1' transform='translate(198.10,59.83) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt1' transform='translate(260.89,109.15) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt1' transform='translate(323.68,166.79) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt1' transform='translate(386.46,179.76) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt1' transform='translate(449.25,136.14) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt1' transform='translate(512.03,76.03) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt1' transform='translate(574.82,54.69) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt1' transform='translate(231.22,163.20) scale(4.50)' color='rgb(  0,   0, 255)'/>
 </g>
 	</g>
 <g fill="none" color="#FFFFFF" stroke="rgb(  0,   0, 255)" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
@@ -363,12 +378,12 @@
 </g>
 	<g id="gnuplot_plot_1b" ><title>-cos(x)+1</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(290.67,390.30)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(496.64,322.31)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >-cos(x)+1</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0,   0,   0)'  d='M299.06,386.40 L341.62,386.40 M72.53,396.72 L77.60,396.55 L82.68,396.05 L87.75,395.22 L92.82,394.06 L97.90,392.58
+	<path stroke='rgb(  0,   0,   0)'  d='M505.03,318.41 L547.59,318.41 M72.53,396.72 L77.60,396.55 L82.68,396.05 L87.75,395.22 L92.82,394.06 L97.90,392.58
 		L102.97,390.80 L108.05,388.72 L113.12,386.36 L118.19,383.73 L123.27,380.84 L128.34,377.73 L133.41,374.41 L138.49,370.89
 		L143.56,367.21 L148.63,363.39 L153.71,359.45 L158.78,355.42 L163.86,351.32 L168.93,347.18 L174.00,343.03 L179.08,338.90
 		L184.15,334.81 L189.22,330.78 L194.30,326.85 L199.37,323.05 L204.44,319.39 L209.52,315.89 L214.59,312.60 L219.67,309.51
@@ -384,12 +399,12 @@
 	</g>
 	<g id="gnuplot_plot_2b" ><title>integral of interpolation</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(290.67,408.30)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(496.64,340.31)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >integral of interpolation</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(255,   0,   0)' stroke-dasharray='2.5,4.0'  d='M299.06,404.40 L341.62,404.40 M73.51,396.71 L74.49,396.70 L75.47,396.67 L76.45,396.64 L77.44,396.59 L78.42,396.53
+	<path stroke='rgb(255,   0,   0)' stroke-dasharray='2.5,4.0'  d='M505.03,336.41 L547.59,336.41 M73.51,396.71 L74.49,396.70 L75.47,396.67 L76.45,396.64 L77.44,396.59 L78.42,396.53
 		L79.40,396.46 L80.38,396.38 L81.36,396.29 L82.34,396.19 L83.32,396.08 L84.30,395.96 L85.28,395.83 L86.26,395.69
 		L87.25,395.53 L88.23,395.37 L89.21,395.20 L90.19,395.01 L91.17,394.82 L92.15,394.61 L93.13,394.39 L94.11,394.17
 		L95.09,393.93 L96.07,393.68 L97.06,393.42 L98.04,393.15 L99.02,392.87 L100.00,392.58 L100.98,392.28 L101.96,391.97

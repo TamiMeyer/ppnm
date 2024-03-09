@@ -1,2 +1,5 @@
 ---Task A-------
 See 'Out.linspline.sin.svg' and 'Out.linspline.exp.svg': The linear spline and integrator are tested for the sin function and exp function.
+---Task B-------
+c =          0     -0.774    -0.0624    -0.0674      0.763      0.118      0.138     -0.742     -0.167 
+b =      0.841      0.841     -0.706     -0.831     -0.965      0.561      0.798       1.07      -0.41 

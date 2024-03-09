@@ -3,7 +3,7 @@ public static class linspline{
     
     public static double linterp(double[] x, double[] y, double z){
         int i=binsearch(x,z);
-        double dx=x[i+1]-x[i]; if(!(dx>0)) throw new Exception("uups...");
+        double dx=x[i+1]-x[i]; if(!(dx>0)) throw new Exception("error dx<=0");
         double dy=y[i+1]-y[i];
         return y[i]+dy/dx*(z-x[i]);
     }

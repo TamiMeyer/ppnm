@@ -44,9 +44,58 @@ public class main{
         for(double z = 1.0/64; z<=n2-1; z+=1.0/64){  
             outstream3.WriteLine($"{z} {linspline.linterp(x2_arr, y2_arr, z)} {linspline.linterpInteg(x2_arr, y2_arr, z)}");
         }
-
+        outstream1.Close();
+        outstream2.Close();
         outstream3.Close();
         outstream4.Close();
+
+        WriteLine("---Task B-------");
+        var outstream5=new System.IO.StreamWriter("Out.raw.func1.data", append:false);
+        var outstream6=new System.IO.StreamWriter("Out.qspline.func1.data", append:false);
+        var outstream7=new System.IO.StreamWriter("Out.raw.xsquared.data", append:false);
+        var outstream8=new System.IO.StreamWriter("Out.qspline.xsquared.data", append:false);
+        var outstream9=new System.IO.StreamWriter("Out.qspline.sin.data", append:false);
+
+        double[] x3_arr = new double[15];
+        double[] y3_arr = new double[15];
+    	for(int i=0; i<15; i++){
+            x3_arr[i]=i;
+            if(i<5) y3_arr[i]=1;
+            if(i<10 && i>=5) y3_arr[i]=i;
+            if(i<15 && i>=10) y3_arr[i]=i*i;
+            outstream5.WriteLine($"{x3_arr[i]} {y3_arr[i]}");
+        }
+        qspline func1 = new qspline(new vector(x3_arr), new vector(y3_arr));
+        for(double z = 1.0/64; z<=14; z+=1.0/64){  
+          outstream6.WriteLine($"{z} {func1.evaluate(z)}");//
+        }
+
+        double[] x4_arr = new double[10];
+        double[] y4_arr = new double[10];
+    	for(int i=0; i<10; i++){
+            x4_arr[i]=i;
+            y4_arr[i]=i*i;
+            outstream7.WriteLine($"{x4_arr[i]} {y4_arr[i]}");
+        }
+        qspline xsquared = new qspline(new vector(x4_arr), new vector(y4_arr));
+        for(double z = 1.0/64; z<=9; z+=1.0/64){  
+          outstream8.WriteLine($"{z} {xsquared.evaluate(z)}");//
+        }
+
+        qspline sin_qspline = new qspline(new vector(x_arr), new vector(y_arr));
+        for(double z = 1.0/64; z<=9; z+=1.0/64){  
+          outstream9.WriteLine($"{z} {sin_qspline.evaluate(z)}");//
+        }
+        sin_qspline.print_coefficients();
+
+        outstream5.Close();
+        outstream6.Close();
+        outstream7.Close();
+        outstream8.Close();
+        outstream9.Close();
+
+
+
 
         return 0;
     }
