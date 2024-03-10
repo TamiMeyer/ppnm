@@ -36,6 +36,7 @@ public class qspline {
 		double[] x_arr =x.toArray();
         int i=binsearch(x_arr,z);
         return y[i]+b[i]*(z-x[i])+c[i]*(z-x[i])*(z-x[i]);
+
 	}
 
 	public double integral(double z){

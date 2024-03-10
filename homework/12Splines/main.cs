@@ -117,9 +117,15 @@ public class main{
         WriteLine();
 
         WriteLine("---Task C-------");
+        var outstream12=new System.IO.StreamWriter("Out.cspline.sin.data", append:false);
+        cspline sin_cspline = new cspline(new vector(x_arr), new vector(y_arr));
+        for(double z = 1.0/64; z<=9; z+=1.0/64){  
+          outstream12.WriteLine($"{z} {sin_cspline.evaluate(z)} {sin_cspline.integral(z)} {sin_cspline.derivative(z)}");//
+        }
+        outstream12.Close();
 
-
-
+        WriteLine("See Out.cspline.sin.svg: Shows the cubic interpolation (implemented by the cspline evaluate function), the integral of the interpolation and the derivative of the interpolation applied to sin(x).");
+        WriteLine("See Out.cspline.builtin.svg: Shows that the built-in cubic spline in gnuplot produces a very similar cubic spline to my implementation. Both ways of determining the cubic spline differ only little from the actual function sin(x).");
         return 0;
     }
 
