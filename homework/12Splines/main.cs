@@ -113,7 +113,7 @@ public class main{
         WriteLine("Coefficents of quadratic function:");
         xsquared.print_coefficients();
         WriteLine();
-        WriteLine("See Out.qspline.sin.svg: Shows the quadratic interpolation (implemented by the qspline evaluate function), the integral of the interpolation and the derivative of the interpolation applied to sin(x).")
+        WriteLine("See Out.qspline.sin.svg: Shows the quadratic interpolation (implemented by the qspline evaluate function), the integral of the interpolation and the derivative of the interpolation applied to sin(x).");
         WriteLine();
 
         WriteLine("---Task C-------");

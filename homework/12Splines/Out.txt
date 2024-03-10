@@ -2,8 +2,8 @@
 See 'Out.linspline.sin.svg' and 'Out.linspline.exp.svg': The linear spline and integrator are tested for the sin function and exp function.
 
 ---Task B-------
-See Out.qspline.func1.svg: Shows the quadratic interpolation, implemented by the qspline evaluate function, applied to a constant function, a linear function and a quadratic function.
-The coefficients b_i and c_i of the plotted quadratic-splines calculated by the qspline class ( s_i(x) = y_i + b_i(x − x_i) + c_i(x − x_i)^2) :
+See Out.qspline.func1.svg: Shows the quadratic interpolation (implemented by the qspline evaluate function), the integral of the interpolation and the derivative of the interpolation applied to a constant function, a linear function and a quadratic function.
+The coefficients b_i and c_i of the plotted quadratic-splines calculated by the qspline class ( s_i(x) = y_i + b_i(x - x_i) + c_i(x - x_i)^2) :
 Coefficents of constant function:
 c =          0          0          0          0 
 b =          0          0          0          0 
@@ -14,3 +14,6 @@ Coefficents of quadratic function:
 c =          0          2          0          2 
 b =          1          1          5          5 
 
+See Out.qspline.sin.svg: Shows the quadratic interpolation (implemented by the qspline evaluate function), the integral of the interpolation and the derivative of the interpolation applied to sin(x).
+
+---Task C-------
