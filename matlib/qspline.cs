@@ -35,12 +35,31 @@ public class qspline {
 	public double evaluate(double z){
 		double[] x_arr =x.toArray();
         int i=binsearch(x_arr,z);
-        return y[i]+b[i]*(z-x[i])+c[i]*(z-x[i]);
+        return y[i]+b[i]*(z-x[i])+c[i]*(z-x[i])*(z-x[i]);
 	}
+
+	public double integral(double z){
+        int i=binsearch(x,z);
+        double integral = 0;
+		double dx=0;
+        for(int j=0; j<i; j++){ //integral of the interpolation up to the last datapoint before z
+            dx = x[j+1]-x[j]; //dx_j
+			integral += y[j]*dx+1.0/2*b[j]*Math.Pow(dx, 2)+1.0/3*c[j]*Math.Pow(dx, 3);
+
+        }
+		double lastpart = y[i]*(z-x[i])+1.0/2*b[i]*Math.Pow((z-x[i]), 2)+1.0/3*c[i]*Math.Pow((z-x[i]), 3);
+        integral += lastpart;
+        return integral; 
+	}
+
+	public double derivative(double z){
+		double[] x_arr =x.toArray();
+        int i=binsearch(x_arr,z);
+        return b[i]+2*c[i]*(z-x[i]);
+	}
+
 	public void print_coefficients(){
 		c.print("c = ");
 		b.print("b = ");
 	}
-	// public double derivative(double z){/* evaluate the derivative */}
-	// public double integral(double z){/* evaluate the integral */}
 	}

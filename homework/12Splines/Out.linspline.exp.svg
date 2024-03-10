@@ -470,7 +470,7 @@
 	<path stroke='black'  d='M80.92,294.00 L80.92,422.40 L574.82,422.40 L574.82,294.00 L80.92,294.00 Z  '/></g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(327.87,270.90)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="middle">
-		<text><tspan font-family="Arial" >Linear interpolation, exp(x)</tspan></text>
+		<text><tspan font-family="Arial" >Integral of linear interpolation, exp(x)</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
