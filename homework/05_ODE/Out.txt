@@ -1,0 +1,9 @@
+---Task A-------
+See 'Out.ode.harm.svg': 
+        The ode u''=-u is solved with two different initial conditions.
+        First u(0)=1 and u'(0)=0, i.e. this can be interpreted as a mass that is displaced from the equilibrium position
+        1 unit and released from rest. It oscillates back and forth around the equilibrium position.
+        As expected, u(t) corresponds to cos(t), for the first set of initial conditions.
+        Second u(0)=0.7 and u'(0)=0.7. 
+See 'Out.ode.pend.svg': 
+        The pendulum ode u''=-sin(u) is solved.
