@@ -38,11 +38,11 @@ public class main{
         outstream_harm2.Close();
 
         WriteLine(@"See 'Out.ode.pend.svg': 
-        The pendulum ode u''=-sin(u) is solved.");
+        The pendulum equation u''=-sin(u) is solved. For comparison cos(t) is shown as well, which would be a solution if u<<1");
         var outstream_pend=new System.IO.StreamWriter("Out.pend1.data", append:false);
         Func<double, vector, vector> f_pend = (x, y) => new vector(y[1], -Math.Sin(y[0]));// u'' = -sin(u)
         vector ystart3 = new vector(1, 0);// Initial conditions: u(0)=1, u'(0)=0
-        (genlist<double> xlist3, genlist<vector> ylist3) = ode.driver(f_pend, (0, 100), ystart3);
+        (genlist<double> xlist3, genlist<vector> ylist3) = ode.driver(f_pend, (0, 10), ystart3);
         outstream_pend.WriteLine("x    y0   y1");
         for(int i=0; i<xlist3.size; i++){
             outstream_pend.Write($"{xlist3[i]}");
@@ -52,6 +52,53 @@ public class main{
             outstream_pend.WriteLine();
         }
         outstream_pend.Close();
+
+        WriteLine(@"See 'Out.ode.oscfric.svg': 
+        The equation for the oscillator with friction is solved.");
+        double b = 0.25;
+        double c = 5.0;
+        var outstream_oscfric=new System.IO.StreamWriter("Out.oscfric.data", append:false);
+        Func<double, vector, vector> f_oscfric = (x, y) => new vector(y[1], -b*y[1]-c*Math.Sin(y[0]) );// u''(t) + b*u'(t) + c*sin(u(t)) = 0
+        vector ystart4 = new vector(Math.PI-0.1, 0);// Initial conditions: nearly vertical and at rest
+        (genlist<double> xlist4, genlist<vector> ylist4) = ode.driver(f_oscfric, (0, 10), ystart4);
+        outstream_oscfric.WriteLine("x    y0   y1");
+        for(int i=0; i<xlist4.size; i++){
+            outstream_oscfric.Write($"{xlist4[i]}");
+            for(int j=0; j<ylist4[i].size; j++){
+                outstream_oscfric.Write($" {ylist4[i][j]}"); 
+            }
+            outstream_oscfric.WriteLine();
+        }
+        outstream_oscfric.Close();
+
+        //WriteLine(@"See 'Out.ode.lotka.svg': 
+        //The Lotka-Volterra system is solved.");
+
+        WriteLine("---Task B-------");
+        WriteLine(@"See 'Out.ode.planet.svg': 
+        The equation of equatorial motion of a planet around a star in General Relativity,
+        u''(φ) + u(φ) = 1 + εu(φ)2 , is solved.
+        Here u(φ) ≡ 1/r(φ) , r is the (circumference-reduced) radial coordinate, φ is the azimuthal angle,
+        ε is the relativistic correction (on the order of the star's Schwarzschild radius divided by the radius of the planet's orbit),
+        and primes denote the derivative with respect to φ.
+        The equation is integrated with different initial conditions and different values for the relativistic correction.
+        i) ε=0, u(0)=1, u'(0)=0 (Newtonian circular motion)
+        ii) ε=0, u(0)=1, u'(0)=-0.5 (Newtonian elliptical motion)
+        iii) ε≈0.01, u(0)=1, u'(0)≈-0.5 (relativistic precession of a planetary orbit)");
+
+        double eps = 0; //relativistic correction
+        var outstream_planeti=new System.IO.StreamWriter("Out.planet.circular.data", append:false);
+        Func<double, vector, vector> f_planet = (x, y) => new vector(y[1], 1 - y[0] + eps*y[0]*y[0] );//u''(φ) + u(φ) = 1 + εu(φ)^2 
+        vector ystart5 = new vector(1, 0);// Initial conditions
+        Func<double, vector> interpolant_planeti = ode.make_ode_ivp_interpolant(f_planet, (0, 2*Math.PI), ystart5);
+        
+        outstream_planeti.WriteLine("x    y0   y1");
+        vector ys;
+        for(double i=0; i<=2*Math.PI; i+=(1.0/8)){
+            ys = interpolant_planeti(i);
+            outstream_planeti.WriteLine($"{i} {ys[0]} {ys[1]}");
+        }
+        outstream_planeti.Close();
 
 
 

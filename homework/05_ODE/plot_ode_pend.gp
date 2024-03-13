@@ -8,3 +8,4 @@ set key top right
 plot [][-1.25:1.75] \
  "Out.pend1.data" using 1:2 with lines linestyle 2 linecolor rgb "red"title "u(t) with initial conditions u(0)=1, u''(0)=0", \
  "Out.pend1.data" using 1:3 with lines dashtype 7 linecolor rgb "red" title "u'(t) with initial conditions u(0)=1, u''(0)=0", \
+ cos(x) with lines dashtype 3 linecolor rgb "black" lw 2  title "cos(t)"

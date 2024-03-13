@@ -24,4 +24,8 @@ public class genlist<T>{               /* "T" is the type parameter */
 
     }
 
+    public T[] toArray(){
+        return data;
+    }
+
 }

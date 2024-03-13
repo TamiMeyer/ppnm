@@ -6,4 +6,17 @@ See 'Out.ode.harm.svg':
         As expected, u(t) corresponds to cos(t), for the first set of initial conditions.
         Second u(0)=0.7 and u'(0)=0.7. 
 See 'Out.ode.pend.svg': 
-        The pendulum ode u''=-sin(u) is solved.
+        The pendulum equation u''=-sin(u) is solved. For comparison cos(t) is shown as well, which would be a solution if u<<1
+See 'Out.ode.oscfric.svg': 
+        The equation for the oscillator with friction is solved.
+---Task B-------
+See 'Out.ode.planet.svg': 
+        The equation of equatorial motion of a planet around a star in General Relativity,
+        u''(φ) + u(φ) = 1 + εu(φ)2 , is solved.
+        Here u(φ) ≡ 1/r(φ) , r is the (circumference-reduced) radial coordinate, φ is the azimuthal angle,
+        ε is the relativistic correction (on the order of the star's Schwarzschild radius divided by the radius of the planet's orbit),
+        and primes denote the derivative with respect to φ.
+        The equation is integrated with different initial conditions and different values for the relativistic correction.
+        i) ε=0, u(0)=1, u'(0)=0 (Newtonian circular motion)
+        ii) ε=0, u(0)=1, u'(0)=-0.5 (Newtonian elliptical motion)
+        iii) ε≈0.01, u(0)=1, u'(0)≈-0.5 (relativistic precession of a planetary orbit)
