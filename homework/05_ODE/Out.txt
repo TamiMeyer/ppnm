@@ -12,11 +12,11 @@ See 'Out.ode.oscfric.svg':
 ---Task B-------
 See 'Out.ode.planet.svg': 
         The equation of equatorial motion of a planet around a star in General Relativity,
-        u''(φ) + u(φ) = 1 + εu(φ)2 , is solved.
+        u''(φ) + u(φ) = 1 + εu(φ)2 , is solved and plot in x-y-plane.
         Here u(φ) ≡ 1/r(φ) , r is the (circumference-reduced) radial coordinate, φ is the azimuthal angle,
         ε is the relativistic correction (on the order of the star's Schwarzschild radius divided by the radius of the planet's orbit),
         and primes denote the derivative with respect to φ.
         The equation is integrated with different initial conditions and different values for the relativistic correction.
-        i) ε=0, u(0)=1, u'(0)=0 (Newtonian circular motion)
-        ii) ε=0, u(0)=1, u'(0)=-0.5 (Newtonian elliptical motion)
-        iii) ε≈0.01, u(0)=1, u'(0)≈-0.5 (relativistic precession of a planetary orbit)
+        i: ε=0, u(0)=1, u'(0)=0 (Newtonian circular motion)
+        ii: ε=0, u(0)=1, u'(0)=-0.5 (Newtonian elliptical motion)
+        iii: ε≈0.01, u(0)=1, u'(0)=-0.5 (relativistic precession of a planetary orbit)

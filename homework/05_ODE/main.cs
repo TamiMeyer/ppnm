@@ -77,28 +77,48 @@ public class main{
         WriteLine("---Task B-------");
         WriteLine(@"See 'Out.ode.planet.svg': 
         The equation of equatorial motion of a planet around a star in General Relativity,
-        u''(φ) + u(φ) = 1 + εu(φ)2 , is solved.
+        u''(φ) + u(φ) = 1 + εu(φ)2 , is solved and plot in x-y-plane.
         Here u(φ) ≡ 1/r(φ) , r is the (circumference-reduced) radial coordinate, φ is the azimuthal angle,
         ε is the relativistic correction (on the order of the star's Schwarzschild radius divided by the radius of the planet's orbit),
         and primes denote the derivative with respect to φ.
         The equation is integrated with different initial conditions and different values for the relativistic correction.
-        i) ε=0, u(0)=1, u'(0)=0 (Newtonian circular motion)
-        ii) ε=0, u(0)=1, u'(0)=-0.5 (Newtonian elliptical motion)
-        iii) ε≈0.01, u(0)=1, u'(0)≈-0.5 (relativistic precession of a planetary orbit)");
+        i: ε=0, u(0)=1, u'(0)=0 (Newtonian circular motion)
+        ii: ε=0, u(0)=1, u'(0)=-0.5 (Newtonian elliptical motion)
+        iii: ε≈0.01, u(0)=1, u'(0)=-0.5 (relativistic precession of a planetary orbit)");
 
         double eps = 0; //relativistic correction
         var outstream_planeti=new System.IO.StreamWriter("Out.planet.circular.data", append:false);
         Func<double, vector, vector> f_planet = (x, y) => new vector(y[1], 1 - y[0] + eps*y[0]*y[0] );//u''(φ) + u(φ) = 1 + εu(φ)^2 
         vector ystart5 = new vector(1, 0);// Initial conditions
-        Func<double, vector> interpolant_planeti = ode.make_ode_ivp_interpolant(f_planet, (0, 2*Math.PI), ystart5);
+        Func<double, vector> interpolant_planeti = ode.make_ode_ivp_interpolant(f_planet, (0, 2*Math.PI+(1.0/8)), ystart5);
         
         outstream_planeti.WriteLine("x    y0   y1");
         vector ys;
-        for(double i=0; i<=2*Math.PI; i+=(1.0/8)){
+        for(double i=0; i<2*Math.PI+(1.0/8); i+=(1.0/8)){
             ys = interpolant_planeti(i);
             outstream_planeti.WriteLine($"{i} {ys[0]} {ys[1]}");
         }
         outstream_planeti.Close();
+
+        var outstream_planetii=new System.IO.StreamWriter("Out.planet.elliptical.data", append:false);
+        vector ystart6 = new vector(1, -0.5);// Initial conditions
+        Func<double, vector> interpolant_planetii = ode.make_ode_ivp_interpolant(f_planet, (0, 2*Math.PI+(1.0/8)), ystart6);
+        outstream_planetii.WriteLine("x    y0   y1");
+        for(double i=0; i<2*Math.PI+(1.0/8); i+=(1.0/8)){
+            ys = interpolant_planetii(i);
+            outstream_planetii.WriteLine($"{i} {ys[0]} {ys[1]}");
+        }
+        outstream_planetii.Close();
+
+        eps = 0.01;
+        var outstream_planetiii=new System.IO.StreamWriter("Out.planet.precession.data", append:false);
+        Func<double, vector> interpolant_planetiii = ode.make_ode_ivp_interpolant(f_planet, (0, 8*Math.PI+(1.0/8)), ystart6);
+        outstream_planetiii.WriteLine("x    y0   y1");
+        for(double i=0; i<8*Math.PI+(1.0/8); i+=(1.0/8)){
+            ys = interpolant_planetiii(i);
+            outstream_planetiii.WriteLine($"{i} {ys[0]} {ys[1]}");
+        }
+        outstream_planetiii.Close();
 
 
 
