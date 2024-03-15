@@ -20,3 +20,6 @@ See 'Out.ode.planet.svg':
         i: ε=0, u(0)=1, u'(0)=0 (Newtonian circular motion)
         ii: ε=0, u(0)=1, u'(0)=-0.5 (Newtonian elliptical motion)
         iii: ε≈0.01, u(0)=1, u'(0)=-0.5 (relativistic precession of a planetary orbit)
+---Task C-------
+See 'Out.ode.threebody.svg': 
+        

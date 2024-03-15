@@ -52,11 +52,45 @@ public static Func<double,vector> make_linear_interpolant(genlist<double> x,genl
 	};
 	return interpolant;
 }
+
 public static Func<double,vector> make_ode_ivp_interpolant
 (Func<double,vector,vector> f,(double,double)interval,vector y,double acc=0.01,double eps=0.01,double hstart=0.01, int nmax=999 )
 {
 	(var xlist,var ylist) = driver(f, interval, y, hstart, acc, eps, nmax);
 	return make_linear_interpolant(xlist,ylist);
+}
+
+public static vector threebody_eqs(double t, vector z){
+	double G = 1;//gravitational constant
+	double[] masses = {1,1,1};//masses of the three bodys
+
+	vector[] positions = new vector[3];
+    vector[] velocities = new vector[3];
+	for(int i = 0; i < 3; i++){
+        positions[i] = new vector(z[2*i+6], z[2*i+7]);
+        velocities[i] = new vector(z[2*i], z[2*i+1]);
+    }
+
+	vector[] accelerations = new vector[3];
+	for(int i = 0; i < 3; i++){
+        accelerations[i] = new vector(0, 0);
+        for(int j = 0; j < 3; j++){
+            if (i != j){
+                vector r = positions[j] - positions[i];
+                double r3 = Pow(r.norm(), 3);
+                accelerations[i] += G * masses[j] * r / r3;//vi' = ∑j≠i G*mj*(rj-ri) /|rj-ri|3
+            }
+        }
+    }
+
+    vector result = new vector(12);
+    for(int i = 0; i < 3; i++){
+        result[2*i] = accelerations[i][0];
+        result[2*i+ 1] = accelerations[i][1];
+        result[2*i+ 6] = velocities[i][0];
+        result[2*i+ 7] = velocities[i][1];
+    }
+    return result;	
 }
 
 

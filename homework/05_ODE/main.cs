@@ -111,7 +111,7 @@ public class main{
         outstream_planetii.Close();
 
         eps = 0.01;
-        var outstream_planetiii=new System.IO.StreamWriter("Out.planet.precession.data", append:false);
+        var outstream_planetiii = new System.IO.StreamWriter("Out.planet.precession.data", append:false);
         Func<double, vector> interpolant_planetiii = ode.make_ode_ivp_interpolant(f_planet, (0, 8*Math.PI+(1.0/8)), ystart6);
         outstream_planetiii.WriteLine("x    y0   y1");
         for(double i=0; i<8*Math.PI+(1.0/8); i+=(1.0/8)){
@@ -120,8 +120,22 @@ public class main{
         }
         outstream_planetiii.Close();
 
+        WriteLine("---Task C-------");
+        WriteLine(@"See 'Out.ode.threebody.svg': 
+        ");
 
-
+        vector z0 = new vector(0.4662036850, 0.4323657300, -0.93240737, -0.86473146, 0.4662036850, 0.4323657300, -0.97000436, 0.24308753, 0, 0, 0.97000436, -0.24308753); //inital conditions from wikipedia article
+        var (t_list, pos_vel_list) = ode.driver(ode.threebody_eqs, (0, 17), z0);
+        var outstream_3 = new System.IO.StreamWriter("Out.threebody.data", append:false);
+        outstream_3.WriteLine("t   vx1   vy1   vx2   vy2   vx3   vy3   x1   y1   x2   y2   x3   y3");
+        for(int i=0; i<t_list.size; i++){
+            outstream_3.Write($"{t_list[i]}");
+            for(int j=0; j<pos_vel_list[i].size; j++){
+                outstream_3.Write($" {pos_vel_list[i][j]}"); 
+            }
+            outstream_3.WriteLine();
+        }
+        outstream_3.Close();
         return 0;
     }
 }
