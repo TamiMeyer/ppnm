@@ -125,7 +125,7 @@ public class main{
         ");
 
         vector z0 = new vector(0.4662036850, 0.4323657300, -0.93240737, -0.86473146, 0.4662036850, 0.4323657300, -0.97000436, 0.24308753, 0, 0, 0.97000436, -0.24308753); //inital conditions from wikipedia article
-        var (t_list, pos_vel_list) = ode.driver(ode.threebody_eqs, (0, 17), z0);
+        var (t_list, pos_vel_list) = ode.driver(ode.threebody_eqs, (0, 6.375), z0);
         var outstream_3 = new System.IO.StreamWriter("Out.threebody.data", append:false);
         outstream_3.WriteLine("t   vx1   vy1   vx2   vy2   vx3   vy3   x1   y1   x2   y2   x3   y3");
         for(int i=0; i<t_list.size; i++){
