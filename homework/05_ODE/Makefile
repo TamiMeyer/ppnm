@@ -2,7 +2,7 @@ CODE = $(filter %.cs,$^)
 LIBS = $(addprefix -reference:,$(filter %.dll,$^))
 DATA = Out.harm1.data Out.harm2.data Out.pend1.data Out.oscfric.data Out.planet.circular.data Out.planet.elliptical.data Out.planet.precession.data Out.threebody.data
 
-default: Out.txt Out.ode.harm.svg Out.ode.pend.svg Out.ode.oscfric.svg Out.ode.planet.svg Out.ode.threebody.svg Out.animation.gif
+default: Out.txt Out.ode.harm.svg Out.ode.pend.svg Out.ode.oscfric.svg Out.ode.planet.svg Out.ode.threebody.svg Out.ode.threebody.animation.gif
 
 Out.txt DATA: main.exe 
 	mono $< >Out.txt
@@ -22,7 +22,7 @@ Out.ode.planet.svg : plot_ode_planet.gp Out.planet.circular.data Out.planet.elli
 Out.ode.threebody.svg : plot_ode_threebody.gp Out.threebody.data
 	gnuplot -e "outputname='$@'" $<
 
-Out.animation.gif: plot_ode_threebody_gif.gp Out.threebody.data
+Out.ode.threebody.animation.gif: plot_ode_threebody_gif.gp Out.threebody.data
 	gnuplot -e "outputname='$@'" $<
 	
 main.exe : main.cs ode.dll

@@ -3,10 +3,9 @@ set output outputname
 set xlabel "x"                  
 set ylabel "y" 
 set title "Newtonian gravitational three-body problem"
-#set key box below
+unset key
 set size ratio -1
 set grid
-#set bmargin at screen 0.25
 
 plot [][] \
  "Out.threebody.data" using 8:9 with lines linestyle 2 linecolor rgb "red" title "x1:y1", \

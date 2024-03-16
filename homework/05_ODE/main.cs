@@ -55,6 +55,7 @@ public class main{
 
         WriteLine(@"See 'Out.ode.oscfric.svg': 
         The equation for the oscillator with friction is solved.");
+        WriteLine("");
         double b = 0.25;
         double c = 5.0;
         var outstream_oscfric=new System.IO.StreamWriter("Out.oscfric.data", append:false);
@@ -71,9 +72,6 @@ public class main{
         }
         outstream_oscfric.Close();
 
-        //WriteLine(@"See 'Out.ode.lotka.svg': 
-        //The Lotka-Volterra system is solved.");
-
         WriteLine("---Task B-------");
         WriteLine(@"See 'Out.ode.planet.svg': 
         The equation of equatorial motion of a planet around a star in General Relativity,
@@ -81,10 +79,8 @@ public class main{
         Here u(φ) ≡ 1/r(φ) , r is the (circumference-reduced) radial coordinate, φ is the azimuthal angle,
         ε is the relativistic correction (on the order of the star's Schwarzschild radius divided by the radius of the planet's orbit),
         and primes denote the derivative with respect to φ.
-        The equation is integrated with different initial conditions and different values for the relativistic correction.
-        i: ε=0, u(0)=1, u'(0)=0 (Newtonian circular motion)
-        ii: ε=0, u(0)=1, u'(0)=-0.5 (Newtonian elliptical motion)
-        iii: ε≈0.01, u(0)=1, u'(0)=-0.5 (relativistic precession of a planetary orbit)");
+        The equation is integrated with different initial conditions and different values for the relativistic correction.");
+        WriteLine("");
 
         double eps = 0; //relativistic correction
         var outstream_planeti=new System.IO.StreamWriter("Out.planet.circular.data", append:false);
@@ -121,8 +117,10 @@ public class main{
         outstream_planetiii.Close();
 
         WriteLine("---Task C-------");
-        WriteLine(@"See 'Out.ode.threebody.svg': 
-        ");
+        WriteLine(@"See 'Out.ode.threebody.svg':
+        Shows the figure-8 solution to the three-body problem.");
+        WriteLine(@"See 'Out.ode.threebody.animation.gif':
+        An animation of the figure-8 solution to the three-body problem over a full period T ≃ 6.3259");
 
         vector z0 = new vector(0.4662036850, 0.4323657300, -0.93240737, -0.86473146, 0.4662036850, 0.4323657300, -0.97000436, 0.24308753, 0, 0, 0.97000436, -0.24308753); //inital conditions from wikipedia article
         var (t_list, pos_vel_list) = ode.driver(ode.threebody_eqs, (0, 6.375), z0);

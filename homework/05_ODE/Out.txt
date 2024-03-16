@@ -9,6 +9,7 @@ See 'Out.ode.pend.svg':
         The pendulum equation u''=-sin(u) is solved. For comparison cos(t) is shown as well, which would be a solution if u<<1
 See 'Out.ode.oscfric.svg': 
         The equation for the oscillator with friction is solved.
+
 ---Task B-------
 See 'Out.ode.planet.svg': 
         The equation of equatorial motion of a planet around a star in General Relativity,
@@ -17,9 +18,9 @@ See 'Out.ode.planet.svg':
         ε is the relativistic correction (on the order of the star's Schwarzschild radius divided by the radius of the planet's orbit),
         and primes denote the derivative with respect to φ.
         The equation is integrated with different initial conditions and different values for the relativistic correction.
-        i: ε=0, u(0)=1, u'(0)=0 (Newtonian circular motion)
-        ii: ε=0, u(0)=1, u'(0)=-0.5 (Newtonian elliptical motion)
-        iii: ε≈0.01, u(0)=1, u'(0)=-0.5 (relativistic precession of a planetary orbit)
+
 ---Task C-------
-See 'Out.ode.threebody.svg': 
-        
+See 'Out.ode.threebody.svg':
+        Shows the figure-8 solution to the three-body problem.
+See 'Out.ode.threebody.animation.gif':
+        An animation of the figure-8 solution to the three-body problem over a full period T ≃ 6.3259
