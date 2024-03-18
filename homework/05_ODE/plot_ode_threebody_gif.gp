@@ -1,5 +1,5 @@
 set terminal gif animate delay 4 optimize
-set output 'Out.animation.gif'
+set output outputname
 set title "Newtonian gravitational three-body problem"
 set xlabel "X Position"
 set ylabel "Y Position"
