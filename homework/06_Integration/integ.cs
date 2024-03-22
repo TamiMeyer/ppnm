@@ -14,13 +14,12 @@ public static double integral(Func<double,double> f, double a, double b, double 
 
 public static double erf(double z){
     if(z<0) return -erf(-z);
-    else if(z<=1 && z>=0){
+    if(z<=1 && z>=0){
         Func<double,double> f = delegate(double x){return Exp(-x*x);};
-        return 2/Sqrt(PI)*integral(f, 0, z);
-    } else {
-        Func<double,double> g = delegate(double x){return Exp(-Pow(z+(1-x)/x,2)/x/x);};
-        return 1 - 2/PI*integral(g, 0, 1)
+        return 2.0/Sqrt(PI)*integral(f, 0, z);
     }
+    Func<double,double> g = delegate(double x){return Exp(-Pow(z+(1-x)/x,2))/x/x;};
+    return 1.0 - 2.0/Sqrt(PI)*integral(g, 0, 1);
 }
 
 }

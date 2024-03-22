@@ -28,6 +28,18 @@ and checked that my integrator returns results within the given accuracy goals:"
         expected = -4.0;
         WriteLine($"∫₀¹ dx ln(x)/√(x) = {I : 0.0000}     Expected: -4    Within the given accuracy goals?: {funs.approx(I, expected, 1e-3, 1e-3)}");
 
+        var outstream = new System.IO.StreamWriter("Out.integ_erf.data", append:false);
+        for(double i = -3.0; i < 3.0; i+=1.0/32){
+            outstream.WriteLine($"{i} {integ.erf(i)}");
+        }
+        outstream.Close();
+
+        outstream = new System.IO.StreamWriter("Out.singleprec_erf.data", append:false);
+        for(double i = -3.0; i < 3.0; i+=1.0/32){
+            outstream.WriteLine($"{i} {funs.erf(i)}");
+        }
+        outstream.Close(); 
+
 
         return 0;
     }
