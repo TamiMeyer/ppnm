@@ -38,7 +38,10 @@ and checked that my integrator returns results within the given accuracy goals:"
         for(double i = -3.0; i < 3.0; i+=1.0/32){
             outstream.WriteLine($"{i} {funs.erf(i)}");
         }
-        outstream.Close(); 
+        outstream.Close();
+        WriteLine();
+        WriteLine(@"See 'Out.integ_erf.svg':
+        Compares the integrator implemented error function, the single precision error function from the plots exercise and some tabulated values for the error function.");
 
 
         return 0;

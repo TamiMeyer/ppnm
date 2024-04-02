@@ -6,3 +6,6 @@ and checked that my integrator returns results within the given accuracy goals:
 ∫₀¹ dx 1/√(x) =  2.0000     Expected: 2    Within the given accuracy goals?: True
 ∫₀¹ dx 4√(1-x²) =  3.1418     Expected: π     Within the given accuracy goals?: True
 ∫₀¹ dx ln(x)/√(x) = - 3.9999     Expected: -4    Within the given accuracy goals?: True
+
+See 'Out.integ_erf.svg':
+        Compares the integrator implemented error function, the single precision error function from the plots exercise and some tabulated values for the error function.

@@ -227,10 +227,10 @@
 		L492.41,54.04 L494.38,54.03 L496.34,54.03 L498.30,54.03 L500.26,54.02 L502.22,54.02 L504.19,54.02 L506.15,54.02
 		L508.11,54.02 L510.07,54.01  '/></g>
 	</g>
-	<g id="gnuplot_plot_3" ><title>tabulated erf (wikipedia)</title>
+	<g id="gnuplot_plot_3" ><title>tabulated error function (wikipedia)</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(507.09,408.30)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >tabulated erf (wikipedia)</tspan></text>
+		<text><tspan font-family="Arial" >tabulated error function (wikipedia)</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
