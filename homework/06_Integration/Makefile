@@ -10,8 +10,11 @@ Out.txt DATA: main.exe
 Out.integ_erf.svg : plot_integration_erf.gp Out.integ_erf.data tabulated_erf.data Out.singleprec_erf.data
 	gnuplot -e "outputname='$@'" $<
 
-main.exe : main.cs integ.dll
+main.exe : main.cs integ.dll Out.pythonIntegrals.txt
 	mcs -target:exe -out:$@ $(LIBS) $(CODE)
+
+Out.pythonIntegrals.txt : integralsNumpy.py
+	python3 integralsNumpy.py
 
 integ.dll: integ.cs ../../matlib/funs.cs
 	mcs -target:library -out:./integ.dll $^ 

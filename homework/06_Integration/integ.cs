@@ -22,4 +22,9 @@ public static double erf(double z){
     return 1.0 - 2.0/Sqrt(PI)*integral(g, 0, 1);
 }
 
+public static double clenshawIntegral(Func<double,double> f, double a, double b, double δ=0.001, double ε=0.001, double f2=double.NaN, double f3=double.NaN){
+    Func<double, double> g = (theta) =>  f((a+b)/2 + (b-a)/2*Cos(theta)) * Sin(theta) *(b-a)/2;
+    return integral(g, 0, PI, δ, ε, f2, f3);
+}
+
 }

@@ -2,10 +2,26 @@
 The implementation of the integrate function is tested
 and checked that my integrator returns results within the given accuracy goals:
 
-∫₀¹ dx √(x) =  0.6670     Expected: 2/3   Within the given accuracy goals?: True
-∫₀¹ dx 1/√(x) =  2.0000     Expected: 2    Within the given accuracy goals?: True
-∫₀¹ dx 4√(1-x²) =  3.1418     Expected: π     Within the given accuracy goals?: True
-∫₀¹ dx ln(x)/√(x) = - 3.9999     Expected: -4    Within the given accuracy goals?: True
+∫₀¹ dx √(x) =  0.6670     Analytic: 2/3   Within the given accuracy goals?: True
+∫₀¹ dx 1/√(x) =  2.0000     Analytic: 2    Within the given accuracy goals?: True
+∫₀¹ dx 4√(1-x²) =  3.1418     Analytic: π     Within the given accuracy goals?: True
+∫₀¹ dx ln(x)/√(x) = - 3.9999     Analytic: -4    Within the given accuracy goals?: True
 
 See 'Out.integ_erf.svg':
         Compares the integrator implemented error function, the single precision error function from the plots exercise and some tabulated values for the error function.
+
+---Task B-------
+Two integrals with integrable divergencies at the end-points of the intervals are calculated using adaptive integrator with and without the Clenshaw–Curtis variable transformation and using python's scipy.integrate.quad routine.
+The number of integrand evaluations is compared. 
+
+Calculate ∫₀¹ dx 1/√(x)
+With Clenshaw–Curtis variable transformation: 1.99999201046432 ,  number of calls: 16
+Without variable transformation: 1.99996150007805 ,  number of calls: 8572
+Python/numpy's integration routines: 2 ,  number of calls: 231
+Analytic: 2
+
+Calculate ∫₀¹ dx ln(x)/√(x)
+With Clenshaw–Curtis variable transformation: -3.99987385646141 ,  number of calls: 96
+Without variable transformation: -3.99991705899915 ,  number of calls: 8604
+Python/numpy's integration routines: -4.00000000000009 ,  number of calls: 315
+Analytic: -4
