@@ -15,13 +15,23 @@ Two integrals with integrable divergencies at the end-points of the intervals ar
 The number of integrand evaluations is compared. 
 
 Calculate ∫₀¹ dx 1/√(x)
-With Clenshaw–Curtis variable transformation: 1.99999201046432 ,  number of calls: 16
-Without variable transformation: 1.99996150007805 ,  number of calls: 8572
+With Clenshaw–Curtis variable transformation: 1.99999201046432 ,  number of calls: 16 , err: 0.00118737191764096
+Without variable transformation: 1.99996150007805 ,  number of calls: 8572 , err: 0.000412012551873603
 Python/numpy's integration routines: 2 ,  number of calls: 231
 Analytic: 2
 
 Calculate ∫₀¹ dx ln(x)/√(x)
-With Clenshaw–Curtis variable transformation: -3.99987385646141 ,  number of calls: 96
-Without variable transformation: -3.99991705899915 ,  number of calls: 8604
+With Clenshaw–Curtis variable transformation: -3.99987385646141 ,  number of calls: 96 , err: 0.00111272494904316
+Without variable transformation: -3.99991705899915 ,  number of calls: 8604 , err: 0.000754016739922036
 Python/numpy's integration routines: -4.00000000000009 ,  number of calls: 315
 Analytic: -4
+
+---Task C-------
+My implementation of the integrator is tested on some (converging) infitine limit integrals and the number of integrand evaluations (calls) is noted
+and compared to python's scipy.integrate.quad routine.
+
+∫1,∞ dx 1/(x^2) = 1     Analytic:  1 , err: 1.11022302462516E-16, approx?: True, number of calls: 4 , python number of calls: 15
+∫1,∞ dx 1/(x^3) = 0.5     Analytic:  0.5 , err: 5.55111512312578E-17, approx?: True , number of calls: 4 , python number of calls: 15
+∫₀∞ dx 1/((1+x)√(x)) = 3.14153749125299     Analytic:  π , err: 0.000443043911740906, approx?: True , number of calls: 8960 , python number of calls: 285
+∫-∞,∞ dx exp(-x^2) = 1.77269010023488     Analytic:  Sqrt(π) ,  err: 0.000707607634647627, approx?: True , number of calls: 72 , python number of calls: 150
+∫-∞,0 dx exp(x) = 1.00054304003965     Analytic:  1 ,  err: 0.00100933256410189, approx?: True , number of calls: 20 , python number of calls: 75

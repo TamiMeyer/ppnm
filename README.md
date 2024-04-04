@@ -6,7 +6,7 @@
 | 3  | LeastSquares                  | 6 | 3 | 1 | 10  |
 | 4  | Splines                       | 6 | 3 | 1 | 10  |
 | 5  | ODE                           | 6 | 3 | 1 | 10  |
-| 6  | Integration                   | 6 | - | - |  -  |
+| 6  | Integration                   | 6 | 3 | 1 | 10  |
 | 7  | Monte Carlo                   | - | - | - |  -  |
 | 8  | Roots                         | - | - | - |  -  |
 | 9  | Minimization                  | - | - | - |  -  |

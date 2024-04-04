@@ -7,3 +7,28 @@ Calculate ∫₀¹ dx ln(x)/√(x) with python integration routines:
 -4.000000000000085
 number of calls:
 315
+
+Calculate ∫1,∞ dx 1/(x^2) with python integration routines: 
+1.0
+number of calls:
+15
+
+Calculate ∫1,∞ dx 1/(x^3) with python integration routines: 
+0.5
+number of calls:
+15
+
+Calculate ∫₀∞ dx 1/((1+x)√(x)) with python integration routines: 
+3.141592653027912
+number of calls:
+285
+
+Calculate ∫-∞,∞ dx exp(-x^2) with python integration routines: 
+1.7724538509067376
+number of calls:
+150
+
+Calculate ∫-∞,0 dx exp(x) with python integration routines: 
+0.9999999997018258
+number of calls:
+75
