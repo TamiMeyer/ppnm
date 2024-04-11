@@ -4,12 +4,18 @@ See 'Out.mc2D_pseudo.svg':
         and for calculation of the area of an ellipse with semi-major and semi-minor axis of length 2 and 1.
         It is shown that the actual error scales as 1/√N
 
-area of unit circle calculated with pseudo-random mc (49550 sampling points): result=3.1435721493441, estimated error=0.00737115048826, analytic: π
+area of unit circle calculated with pseudo-random mc (49550 sampling points): result=3.138406, estimated error=0.007387, actual error=0.003187, analytic: π
 
-area of ellipse with semi-major and semi-minor axis of length 2 and 1, calculated with pseudo-random mc (49550 sampling points): result=6.27374369323915, estimated error=0.0147840763175169, analytic: 2π
+area of ellipse with semi-major and semi-minor axis of length 2 and 1, calculated with pseudo-random mc (49550 sampling points): result=6.285853, estimated error=0.014746, actual error=0.002667, analytic: 2π
 
-∫0π  dx/π ∫0π  dy/π ∫0π  dz/π [1-cos(x)cos(y)cos(z)]^-1 = Γ(1/4)4/(4π3) calculated with pseudo-random mc (50000 sampling points): result=1.41455389586266, estimated error=0.0185685204870641, analytic: 1.393204 
+∫0π  dx/π ∫0π  dy/π ∫0π  dz/π [1-cos(x)cos(y)cos(z)]^-1 = Γ(1/4)4/(4π3) calculated with pseudo-random mc (50000 sampling points): result=1.384335, estimated error=0.007085, actual error=0.008869, analytic:1.393204 
 
 ---Task B-------
-area of unit circle calculated with quasi-random mc (49550 sampling points): result=3.1427648839556, estimated error=0.000726538849646907, analytic: π
+See 'Out.ellipse_pseudo_quasi.svg':
+        The estimated and actual errors for the calculation of the area of an ellipse are compare for pseudo and quasi random M.C.
+        The errors of the quasi random method are in general smaller.
+
+area of unit circle calculated with quasi-random mc (49550 sampling points): result=3.142765, estimated error=0.000727, actual error=0.001172, analytic: π
+
+area of ellipse calculated with quasi-random mc (49550 sampling points): result=6.285530, estimated error=0.001453, actual error=0.002344, analytic: 2π
 

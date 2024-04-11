@@ -32,7 +32,7 @@ public class main{
             sigma[i] = pseudo_sig;      
             outstream.WriteLine($"{Ns[i]} {result[i]} {sigma[i]} {Abs(PI-result[i])}");
         }
-        WriteLine($"area of unit circle calculated with pseudo-random mc ({Ns[Ns.Length-1]} sampling points): result={pseudo_res}, estimated error={pseudo_sig}, analytic: π");
+        WriteLine($"area of unit circle calculated with pseudo-random mc ({Ns[Ns.Length-1]} sampling points): result={pseudo_res:F6}, estimated error={pseudo_sig:F6}, actual error={Abs(PI-pseudo_res):F6}, analytic: π");
         WriteLine();
 
         /* Calculate area of an ellipse*/
@@ -45,7 +45,7 @@ public class main{
             (pseudo_res, pseudo_sig) = montecarlo.pseudo_plainmc(ellipse, a_ell, b_ell, Ns[i]);
             outstream2.WriteLine($"{Ns[i]} {pseudo_res} {pseudo_sig} {Abs(2*PI-pseudo_res)}");
         }
-        WriteLine($"area of ellipse with semi-major and semi-minor axis of length 2 and 1, calculated with pseudo-random mc ({Ns[Ns.Length-1]} sampling points): result={pseudo_res}, estimated error={pseudo_sig}, analytic: 2π");
+        WriteLine($"area of ellipse with semi-major and semi-minor axis of length 2 and 1, calculated with pseudo-random mc ({Ns[Ns.Length-1]} sampling points): result={pseudo_res:F6}, estimated error={pseudo_sig:F6}, actual error={Abs(2*PI-pseudo_res):F6}, analytic: 2π");
         WriteLine();
 
         /*3d integral*/
@@ -53,13 +53,19 @@ public class main{
         vector a_3d = new vector(0.0, 0.0, 0.0); //lower integration boundary
         vector b_3d = new vector(PI, PI, PI) ; //upper integration boundary
         (pseudo_res, pseudo_sig) = montecarlo.pseudo_plainmc(funcA, a_3d, b_3d, 500000);
-        WriteLine($"∫0π  dx/π ∫0π  dy/π ∫0π  dz/π [1-cos(x)cos(y)cos(z)]^-1 = Γ(1/4)4/(4π3) calculated with pseudo-random mc (50000 sampling points): result={pseudo_res}, estimated error={pseudo_sig}, analytic:{Pow(3.62561, 4)/(4*PI*PI*PI) : 0.000000} ");
+        double analytic = Pow(3.62561, 4)/(4*PI*PI*PI);
+        WriteLine($"∫0π  dx/π ∫0π  dy/π ∫0π  dz/π [1-cos(x)cos(y)cos(z)]^-1 = Γ(1/4)4/(4π3) calculated with pseudo-random mc (50000 sampling points): result={pseudo_res:F6}, estimated error={pseudo_sig:F6}, actual error={Abs(analytic-pseudo_res):F6}, analytic:{analytic :F6} ");
         WriteLine();
 
         outstream.Close();
         outstream2.Close();
         
         WriteLine("---Task B-------");
+        WriteLine(@"See 'Out.ellipse_pseudo_quasi.svg':
+        The estimated and actual errors for the calculation of the area of an ellipse are compare for pseudo and quasi random M.C.
+        The errors of the quasi random method are in general smaller.");
+        WriteLine();
+
         /* Calculate area of a circle using halton series*/
         var outstream_quasi = new System.IO.StreamWriter("Out.circle_quasi.data", append:false);
         outstream_quasi.WriteLine("N quasi_result quasi_error_estimate quasi_error_actual");
@@ -68,7 +74,17 @@ public class main{
             (quasi_res, quasi_sig) = montecarlo.quasi_mc(circle, a_circ, b_circ, Ns[i]);
             outstream_quasi.WriteLine($"{Ns[i]} {quasi_res} {quasi_sig} {Abs(PI-quasi_res)}");
         }
-        WriteLine($"area of unit circle calculated with quasi-random mc ({Ns[Ns.Length-1]} sampling points): result={quasi_res}, estimated error={quasi_sig}, analytic: π");
+        WriteLine($"area of unit circle calculated with quasi-random mc ({Ns[Ns.Length-1]} sampling points): result={quasi_res:F6}, estimated error={quasi_sig:F6}, actual error={Abs(PI-quasi_res):F6}, analytic: π");
+        WriteLine();
+
+        /* Calculate area of a circle using halton series*/
+        outstream_quasi = new System.IO.StreamWriter("Out.ellipse_quasi.data", append:false);
+        outstream_quasi.WriteLine("N quasi_result quasi_error_estimate quasi_error_actual");
+        for(int i=0; i<Ns.Length; i++){
+            (quasi_res, quasi_sig) = montecarlo.quasi_mc(ellipse, a_ell, b_ell, Ns[i]);
+            outstream_quasi.WriteLine($"{Ns[i]} {quasi_res} {quasi_sig} {Abs(2*PI-quasi_res)}");
+        }
+        WriteLine($"area of ellipse calculated with quasi-random mc ({Ns[Ns.Length-1]} sampling points): result={quasi_res:F6}, estimated error={quasi_sig:F6}, actual error={Abs(2*PI-quasi_res):F6}, analytic: 2π");
         WriteLine();
 
         outstream_quasi.Close();
