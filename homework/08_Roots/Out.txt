@@ -1,0 +1,7 @@
+---Task A-------
+1. Problem: 0 = x^2 - 4 = f(x)
+Start point:          1 
+Newton's result: xN =           2 
+f(xN) =          0 
+Does xN approximately fulfil the equation? => True
+

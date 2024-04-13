@@ -41,6 +41,13 @@ public void print
 	file.Write("\n");
 	}
 
+public void printNoLn
+(string s="",string format="{0,10:g3} ",TextWriter file=null){
+	if(file==null)file = System.Console.Out;
+	file.Write(s);
+	for(int i=0;i<size;i++) file.Write(format,this[i]);
+	}
+
 public void fprint
 (TextWriter file,string s="",string format="{0,10:g3} "){
 	file.Write(s);
