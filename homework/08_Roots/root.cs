@@ -5,7 +5,7 @@ public static class root{
 public static vector newton(
 	Func<vector,vector>f /* the function to find the root of */
 	,vector x            /* the start point */
-	,double acc=1e-9     /* accuracy goal: on exit ‖f(x)‖ should be <acc */
+	,double acc=1e-3     /* accuracy goal: on exit ‖f(x)‖ should be <acc */
 	,vector δx=null      /* optional δx-vector for calculation of jacobian */
 	,double λmin=1.0/64  /* */
 	){
@@ -29,7 +29,7 @@ public static vector newton(
 }
 
 public static matrix jacobian(Func<vector,vector>f,vector x,vector fx, vector δx=null){
-	if(δx==null) δx = x.map(δxi => Abs(δxi) * Pow(2, -26)); //set the vector δx (used in the finite-difference numerical evaluation of the Jacobian) if the user does not supply it
+	if(δx==null) δx = x.map(xi => Abs(xi) * Pow(2, -26)); //set the vector δx (used in the finite-difference numerical evaluation of the Jacobian) if the user does not supply it
 	int n = x.size;
 	matrix J = new matrix(n);
 	vector df, x_plus_xj = x.copy();
@@ -37,11 +37,13 @@ public static matrix jacobian(Func<vector,vector>f,vector x,vector fx, vector δ
 		x_plus_xj[j] += δx[j];
 		df = f(x_plus_xj) - fx;
 		for(int i = 0; i<n; i++){
+			/////Console.WriteLine($" xsoze = {x.size}, df.size = {df.size}, i = {i}, j = {j}");
 			J[i, j] = df[i] / δx[j];
 		}
 		x_plus_xj[j] -= δx[j];
 	}
 	return J;
 }
+
 
 }

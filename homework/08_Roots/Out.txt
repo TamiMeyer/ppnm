@@ -1,7 +1,50 @@
 ---Task A-------
+- Simple one- and two-dimensional equations:
 1. Problem: 0 = x^2 - 4 = f(x)
 Start point:          1 
-Newton's result: xN =           2 
-f(xN) =          0 
-Does xN approximately fulfil the equation? => True
+Newton's result: r =    2.000079 
+f(r) =   0.000316 
 
+
+2. Problem: (0,0) = (x^2 + y^2 - 13, x - 2) = f(x, y)
+Start point:          1          1 
+Newton's result: r =           2    3.00003 
+f(r) =    0.00018  -6.64e-11 
+
+
+- Rosenbrock: Find the extremum(s) of the Rosenbrock's valley function f(x,y) = (1-x)^2+100(y-x^2)^2,
+I.e.df/dx=0 and df/dy=0: (0, 0) = (-2*(1-x) - 2*x*200*(y-x^2), 200*(y-x^2)) has to be solved.
+It is determined using Newton's method with several different starting points:
+
+Start point:          2          2 
+Newton's result for extremum: r =   1.0000114  1.0000226 
+f(r) =   0.000133  -5.49e-05 
+
+Start point:        0.5          2 
+Newton's result for extremum: r =  0.99999975 0.99999949 
+f(r) =   1.23e-06  -8.65e-07 
+
+analytic: minimum at (1, 1) 
+
+
+-  Himmelblau: Find the minimum(s) of the Himmelblau's function f(x,y) = (x^2+y-11)^2+(x+y^2-7)^2.
+I.e.df/dx=0 and df/dy=0: (0, 0) = (2x*2*(x^2+y-11) + 2(x+y^2-7), 2*(x^2+y-11) + 2*y*2*(x+y^2-7)) has to be solved.
+It is determined using Newton's method with several different starting points:
+
+Start point:          4          3 
+Newton's result for extremum: r =   2.9999992  2.0000034 
+f(r) =   8.53e-06   9.85e-05 
+
+Start point:         -3          3 
+Newton's result for extremum: r =  -2.8051181  3.1313125 
+f(r) =  -5.85e-07   1.41e-07 
+
+Start point:         -3         -3 
+Newton's result for extremum: r =  -3.7793103  -3.283186 
+f(r) =  -4.07e-08  -1.73e-09 
+
+Start point:          3         -2 
+Newton's result for extremum: r =   3.5844283 -1.8481265 
+f(r) =   3.82e-07  -6.94e-09 
+
+analytic: minima at (3.0, 2.0), (-2.805118, 3.131312), (-3.779310, -3.283186) and (3.584428, -1.848126)
