@@ -48,3 +48,9 @@ Newton's result for extremum: r =   3.5844283 -1.8481265
 f(r) =   3.82e-07  -6.94e-09 
 
 analytic: minima at (3.0, 2.0), (-2.805118, 3.131312), (-3.779310, -3.283186) and (3.584428, -1.848126)
+
+
+---Task B-------
+See ' .svg':
+        The wavefunction with the lowest eigenenergy E0 was calculated using the ode routines and the rootfinder routine.
+        The resulting lowest wavefunction is plot, as well as the exact result E0=-½, f0(r)=re^-r. 

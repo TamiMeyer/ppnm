@@ -70,10 +70,27 @@ public class main{
             fres.print("f(r) = ");
             WriteLine();
         }
-        WriteLine("analytic: minima at (3.0, 2.0), (-2.805118, 3.131312), (-3.779310, -3.283186) and (3.584428, -1.848126)");
+        WriteLine("analytic: minima at (3.0, 2.0), (-2.805118, 3.131312), (-3.779310, -3.283186) and (3.584428, -1.848126)\n\n");
 
+        WriteLine("---Task B-------");
+        WriteLine(@"See ' .svg':
+        The wavefunction with the lowest eigenenergy E0 was calculated using the ode routines and the rootfinder routine.
+        The resulting lowest wavefunction is plot, as well as the exact result E0=-½, f0(r)=re^-r. ");
 
+        var outstream = new System.IO.StreamWriter("Out.hydrogen_swave.data", append:false);
+        double[] rmax_s = {8,10,12};
+        double[] rmin_s = {1e-4};
+        double[] acc_s = {0.01};
+        double[] eps_s = {0.01};
 
+        double E0 = hydrogen_root.lowest_E0(rmax_s[0], rmin_s[0], acc_s[0], eps_s[0]);
+        (genlist<double> xlist, genlist<vector> ylist) = hydrogen_root.FE(E0, rmax_s[0], rmin_s[0], acc_s[0], eps_s[0]);
+        outstream.WriteLine($" (E0, rmax, rmin, acc, eps) = ({E0} {rmax_s[0]} {rmin_s[0]} {acc_s[0]} {eps_s[0]})");
+        for(int i=0; i<xlist.size; i++){
+            outstream.WriteLine($"{xlist[i]} {ylist[i][0]}");
+        }
+
+        outstream.Close();
         return 0;
     }
 }

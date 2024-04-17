@@ -28,4 +28,8 @@ public class genlist<T>{               /* "T" is the type parameter */
         return data;
     }
 
+    public T Last(){
+        return data[data.Length-1];
+    }
+
 }
