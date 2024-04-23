@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Text;
 using static System.Math;
 using static System.Console;
 public partial class vector{
@@ -54,6 +55,18 @@ public void fprint
 	for(int i=0;i<size;i++) file.Write(format,this[i]);
 	file.Write("\n");
 	}
+
+public string getString(string format="{0,4:g3}"){
+	StringBuilder sb = new StringBuilder();
+	sb.Append("(");
+	for(int i=0;i<size-1;i++) {
+		sb.AppendFormat(format,this[i]);
+		sb.Append(",");
+	}
+	sb.AppendFormat(format,this[size-1]);
+	sb.Append(")");
+	return sb.ToString();
+}
 
 public static vector operator+(vector v, vector u){
 	vector r=new vector(v.size);

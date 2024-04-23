@@ -9,7 +9,7 @@
 | 6  | Integration                   | 6 | 3 | 1 | 10  |
 | 7  | Monte Carlo                   | 6 | 3 | - |  -  |
 | 8  | Roots                         | 6 | 3 | - |  -  |
-| 9  | Minimization                  | - | - | - |  -  |
+| 9  | Minimization                  | 6 | - | - |  -  |
 | 10 | Neural Network                | - | - | - |  -  |
  
 

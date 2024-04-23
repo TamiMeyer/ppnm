@@ -1,0 +1,18 @@
+---Task A-------
+- Rosenbrock: Find a minimum of the Rosenbrock's valley function f(x,y) = (1-x)^2+100(y-x^2)^2 using Newton's method with forward gradient
+Startpoint: (   3,   3) Minimum: xmin = (1.000081,1.00016) ; f(xmin) = 6.93192240656034E-09; Steps: 68; Excedded max number of steps?: False
+Startpoint: (   2,  -2) Minimum: xmin = (1.000077,1.000153) ; f(xmin) = 6.29466583561398E-09; Steps: 53; Excedded max number of steps?: False
+Startpoint: (   3,  -3) Minimum: xmin = (1.00008,1.000157) ; f(xmin) = 6.68144320172046E-09; Steps: 68; Excedded max number of steps?: False
+Startpoint: (  -2,   2) Minimum: xmin = (0.9997116,0.9994201) ; f(xmin) = 8.41895974484441E-08; Steps: 241; Excedded max number of steps?: False
+Exact minimum: xmin = (1, 1) ;  f(xmin) = 0  
+
+- Himmelblau: Find a minimum of the Himmelblau's function f(x,y)=(x^2+y-11)^2+(x+y^2-7)^2 using Newton's method with forward gradient
+Startpoint: (   5,   5) Minimum: xmin = (   3,   2) ; f(xmin) = 2.63639572524673E-13; Steps: 7; Excedded max number of steps?: False
+Startpoint: (  -5,   5) Minimum: xmin = (-2.805118,3.131313) ; f(xmin) = 1.00728360784451E-13; Steps: 6; Excedded max number of steps?: False
+Startpoint: (  -5,  -5) Minimum: xmin = (-3.77931,-3.283186) ; f(xmin) = 8.29422554512054E-14; Steps: 6; Excedded max number of steps?: False
+Startpoint: (   5,  -5) Minimum: xmin = (3.584428,-1.848127) ; f(xmin) = 8.70305325334687E-13; Steps: 7; Excedded max number of steps?: False
+Exact minima: xmin = (3,2) ;  f(xmin) = 0
+              xmin = (-2.805118,3.131312) ;  f(xmin) = 0
+              xmin = (-3.779310,-3.283186) ;  f(xmin) = 0
+              xmin = (3.584428, -1.848126) ;  f(xmin) = 0 
+
