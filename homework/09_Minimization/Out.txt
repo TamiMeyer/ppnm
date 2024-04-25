@@ -16,3 +16,21 @@ Exact minima: xmin = (3,2) ;  f(xmin) = 0
               xmin = (-3.779310,-3.283186) ;  f(xmin) = 0
               xmin = (3.584428, -1.848126) ;  f(xmin) = 0 
 
+---Task B-------
+The task is to fit the Breit-Wigner function F(E|m,Γ,A) = A/[(E-m)²+Γ²/4] (where A is the scale-factor, m is the mass and Γ is the widths of the resonance) to the given experimental data in the file 'experiment_Higgs.data'.
+        
+First, the fitting parameters m,Γ,A are determined by minimizing the deviation function using Newton's method with forward gradient:
+D(m,Γ,A)=Σi[(F(Ei|m,Γ,A)-σi)/Δσi]^2 .
+Startpoint: m=125.3,Γ=0.05,A=5 Minimum: m_min=125.972230457689,Γ_min=2.08539953182196,A_min=9.87151662912582 ; f(xmin) = 26.8695120010107; Steps: 84; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=0.004,A=15 Minimum: m_min=125.987435713659,Γ_min=0.0307519427948386,A_min=4.80022782738245 ; f(xmin) = 27.1643651121105; Steps: 1000; Exceeded max number of steps?: True
+Startpoint: m=125.3,Γ=0.004,A=10 Minimum: m_min=125.549587865219,Γ_min=0.0380219815425124,A_min=1.93425120556747 ; f(xmin) = 33.8776921213516; Steps: 1000; Exceeded max number of steps?: True
+Startpoint: m=125.3,Γ=0.004,A=5 Minimum: m_min=125.988167515113,Γ_min=-0.0561401732785206,A_min=4.78605519613084 ; f(xmin) = 27.1642744591938; Steps: 1000; Exceeded max number of steps?: True
+Startpoint: m=125.3,Γ=4,A=5 Minimum: m_min=125.331787064851,Γ_min=4.19103833259323,A_min=5.17757745226291 ; f(xmin) = 38.5976362079072; Steps: 1000; Exceeded max number of steps?: True
+Startpoint: m=125.3,Γ=4,A=10 Minimum: m_min=125.298163844998,Γ_min=4.29868008351057,A_min=10.4390209372025 ; f(xmin) = 33.8585555732112; Steps: 1000; Exceeded max number of steps?: True
+Startpoint: m=125.3,Γ=0.004,A=5 Minimum: m_min=125.988167515113,Γ_min=-0.0561401732785206,A_min=4.78605519613084 ; f(xmin) = 27.1642744591938; Steps: 1000; Exceeded max number of steps?: True
+Startpoint: m=125.3,Γ=0.003,A=5 Minimum: m_min=126.010124657383,Γ_min=-0.179864920419273,A_min=4.74798851508778 ; f(xmin) = 27.2026331665943; Steps: 1000; Exceeded max number of steps?: True
+Startpoint: m=125.3,Γ=0.05,A=5 Minimum: m_min=125.972230457689,Γ_min=2.08539953182196,A_min=9.87151662912582 ; f(xmin) = 26.8695120010107; Steps: 84; Exceeded max number of steps?: False
+
+The fitting parameters were determined to m={}, Γ={}, A={}.
+
+Second, see 'Out.higgs_fit.svg': The Breit-Wigner function with the previously determined fitting parameters and the experimental data are plot.

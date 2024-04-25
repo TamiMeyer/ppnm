@@ -1,0 +1,38 @@
+
+
+*******************************************************************************
+Thu Apr 25 11:13:52 2024
+
+
+FIT:    data read from "experiment_Higgs.data" using 1:2
+        format = x:z
+        #datapoints = 30
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = Aa / (( x - mm ) * ( x -mm ) + gammaa*gammaa/4)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   Aa            mm            gammaa       
+   0 8.6948669388e+01   0.00e+00  3.81e-05    1.000000e+00   1.000000e+00   1.000000e+00
+  23 8.5340685021e+01  -7.86e-01  3.81e-04    3.498514e+03   9.214394e+01   2.286977e+02
+
+After 23 iterations the fit converged.
+final sum of squares of residuals : 85.3407
+rel. change during last iteration : -7.86108e-06
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.77785
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.16077
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+Aa              = 3498.51          +/- 2.695e+05    (7705%)
+mm              = 92.1439          +/- 2789         (3027%)
+gammaa          = 228.698          +/- 8175         (3575%)
+
+correlation matrix of the fit parameters:
+                Aa     mm     gammaa 
+Aa              1.000 
+mm             -0.977  1.000 
+gammaa          0.999 -0.967  1.000 
