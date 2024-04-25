@@ -60,7 +60,14 @@ public static vector gradient_fwd(Func<vector,double> f,vector x, double fx = Do
 
 public static vector gradient_cent(Func<vector,double> f,vector x, double fx =Double.NaN){
 	if(Double.IsNaN(fx)) fx = f(x);
-	return new vector(1);
+	vector dfdx = new vector(x.size);
+	/*for(int i=0;i<x.size;i++){
+		double dx=Abs(x[i])*Pow(2,-26);
+		x[i]+=dx;
+		dfdx[i]=(f(x)-fx)/dx;
+		x[i]-=dx;
+	}*/
+	return dfdx;
 }
 
 public static matrix hessian(Func<vector,double> f,vector x, bool central_derivative, vector gradf = null){
