@@ -76,7 +76,7 @@ public static matrix hessian(Func<vector,double> f,vector x, bool central_deriva
 	matrix H = new matrix(x.size);
 	vector gradf_plus;
 	for(int j=0;j<x.size;j++){
-		double dx=Abs(x[j])*Pow(2,-13); /* for numerical gradient */
+		double dx=Abs(x[j])*Pow(2,-26); /* for numerical gradient */
 		x[j]+=dx;
 		if(central_derivative) gradf_plus = gradient_cent(f,x);
 		else gradf_plus = gradient_fwd(f,x);

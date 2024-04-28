@@ -1,16 +1,16 @@
 ---Task A-------
 - Rosenbrock: Find a minimum of the Rosenbrock's valley function f(x,y) = (1-x)^2+100(y-x^2)^2 using Newton's method with forward gradient
-Startpoint: (   3,   3) Minimum: xmin = (1.000009,1.000017) ; f(xmin) = 7.43486555956588E-11; Steps: 20; Excedded max number of steps?: False
-Startpoint: (   2,  -2) Minimum: xmin = (1.000008,1.000016) ; f(xmin) = 6.61672543281762E-11; Steps: 15; Excedded max number of steps?: False
-Startpoint: (   3,  -3) Minimum: xmin = (1.000012,1.000024) ; f(xmin) = 1.50620868054759E-10; Steps: 20; Excedded max number of steps?: False
-Startpoint: (  -2,   2) Minimum: xmin = (0.999974,0.9999479) ; f(xmin) = 6.77806313386387E-10; Steps: 25; Excedded max number of steps?: False
+Startpoint: (   1,   2) Minimum: xmin = (0.9999878,0.999975) ; f(xmin) = 1.79186899533246E-10; Steps: 8; Exceeded max number of steps?: False
+Startpoint: (   2,  -2) Minimum: xmin = (0.9999955,0.999991) ; f(xmin) = 2.00797287455292E-11; Steps: 10; Exceeded max number of steps?: False
+Startpoint: (   3,  -3) Minimum: xmin = (-0.004396409,-0.004649988) ; f(xmin) = 1.01099239865893; Steps: 1000; Exceeded max number of steps?: True
+Startpoint: (  -2,   2) Minimum: xmin = (-0.002368262,0.002742509) ; f(xmin) = 1.00549119578928; Steps: 1000; Exceeded max number of steps?: True
 Exact minimum: xmin = (1, 1) ;  f(xmin) = 0  
 
 - Himmelblau: Find a minimum of the Himmelblau's function f(x,y)=(x^2+y-11)^2+(x+y^2-7)^2 using Newton's method with forward gradient
-Startpoint: (   5,   5) Minimum: xmin = (   3,   2) ; f(xmin) = 2.63639572524673E-13; Steps: 7; Excedded max number of steps?: False
-Startpoint: (  -5,   5) Minimum: xmin = (-2.805118,3.131313) ; f(xmin) = 1.00728360784451E-13; Steps: 6; Excedded max number of steps?: False
-Startpoint: (  -5,  -5) Minimum: xmin = (-3.77931,-3.283186) ; f(xmin) = 8.29422554512054E-14; Steps: 6; Excedded max number of steps?: False
-Startpoint: (   5,  -5) Minimum: xmin = (3.584428,-1.848127) ; f(xmin) = 8.70305325334687E-13; Steps: 7; Excedded max number of steps?: False
+Startpoint: ( 0.5, 0.5) Minimum: xmin = (-2.805118,3.131312) ; f(xmin) = 3.52245089554319E-14; Steps: 20; Exceeded max number of steps?: False
+Startpoint: (  -5,   5) Minimum: xmin = (-2.805118,3.131312) ; f(xmin) = 3.55373245717259E-14; Steps: 6; Exceeded max number of steps?: False
+Startpoint: (  -5,  -5) Minimum: xmin = (-3.779311,-3.283188) ; f(xmin) = 2.0765983439354E-10; Steps: 5; Exceeded max number of steps?: False
+Startpoint: (   5,  -5) Minimum: xmin = (3.584428,-1.848127) ; f(xmin) = 7.430770368675E-14; Steps: 7; Exceeded max number of steps?: False
 Exact minima: xmin = (3,2) ;  f(xmin) = 0
               xmin = (-2.805118,3.131312) ;  f(xmin) = 0
               xmin = (-3.779310,-3.283186) ;  f(xmin) = 0
@@ -21,15 +21,15 @@ The task is to fit the Breit-Wigner function F(E|m,Γ,A) = A/[(E-m)²+Γ²/4] (w
         
 First, the fitting parameters m,Γ,A are determined by minimizing the deviation function using Newton's method with forward gradient:
 D(m,Γ,A)=Σi[(F(Ei|m,Γ,A)-σi)/Δσi]^2 .
-Startpoint: m=125.3,Γ=0.05,A=5 Minimum: m_min=125.972199102713,Γ_min=2.08646731868842,A_min=9.87682324139339 ; f(xmin) = 26.8695117860918; Steps: 321; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.004,A=15 Minimum: m_min=1214.62277494511,Γ_min=1.86406088977971,A_min=-63120.1713989253 ; f(xmin) = 45.7393740425979; Steps: 740; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.004,A=10 Minimum: m_min=125.972195242976,Γ_min=-2.08630476827923,A_min=9.87610107244141 ; f(xmin) = 26.8695117796422; Steps: 27; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.004,A=5 Minimum: m_min=125.972194676362,Γ_min=2.08624966902933,A_min=9.8758469323479 ; f(xmin) = 26.8695117806083; Steps: 99; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=4,A=5 Minimum: m_min=125.331787064851,Γ_min=4.19103833259323,A_min=5.17757745226291 ; f(xmin) = 38.5976362079072; Steps: 1000; Exceeded max number of steps?: True
-Startpoint: m=125.3,Γ=4,A=10 Minimum: m_min=125.298163844998,Γ_min=4.29868008351057,A_min=10.4390209372025 ; f(xmin) = 33.8585555732112; Steps: 1000; Exceeded max number of steps?: True
-Startpoint: m=125.3,Γ=0.004,A=5 Minimum: m_min=125.972194676362,Γ_min=2.08624966902933,A_min=9.8758469323479 ; f(xmin) = 26.8695117806083; Steps: 99; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.003,A=5 Minimum: m_min=125.972197263315,Γ_min=2.08638534853113,A_min=9.87645193631937 ; f(xmin) = 26.8695117812375; Steps: 42; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.05,A=5 Minimum: m_min=125.972199102713,Γ_min=2.08646731868842,A_min=9.87682324139339 ; f(xmin) = 26.8695117860918; Steps: 321; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=0.05,A=5 Minimum: m_min=125.972071653563,Γ_min=2.09365357706941,A_min=9.9120738260168 ; f(xmin) = 26.8695238367982; Steps: 313; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=0.004,A=15 Minimum: m_min=257.082727190581,Γ_min=-0.405095516810755,A_min=-0.475726686963424 ; f(xmin) = 45.5120315530799; Steps: 317; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=0.004,A=10 Minimum: m_min=125.972144789719,Γ_min=2.088879959987,A_min=9.88836250293603 ; f(xmin) = 26.869513194903; Steps: 313; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=0.004,A=5 Minimum: m_min=125.972049507785,Γ_min=2.09506729889696,A_min=9.91940842705115 ; f(xmin) = 26.8695292459703; Steps: 227; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=4,A=5 Minimum: m_min=125.972041910561,Γ_min=-2.09539751341895,A_min=9.92094150031216 ; f(xmin) = 26.8695305073683; Steps: 79; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=4,A=10 Minimum: m_min=125.972016273894,Γ_min=2.09703538316957,A_min=9.92905553730816 ; f(xmin) = 26.8695379112565; Steps: 188; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=0.004,A=5 Minimum: m_min=125.972049507785,Γ_min=2.09506729889696,A_min=9.91940842705115 ; f(xmin) = 26.8695292459703; Steps: 227; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=0.003,A=5 Minimum: m_min=125.972084347802,Γ_min=-2.09262841530267,A_min=9.9071392907672 ; f(xmin) = 26.8695207410334; Steps: 163; Exceeded max number of steps?: False
+Startpoint: m=125.3,Γ=0.05,A=5 Minimum: m_min=125.972071653563,Γ_min=2.09365357706941,A_min=9.9120738260168 ; f(xmin) = 26.8695238367982; Steps: 313; Exceeded max number of steps?: False
 
 The fitting parameters were determined to m={}, Γ={}, A={}.
 
