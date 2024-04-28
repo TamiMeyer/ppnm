@@ -29,7 +29,7 @@ public static (vector, int, bool) newton(
 		if(gradf.norm() < acc) break; /* job done */
 		H = hessian(f,x, central_derivative, gradf);
 		dx = QRGS.solve(H, -gradf); /* Newton's step */
-       
+        λ=1.0;
 		do{ /* linesearch */
 			fx_plus = f(x+λ*dx);
 			if( fx_plus < fx ) break; /* good step: accept */
