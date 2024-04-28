@@ -1,10 +1,10 @@
 CODE = $(filter %.cs,$^)
 LIBS = $(addprefix -reference:,$(filter %.dll,$^))
-DATA = 
+
 
 default: Out.txt Out.higgs_fit.svg
 
-Out.txt DATA: main.exe experiment_Higgs.data
+Out.txt: main.exe experiment_Higgs.data
 	mono $< < experiment_Higgs.data 1>Out.txt 2>log
 
 Out.higgs_fit.svg: plot_higgs_fit.gp experiment_Higgs.data

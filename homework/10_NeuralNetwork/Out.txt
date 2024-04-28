@@ -1,0 +1,9 @@
+---Task A-------
+Number of hidden neurons: 5
+Starting network parameters are: (   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1)
+
+The network is trained to approximate the function g(x)=Cos(5*x-1)*Exp(-x*x) with the data from 'Out.train.data'.
+The resulting network parameters are: (-0.145,-0.142,-0.194,-0.195,-0.194,0.00597,0.0111,0.0487,0.0507,0.0501,1.65,1.86, 1.1,0.716,0.801)
+
+See 'Out.response_taskA.svg': 
+        xxxx
