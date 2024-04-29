@@ -8,10 +8,15 @@ public class ann{
     public ann(int n){
         this.n = n;
         p = new vector(3*n);
+        var random = new Random();
+        var rDouble = random.NextDouble();
+        double upperBound = -1.0;
+        double lowerBound = 1.0;
+        var rRangeDouble = rDouble * (upperBound - lowerBound) + lowerBound;
         for(int i = 0; i<n; i++){
             p[i]=1;//ai
             p[n+i]=1;//bi
-            p[2*n+i]=1;//wi
+            p[2*n+i]=rRangeDouble;//wi //TODO try random number
         }
         f = x => x*Exp(-x*x); //gaussian wavelet
     }
