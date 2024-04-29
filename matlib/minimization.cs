@@ -50,7 +50,7 @@ public static vector gradient_fwd(Func<vector,double> f,vector x, double fx = Do
 	if(Double.IsNaN(fx)) fx = f(x);
 	vector dfdx = new vector(x.size);
 	for(int i=0;i<x.size;i++){
-		double dx=Abs(x[i])*Pow(2,-26);
+		double dx=Max(Abs(x[i]),1)*Pow(2,-26);
 		x[i]+=dx;
 		dfdx[i]=(f(x)-fx)/dx;
 		x[i]-=dx;
@@ -76,7 +76,7 @@ public static matrix hessian(Func<vector,double> f,vector x, bool central_deriva
 	matrix H = new matrix(x.size);
 	vector gradf_plus;
 	for(int j=0;j<x.size;j++){
-		double dx=Abs(x[j])*Pow(2,-26); /* for numerical gradient */
+		double dx=Max(Abs(x[j]),1)*Pow(2,-13); /* for numerical gradient */
 		x[j]+=dx;
 		if(central_derivative) gradf_plus = gradient_cent(f,x);
 		else gradf_plus = gradient_fwd(f,x);

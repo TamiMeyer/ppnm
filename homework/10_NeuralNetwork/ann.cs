@@ -16,7 +16,7 @@ public class ann{
         for(int i = 0; i<n; i++){
             p[i]=1;//ai
             p[n+i]=1;//bi
-            p[2*n+i]=rRangeDouble;//wi //TODO try random number
+            p[2*n+i]=rRangeDouble;//wi //TODO try random number for each i 
         }
         f = x => x*Exp(-x*x); //gaussian wavelet
     }
@@ -49,6 +49,13 @@ public class ann{
     public void train(vector x,vector y){
         /* train the network to interpolate the given table {x,y} */
         vector p_start = p.copy();
+	vector dp=p.copy();
+	for(int i=0;i<n;i++)p[i]=x[0]+i*(x[x.size-1]-x[0])/(n-1);
+	for(int i=0;i<n;i++)p[n+i]=1;
+	for(int i=0;i<n;i++)p[2*n+i]=1;
+	for(int i=0;i<n;i++)dp[i]=x[x.size-1]-x[0];
+	for(int i=0;i<n;i++)dp[n+i]=0.9;
+	for(int i=0;i<n;i++)dp[2*n+i]=5;
 
         //Cost function
         Func<vector, double> Cp = delegate(vector q){
@@ -58,8 +65,9 @@ public class ann{
         };
 
         //minimize the cost fuction
-        var (p_opt, step, exceeded_step_max) = minimization.newton(Cp, p_start);
-        p=p_opt;
+        //var (p_opt, step, exceeded_step_max) = minimization.newton(Cp, p_start);
+	p=bbpso.run(Cp,p-dp,p+dp);
+        //p=p_opt;
     }
 
     public string parameters(string format="{0,4:g3}"){
