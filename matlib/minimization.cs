@@ -9,7 +9,8 @@ public static (vector, int, bool) newton(
 	double acc=1e-3,       /* accuracy goal, on exit |∇φ| should be < acc */
     double λmin = Double.NaN,
 	int step_max = 1000,    /* limits the number of Newton's steps*/
-    bool central_derivative = false /*false if forward difference approximations are used; true if central app. is used (task C)*/
+    bool central_derivative = false, /*false if forward difference approximations are used; true if central app. is used (task C)*/
+	double epshess = Double.NaN
 ){
 	if( Double.IsNaN(λmin)) λmin = LAMBDA_MIN;
     double λ=1.0;
@@ -27,7 +28,7 @@ public static (vector, int, bool) newton(
             gradf = gradient_fwd(f,x, fx);
         }
 		if(gradf.norm() < acc) break; /* job done */
-		H = hessian(f,x, central_derivative, gradf);
+		H = hessian(f,x, central_derivative, gradf, eps:epshess);
 		dx = QRGS.solve(H, -gradf); /* Newton's step */
         λ=1.0;
 		do{ /* linesearch */
@@ -70,13 +71,15 @@ public static vector gradient_cent(Func<vector,double> f,vector x, double fx =Do
 	return dfdx;
 }
 
-public static matrix hessian(Func<vector,double> f,vector x, bool central_derivative, vector gradf = null){
+public static matrix hessian(Func<vector,double> f,vector x, bool central_derivative, vector gradf = null, double eps = Double.NaN){
 	if(gradf == null && central_derivative) gradf = gradient_cent(f,x);
 	else if(gradf == null && !central_derivative) gradf= gradient_fwd(f,x);
+	if(!central_derivative && Double.IsNaN(eps)) eps = Pow(2,-26); //
+	if(central_derivative && Double.IsNaN(eps)) eps = Pow(2,-26);
 	matrix H = new matrix(x.size);
 	vector gradf_plus;
 	for(int j=0;j<x.size;j++){
-		double dx=Max(Abs(x[j]),1)*Pow(2,-13); /* for numerical gradient */
+		double dx=Max(Abs(x[j]),1)*eps; /* for numerical gradient */ 
 		x[j]+=dx;
 		if(central_derivative) gradf_plus = gradient_cent(f,x);
 		else gradf_plus = gradient_fwd(f,x);
@@ -85,6 +88,37 @@ public static matrix hessian(Func<vector,double> f,vector x, bool central_deriva
 		x[j]-=dx;
 	}
 	return 0.5*(H+H.transpose());
+}
+
+/* needed in homework 10_ANN */
+public static (vector, int, bool) newton_prernd(
+	Func<vector,double> f, /* objective function */
+	vector first,		   /* first starting point to try*/
+	vector a,              /* 'lowest' possible starting point */
+	vector b,			   /* 'highest' possible starting point */
+	int max_time = 1,	   /* maximum time to check f at random points */
+	int max_pren = 150,   /* maximum number of random points that are checked*/
+	double acc=1e-3,       /* accuracy goal, on exit |∇φ| should be < acc */
+    double λmin = Double.NaN,
+	int step_max = 1000,    /* limits the number of Newton's steps*/
+    bool central_derivative = false /*false if forward difference approximations are used; true if central app. is used (task C)*/
+){
+	var rnd = new Random();
+	vector best=first;
+	double fbest=f(best);
+	var start_time=DateTime.Now;
+	do{
+		for(int i=0;i<max_pren;i++){
+			vector x=vector.random_vector(a,b,rnd);
+			double fx=f(x);
+			if(fx<fbest){
+				best=x;
+				fbest=fx;
+			}
+		}
+	}while((DateTime.Now-start_time).TotalSeconds < max_time);
+	var (x_opt, step, exceeded_step_max) = newton(f, best, acc,λmin,step_max,central_derivative);
+	return (x_opt, step, exceeded_step_max);	
 }
  
 

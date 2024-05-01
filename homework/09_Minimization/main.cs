@@ -20,7 +20,7 @@ public class main{
 
         WriteLine("- Himmelblau: Find a minimum of the Himmelblau's function f(x,y)=(x^2+y-11)^2+(x+y^2-7)^2 using Newton's method with forward gradient");
         Func<vector,double> f_himmel = delegate(vector x){return Pow(x[0]*x[0] + x[1] - 11, 2) + Pow(x[0] + x[1]*x[1]-7 ,2);};
-        vector[] x_start2 = {new vector(0.5,0.5), new vector(-5, 5), new vector(-5,-5), new vector(5,-5)};
+        vector[] x_start2 = {new vector(5,5), new vector(-5, 5), new vector(-5,-5), new vector(5,-5)};
         for(int i = 0; i<x_start2.Length; i++){
             (x_min, step, exceeded_step_max) = minimization.newton(f_himmel, x_start2[i]);
             double f_min = f_himmel(x_min);
@@ -58,15 +58,16 @@ D(m,Γ,A)=Σi[(F(Ei|m,Γ,A)-σi)/Δσi]^2 .");
                 sum += Pow((f_BW(new vector(energy[i],x[0], x[1], x[2])) - signal[i])/error[i], 2);
             }
             return sum ;};
-        //TODO find the correct start vector
-        vector[] x_start3 = {new vector(125.3, 0.05, 5), new vector(125.3, 0.004, 15), new vector(125.3, 0.004, 10), new vector(125.3, 0.004, 5), new vector(125.3, 4, 5), new vector(125.3, 4, 10), new vector(125.3, 0.004, 5), new vector(125.3, 0.003, 5), new vector(125.3, 0.05, 5)};
+        //starting points for debugging
+        ///vector[] x_start3 = {new vector(125.3, 0.05, 5), new vector(125.3, 0.004, 15), new vector(125.3, 0.004, 10), new vector(125.3, 0.004, 5), new vector(125.3, 4, 5), new vector(125.3, 4, 10), new vector(125.3, 0.004, 5), new vector(125.3, 0.003, 5), new vector(125.3, 0.05, 5)};
+        vector[] x_start3 = {new vector(125.3, 0.004, 10)};
         for(int i = 0; i<x_start3.Length; i++){
-            (x_min, step, exceeded_step_max) = minimization.newton(f_fit_deviation, x_start3[i]);
+            (x_min, step, exceeded_step_max) = minimization.newton(f_fit_deviation, x_start3[i], epshess:Pow(2,-26));
             double f_min = f_fit_deviation(x_min);
             WriteLine($"Startpoint: m={x_start3[i][0]},Γ={x_start3[i][1]},A={x_start3[i][2]} Minimum: m_min={x_min[0]},Γ_min={x_min[1]},A_min={x_min[2]} ; f(xmin) = {f_min}; Steps: {step}; Exceeded max number of steps?: {exceeded_step_max}");
         }
 
-        WriteLine("\nThe fitting parameters were determined to m={}, Γ={}, A={}.\n");
+        ///WriteLine("\nThe fitting parameters were determined to m={}, Γ={}, A={}.\n");
         
         WriteLine("Second, see 'Out.higgs_fit.svg': The Breit-Wigner function with the previously determined fitting parameters and the experimental data are plot.");
         

@@ -1,13 +1,13 @@
 ---Task A-------
 - Rosenbrock: Find a minimum of the Rosenbrock's valley function f(x,y) = (1-x)^2+100(y-x^2)^2 using Newton's method with forward gradient
-Startpoint: (   1,   2) Minimum: xmin = (0.9999878,0.999975) ; f(xmin) = 1.79186899533246E-10; Steps: 8; Exceeded max number of steps?: False
-Startpoint: (   2,  -2) Minimum: xmin = (0.9999955,0.999991) ; f(xmin) = 2.00797287455292E-11; Steps: 10; Exceeded max number of steps?: False
-Startpoint: (   3,  -3) Minimum: xmin = (-0.004396409,-0.004649988) ; f(xmin) = 1.01099239865893; Steps: 1000; Exceeded max number of steps?: True
-Startpoint: (  -2,   2) Minimum: xmin = (-0.002368262,0.002742509) ; f(xmin) = 1.00549119578928; Steps: 1000; Exceeded max number of steps?: True
+Startpoint: (   1,   2) Minimum: xmin = (0.9999955,0.9999909) ; f(xmin) = 2.05402423758666E-11; Steps: 7; Exceeded max number of steps?: False
+Startpoint: (   2,  -2) Minimum: xmin = (1.00001,1.000021) ; f(xmin) = 1.13432750634973E-10; Steps: 7; Exceeded max number of steps?: False
+Startpoint: (   3,  -3) Minimum: xmin = (0.9999929,0.9999853) ; f(xmin) = 7.29562386615759E-11; Steps: 17; Exceeded max number of steps?: False
+Startpoint: (  -2,   2) Minimum: xmin = (0.9999925,0.9999849) ; f(xmin) = 5.8609681287033E-11; Steps: 22; Exceeded max number of steps?: False
 Exact minimum: xmin = (1, 1) ;  f(xmin) = 0  
 
 - Himmelblau: Find a minimum of the Himmelblau's function f(x,y)=(x^2+y-11)^2+(x+y^2-7)^2 using Newton's method with forward gradient
-Startpoint: ( 0.5, 0.5) Minimum: xmin = (-2.805118,3.131312) ; f(xmin) = 3.52245089554319E-14; Steps: 20; Exceeded max number of steps?: False
+Startpoint: (   5,   5) Minimum: xmin = (   3,2.000001) ; f(xmin) = 2.22719676555233E-11; Steps: 6; Exceeded max number of steps?: False
 Startpoint: (  -5,   5) Minimum: xmin = (-2.805118,3.131312) ; f(xmin) = 3.55373245717259E-14; Steps: 6; Exceeded max number of steps?: False
 Startpoint: (  -5,  -5) Minimum: xmin = (-3.779311,-3.283188) ; f(xmin) = 2.0765983439354E-10; Steps: 5; Exceeded max number of steps?: False
 Startpoint: (   5,  -5) Minimum: xmin = (3.584428,-1.848127) ; f(xmin) = 7.430770368675E-14; Steps: 7; Exceeded max number of steps?: False
@@ -21,16 +21,5 @@ The task is to fit the Breit-Wigner function F(E|m,Γ,A) = A/[(E-m)²+Γ²/4] (w
         
 First, the fitting parameters m,Γ,A are determined by minimizing the deviation function using Newton's method with forward gradient:
 D(m,Γ,A)=Σi[(F(Ei|m,Γ,A)-σi)/Δσi]^2 .
-Startpoint: m=125.3,Γ=0.05,A=5 Minimum: m_min=125.972071653563,Γ_min=2.09365357706941,A_min=9.9120738260168 ; f(xmin) = 26.8695238367982; Steps: 313; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.004,A=15 Minimum: m_min=257.082727190581,Γ_min=-0.405095516810755,A_min=-0.475726686963424 ; f(xmin) = 45.5120315530799; Steps: 317; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.004,A=10 Minimum: m_min=125.972144789719,Γ_min=2.088879959987,A_min=9.88836250293603 ; f(xmin) = 26.869513194903; Steps: 313; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.004,A=5 Minimum: m_min=125.972049507785,Γ_min=2.09506729889696,A_min=9.91940842705115 ; f(xmin) = 26.8695292459703; Steps: 227; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=4,A=5 Minimum: m_min=125.972041910561,Γ_min=-2.09539751341895,A_min=9.92094150031216 ; f(xmin) = 26.8695305073683; Steps: 79; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=4,A=10 Minimum: m_min=125.972016273894,Γ_min=2.09703538316957,A_min=9.92905553730816 ; f(xmin) = 26.8695379112565; Steps: 188; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.004,A=5 Minimum: m_min=125.972049507785,Γ_min=2.09506729889696,A_min=9.91940842705115 ; f(xmin) = 26.8695292459703; Steps: 227; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.003,A=5 Minimum: m_min=125.972084347802,Γ_min=-2.09262841530267,A_min=9.9071392907672 ; f(xmin) = 26.8695207410334; Steps: 163; Exceeded max number of steps?: False
-Startpoint: m=125.3,Γ=0.05,A=5 Minimum: m_min=125.972071653563,Γ_min=2.09365357706941,A_min=9.9120738260168 ; f(xmin) = 26.8695238367982; Steps: 313; Exceeded max number of steps?: False
-
-The fitting parameters were determined to m={}, Γ={}, A={}.
-
+Startpoint: m=125.3,Γ=0.004,A=10 Minimum: m_min=125.972128428719,Γ_min=-2.09000821036476,A_min=9.89447976072358 ; f(xmin) = 26.8695149075616; Steps: 361; Exceeded max number of steps?: False
 Second, see 'Out.higgs_fit.svg': The Breit-Wigner function with the previously determined fitting parameters and the experimental data are plot.

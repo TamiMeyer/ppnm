@@ -6,7 +6,7 @@ public class main{
         WriteLine("---Task A-------");
         var outstream_t = new System.IO.StreamWriter("Out.train.data", append:false);
 
-        int neurons = 7;
+        int neurons = 6;
         ann annA = new ann(neurons);
         WriteLine($"Number of hidden neurons: {neurons}");
         WriteLine($"Starting network parameters are: {annA.parameters()}\n");

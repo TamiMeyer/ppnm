@@ -184,5 +184,12 @@ public static vector random_vector(int n){
     return v;
 }
 
+/*random vector in range*/
+public static vector random_vector(vector a,vector b,Random rnd){
+	vector v=new vector(a.size);
+	for(int i=0;i<a.size;i++) v[i] = a[i] + (b[i]-a[i])*rnd.NextDouble();
+	return v;
+}
+
 
 }//vector
