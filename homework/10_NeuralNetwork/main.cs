@@ -9,7 +9,6 @@ public class main{
         int neurons = 6;
         ann annA = new ann(neurons);
         WriteLine($"Number of hidden neurons: {neurons}");
-        WriteLine($"Starting network parameters are: {annA.parameters()}\n");
         
         /*produce training data*/
         vector x = new vector(40);

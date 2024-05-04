@@ -53,9 +53,9 @@ public class ann{
 	for(int i=0;i<n;i++)p_start[i]=x[0]+i*(x[x.size-1]-x[0])/(n-1);
 	for(int i=0;i<n;i++)p_start[n+i]= 0.1+i*20/(n-1);
 	for(int i=0;i<n;i++)p_start[2*n+i]=-10+i*20/(n-1);
-	////for(int i=0;i<n;i++)dp[i]=x[x.size-1]-x[0];
-	////for(int i=0;i<n;i++)dp[n+i]=0.9;
-	////for(int i=0;i<n;i++)dp[2*n+i]=5;
+	for(int i=0;i<n;i++)dp[i]=x[x.size-1]-x[0];
+	for(int i=0;i<n;i++)dp[n+i]=0.9;
+	for(int i=0;i<n;i++)dp[2*n+i]=5;
 
         //Cost function
         Func<vector, double> Cp = delegate(vector q){
@@ -67,12 +67,15 @@ public class ann{
         //minimize the cost fuction
         //var (p_opt, step, exceeded_step_max) = minimization.newton(Cp, p_start);
         
-        vector a = p.copy();
+        vector a = p.copy()+dp;
+        vector b = p.copy()+dp;
+
+        /*vector a = p.copy();
         vector b = p.copy();
         for(int i = 0; i<3*n;i++){
             a[i]-=0.7;
             b[i]+=0.7;
-        }
+        }*/
 
         /*vector a = new vector(3*n);
         vector b = new vector(3*n);
@@ -80,8 +83,12 @@ public class ann{
             a[i]= Double.NegativeInfinity;
             b[i]=Double.PositiveInfinity;
         }*/
-        var (p_opt, step, exceeded_step_max) = minimization.newton_prernd(Cp, p_start, a, b, 3);
-	////p=bbpso.run(Cp,p-dp,p+dp);
+        
+        var (p_opt, step, exceeded_step_max) = minimization.newton_prernd(Cp, p_start, a, b, max_time : 5, max_pren : 10000);
+        /////simplex.downhill(Cp, ref p_start);
+        /////vector p_opt = p_start;
+
+    ////p=bbpso.run(Cp,p-dp,p+dp);
         //p=p_opt;
         p=p_opt;
     }

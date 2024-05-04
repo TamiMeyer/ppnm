@@ -72,6 +72,19 @@ D(m,Γ,A)=Σi[(F(Ei|m,Γ,A)-σi)/Δσi]^2 .");
         WriteLine("Second, see 'Out.higgs_fit.svg': The Breit-Wigner function with the previously determined fitting parameters and the experimental data are plot.");
         
 
+        //Not part of the homework 09_minimization
+        WriteLine("---Test of downhill simplex-------");
+                WriteLine("- Rosenbrock: Find a minimum of the Rosenbrock's valley function f(x,y) = (1-x)^2+100(y-x^2)^2 using Newton's method with forward gradient");
+        
+        vector[] x_start_d = {new vector(1,2), new vector(2, -2), new vector(3,-3), new vector(-2,2)};
+        for(int i = 0; i<x_start_d.Length; i++){
+            //(x_min, step, exceeded_step_max) = minimization.downhillSimplex(f_rosenbrock, x_start_d[i]);
+            (step) = simplex.downhill(f_rosenbrock, ref x_start_d[i]);
+            double f_min = f_rosenbrock(x_start_d[i]);
+            WriteLine($"Startpoint: ; Minimum: xmin = {x_start_d[i].getString("{0,4:g7}")} ; f(xmin) = {f_min}; Steps: {step}");
+        }
+        WriteLine("Exact minimum: xmin = (1, 1) ;  f(xmin) = 0  \n");
+
 
 
         /*WriteLine(@"See 'xxxx.svg': 

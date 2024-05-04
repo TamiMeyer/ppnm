@@ -97,7 +97,7 @@ public static (vector, int, bool) newton_prernd(
 	vector a,              /* 'lowest' possible starting point */
 	vector b,			   /* 'highest' possible starting point */
 	int max_time = 1,	   /* maximum time to check f at random points */
-	int max_pren = 150,   /* maximum number of random points that are checked*/
+	int max_pren = 3000,   /* maximum number of random points that are checked*/
 	double acc=1e-3,       /* accuracy goal, on exit |∇φ| should be < acc */
     double λmin = Double.NaN,
 	int step_max = 1000,    /* limits the number of Newton's steps*/
@@ -119,6 +119,87 @@ public static (vector, int, bool) newton_prernd(
 	}while((DateTime.Now-start_time).TotalSeconds < max_time);
 	var (x_opt, step, exceeded_step_max) = newton(f, best, acc,λmin,step_max,central_derivative);
 	return (x_opt, step, exceeded_step_max);	
+}
+
+//more stable but slower than Newton minimization
+public static (vector, int, bool) downhillSimplex(Func<vector,double> f, vector v,double stepsize=1.0/64,double sizegoal=1.0/1024){
+	vector[] ps = new vector[v.size +1];
+	double[] f_ps = new double[v.size +1];
+	vector p_high; //highest point
+	vector p_low; //lowest point
+	vector p_centr;
+	int step_max = 1000;
+	int steps = 0;
+	int high, low;
+
+	ps[v.size] = v.copy();
+	f_ps[v.size] = f(ps[v.size]);
+	for(int i = 0; i<v.size; i++){
+		v[i]+=stepsize;
+		ps[i] = v.copy();
+		f_ps[i] = f(ps[i]);
+		v[i] -= stepsize;
+	}
+
+	while(size(ps)>sizegoal && ++steps<step_max){
+		//find highest , lowest , and centroid points of the simplex
+		high = 0; // index of the vertex with the highest value of the function
+		low = 0; // index of the vertex with the lowest value of the function
+		double f_high = f_ps[high];
+		double f_low = f_ps[low];
+		for(int i = 1; i<ps.Length; i++){
+			if(f_ps[i] > f_high) {f_high = f_ps[high]; high = i;}
+			if(f_ps[i] < f_low) {f_low = f_ps[low]; low = i;}
+		}
+		p_high = ps[high];
+		p_low = ps[low];
+		p_centr = new vector(v.size);//center of gravity of all points, except for the highest
+		for( int i = 0; i<ps.Length; i++) if(i != high) p_centr += ps[i]; 
+		p_centr/=p_centr.size;
+		
+		vector p_ref = new vector(v.size); //reflection
+		vector p_exp = new vector(v.size); //expansion
+		vector p_con = new vector(v.size); //contraction
+		
+		p_ref = p_centr + (p_centr - p_high); //try reflection
+		if(f(p_ref) < f_ps[low]){
+			p_exp = p_centr + 2*(p_centr-p_high);//try expansion
+			if(f(p_exp) <f(p_ref)){
+				p_high = p_exp;
+				
+			}else{
+				p_high = p_ref;
+			}
+		} else {
+			if(f(p_ref) < f_ps[high]){
+				p_high = p_ref;
+			} else{
+				p_con = p_centr + 0.5*(p_high - p_centr); //try contraction
+				if(f(p_con) < f_ps[high]){
+					p_high = p_con;
+				} else {
+					//do reduction
+					for(int k = 0; k<ps.Length; k++){
+						if(k != low) ps[k] = 0.5*(ps[k]+ps[low]);
+					}
+				}
+			}
+		}
+		ps[high] = p_high;
+		f_ps[high] = f(p_high);
+
+		
+	}//while
+	bool exceeded_step_max = false;
+	if (steps>=step_max) exceeded_step_max = true;
+	return (ps[low], steps, exceeded_step_max);  
+}
+
+//size of simplex ps
+static double size(vector[] ps){
+	double max = 0.0;
+	for( int i = 1; i<ps.Length; i++) max = Math.Max(max, (ps[0]-ps[1]).norm());
+	return max;
 }
  
 

@@ -13,7 +13,7 @@ Out.response_taskA.svg: plot_response_taskA.gp Out.train.data Out.response.data
 main.exe : main.cs neuralnet.dll
 	mcs -target:exe -out:$@ $(LIBS) $(CODE)
 
-neuralnet.dll: ann.cs  bbpso.cs ../../matlib/vector.cs  ../../matlib/matrix.cs ../../matlib/minimization.cs ../../matlib/QRGS.cs
+neuralnet.dll: ann.cs  bbpso.cs ../../matlib/simplex.cs ../../matlib/vector.cs  ../../matlib/matrix.cs ../../matlib/minimization.cs ../../matlib/QRGS.cs
 	mcs -target:library -out:./neuralnet.dll $^ 
 
 clean:
