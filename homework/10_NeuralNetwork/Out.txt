@@ -1,7 +1,7 @@
 ---Task A-------
-Number of hidden neurons: 6
-The network is trained to approximate the function g(x)=Cos(5*x-1)*Exp(-x*x) with the data from 'Out.train.data'.
-The resulting network parameters are: (0.897,3.82,0.0281,-0.36,0.64,-0.0473,1.63,2.84,0.741,0.366,0.879, 0.5,0.644,-0.927,-3.88,0.511,0.487,4.97)
+1.The network (6 hidden neurons) is trained to approximate the function g(x)=Cos(5*x-1)*Exp(-x*x) with the data from 'Out.train.data'.
+For debugging: The resulting network parameters (shifts ai, scales bi, weight-factors wi) are: (-1.03,-0.107,0.964, 1.2,1.98,-0.75,0.61,0.506,0.521,1.09,2.04,2.03,1.43,3.41,1.33,0.197,-1.64,-2.37)
 
+2.Response data of the network in the interval [-1,1] is produced and can be found in 'Out.response.data'.
 See 'Out.response_taskA.svg': 
-        xxxx
+        The training data points are plot and the resulting response.

@@ -2,8 +2,8 @@ using System;
 using static System.Math;
 public class ann{
     public int n; /* number of hidden neurons */
-    Func<double,double> f; /* activation function */
-    vector p; /* network parameters ( shifts ai and scales bi and all weight-factors wi) */
+    private Func<double,double> f; /* activation function */
+    private vector p; /* network parameters ( shifts ai and scales bi and all weight-factors wi) */
 
     public ann(int n){
         this.n = n;
@@ -49,13 +49,13 @@ public class ann{
     public void train(vector x,vector y){
         /* train the network to interpolate the given table {x,y} */
         vector p_start = p.copy();
-	vector dp=p.copy();
-	for(int i=0;i<n;i++)p_start[i]=x[0]+i*(x[x.size-1]-x[0])/(n-1);
-	for(int i=0;i<n;i++)p_start[n+i]= 0.1+i*20/(n-1);
-	for(int i=0;i<n;i++)p_start[2*n+i]=-10+i*20/(n-1);
-	for(int i=0;i<n;i++)dp[i]=x[x.size-1]-x[0];
-	for(int i=0;i<n;i++)dp[n+i]=0.9;
-	for(int i=0;i<n;i++)dp[2*n+i]=5;
+	    vector dp=p.copy();
+	    for(int i=0;i<n;i++)p_start[i]=x[0]+i*(x[x.size-1]-x[0])/(n-1);
+	    for(int i=0;i<n;i++)p_start[n+i]= 0.1+i*20/(n-1);
+	    for(int i=0;i<n;i++)p_start[2*n+i]=-10+i*20/(n-1);
+	    for(int i=0;i<n;i++)dp[i]=x[x.size-1]-x[0];
+	    for(int i=0;i<n;i++)dp[n+i]=0.9;
+	    for(int i=0;i<n;i++)dp[2*n+i]=5;
 
         //Cost function
         Func<vector, double> Cp = delegate(vector q){
@@ -64,33 +64,17 @@ public class ann{
             return sum/x.size;
         };
 
-        //minimize the cost fuction
-        //var (p_opt, step, exceeded_step_max) = minimization.newton(Cp, p_start);
-        
+        //minimize the cost fuction        
         vector a = p.copy()-dp;
         vector b = p.copy()+dp;
-
-        /*vector a = p.copy();
-        vector b = p.copy();
-        for(int i = 0; i<3*n;i++){
-            a[i]-=0.7;
-            b[i]+=0.7;
-        }*/
-
-        /*vector a = new vector(3*n);
-        vector b = new vector(3*n);
-        for(int i = 0; i<3*n; i++){
-            a[i]= Double.NegativeInfinity;
-            b[i]=Double.PositiveInfinity;
-        }*/
-        
-        var (p_opt, step, exceeded_step_max) = minimization.newton_prernd(Cp, p_start, a, b, max_time : 5, max_pren : 10000);
-        /////simplex.downhill(Cp, ref p_start);
-        /////vector p_opt = p_start;
-
-    ////p=bbpso.run(Cp,p-dp,p+dp);
-        //p=p_opt;
+        var (p_opt, step, exceeded_step_max) = minimization.newton_prernd(Cp, p_start, a, b, max_time : 5, max_pren : 100000);
         p=p_opt;
+
+        //prevents that there will be a warning due to unused variables
+        #pragma warning disable CS0219
+        int s = step;
+        bool ex = exceeded_step_max;
+        #pragma warning restore CS0219
     }
 
     public string parameters(string format="{0,4:g3}"){
