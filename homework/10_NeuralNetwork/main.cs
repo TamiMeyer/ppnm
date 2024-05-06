@@ -50,5 +50,11 @@ public class main{
 
         WriteLine(@"See 'Out.response_taskA.svg': 
         The training data points are plot and the resulting response.");
+        WriteLine();
+
+        WriteLine("---Task B-------");
+        WriteLine(@"See 'Out.derivativeAndAnti_taskB.svg': 
+        The first and second derivatives and also the anti-derivative of the approximant to the tabulated function are plot.");
+
     }
 }

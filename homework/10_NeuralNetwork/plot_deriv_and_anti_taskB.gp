@@ -6,7 +6,6 @@ set key outside
 
 f(x) = -5*sin(5*x-1)*exp(-x*x)+cos(5*x-1)*(-2*x)*exp(-x*x) #first derivative of approximated function
 ff(x) = -25*cos(5*x-1)*exp(-x*x)-5*sin(5*x-1)*2*x*exp(-x*x)-5*sin(5*x-1)*(-2*x)*exp(-x*x)+cos(5*x-1)*(-2)*exp(-x*x)+cos(5*x-1)*(-2*x)*(-2*x)*exp(-x*x)
-F(x)=  (-cos(5*x - 1) - 5*sin(5*x - 1) + 2*cos(4) - 5*sin(4))/14 * exp(-x**2) + (5*sin(5*x - 1) + 5*sin(4) - cos(4))/7 * exp(-1) #anti-derivative
 set title "First derivative"
 set ylabel "g'(x)"
 set xlabel "x"
@@ -26,4 +25,3 @@ set ylabel "∫_{-1}^{z} g(x)dx"
 set xlabel "z"
 plot [][] \
  "Out.derivative.data" index 2 with lines linecolor rgb "red" title "ANN anti-derivative", \
- F(x) with lines dashtype 3 linecolor rgb "black" lw 2  title "analytic anti-derivative"
