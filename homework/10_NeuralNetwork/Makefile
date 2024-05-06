@@ -1,13 +1,16 @@
 CODE = $(filter %.cs,$^)
 LIBS = $(addprefix -reference:,$(filter %.dll,$^))
-DATA = Out.response.data Out.train.data
+DATA = Out.response.data Out.train.data Out.derivative.data
 
-default:Out.txt Out.response_taskA.svg
+default:Out.txt Out.response_taskA.svg Out.derivativeAndAnti_taskB.svg
 
 Out.txt DATA: main.exe 
 	mono $< >Out.txt
 
 Out.response_taskA.svg: plot_response_taskA.gp Out.train.data Out.response.data
+	gnuplot -e "outputname='$@'" $<
+
+Out.derivativeAndAnti_taskB.svg: plot_deriv_and_anti_taskB.gp Out.derivative.data
 	gnuplot -e "outputname='$@'" $<
 
 main.exe : main.cs neuralnet.dll

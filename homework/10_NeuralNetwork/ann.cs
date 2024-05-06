@@ -67,6 +67,13 @@ public class ann{
         #pragma warning restore CS0219
     }
 
+    public double deriv_gausswv(double z){//should only be used if the activation function is gauassian wawvelet
+        double sum = 0;
+        Func<double, double> deriv_gausswv_f = x => Exp(-x*x)+x*(-2*x)*Exp(-x*x);
+        for(int i = 0; i<n; i++) sum += p[2*n+i]*deriv_gausswv_f((z-p[i])/p[n+i])/p[n+i];
+        return sum;
+    }
+
     public string parameters(string format="{0,4:g3}"){
         return p.getString(format);
     }
