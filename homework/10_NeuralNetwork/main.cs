@@ -30,13 +30,20 @@ public class main{
             outstream.WriteLine($"{d} {annA.response(d)}");
         }
 
-        /*produce derivative data using the determined network parameter*/
+        /*produce derivative data and second derivative data using the determined network parameter*/
         outstream = new System.IO.StreamWriter("Out.derivative.data", append:false);
         for(double d = -1.0; d<=1.0; d+=1.0/128 ){
             outstream.WriteLine($"{d} {annA.deriv_gausswv(d)}");
         }
+        outstream.Write($"\n\n");
+        for(double d = -1.0; d<=1.0; d+=1.0/128 ){
+            outstream.WriteLine($"{d} {annA.deriv_gausswv_second(d)}");
+        }
         /*produce anti-derivative data using the determined network parameter*/
-        
+        outstream.Write($"\n\n");
+        for(double d = -1.0; d<=1.0; d+=1.0/128 ){
+            outstream.WriteLine($"{d} {annA.antideriv_gausswv(d)}");
+        }
 
         outstream_t.Close();
         outstream.Close();

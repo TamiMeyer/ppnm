@@ -67,10 +67,26 @@ public class ann{
         #pragma warning restore CS0219
     }
 
-    public double deriv_gausswv(double z){//should only be used if the activation function is gauassian wawvelet
+    //first derivative
+    public double deriv_gausswv(double z){//should only be used if the activation function is gaussian wawvelet
         double sum = 0;
         Func<double, double> deriv_gausswv_f = x => Exp(-x*x)+x*(-2*x)*Exp(-x*x);
         for(int i = 0; i<n; i++) sum += p[2*n+i]*deriv_gausswv_f((z-p[i])/p[n+i])/p[n+i];
+        return sum;
+    }
+
+    //second derivative
+    public double deriv_gausswv_second(double z){//should only be used if the activation function is gaussian wawvelet
+        double sum = 0;
+        Func<double, double> secderiv_gausswv_f = x => -2*x*Exp(-x*x)-4*x*Exp(-x*x)+4*x*x*x*Exp(-x*x);
+        for(int i = 0; i<n; i++) sum += p[2*n+i]*secderiv_gausswv_f((z-p[i])/p[n+i])/Pow(p[n+i],2);
+        return sum;
+    }
+
+    //integral from -1 to z
+    public double antideriv_gausswv(double z){//should only be used if the activation function is gaussian wawvelet
+        double sum = 0;
+        for(int i = 0; i<n; i++) sum += p[2*n+i]*(-0.5*p[n+i]*Exp(-Pow((z-p[i])/p[n+i], 2))+0.5*p[n+i]*Exp(-Pow((-1-p[i])/p[n+i], 2)));
         return sum;
     }
 
