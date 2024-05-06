@@ -13,7 +13,7 @@ Out.higgs_fit.svg: plot_higgs_fit.gp experiment_Higgs.data
 main.exe : main.cs minimization.dll
 	mcs -target:exe -out:$@ $(LIBS) $(CODE)
 
-minimization.dll: ../../matlib/simplex.cs ../../matlib/minimization.cs  ../../matlib/QRGS.cs ../../matlib/vector.cs  ../../matlib/matrix.cs  ../../matlib/genlist.cs
+minimization.dll: ../../matlib/minimization.cs  ../../matlib/QRGS.cs ../../matlib/vector.cs  ../../matlib/matrix.cs  ../../matlib/genlist.cs
 	mcs -target:library -out:./minimization.dll $^ 
 
 clean:
