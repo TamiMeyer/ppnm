@@ -22,12 +22,5 @@ The task is to fit the Breit-Wigner function F(E|m,Γ,A) = A/[(E-m)²+Γ²/4] (w
 First, the fitting parameters m,Γ,A are determined by minimizing the deviation function using Newton's method with forward gradient:
 D(m,Γ,A)=Σi[(F(Ei|m,Γ,A)-σi)/Δσi]^2 .
 Startpoint: m=125.3,Γ=0.004,A=10 Minimum: m_min=125.972128428719,Γ_min=-2.09000821036476,A_min=9.89447976072358 ; f(xmin) = 26.8695149075616; Steps: 361; Exceeded max number of steps?: False
-Second, see 'Out.higgs_fit.svg': The Breit-Wigner function with the previously determined fitting parameters and the experimental data are plot.
----Test of downhill simplex-------
-- Rosenbrock: Find a minimum of the Rosenbrock's valley function f(x,y) = (1-x)^2+100(y-x^2)^2 using Newton's method with forward gradient
-Startpoint: ; Minimum: xmin = (1.000112,1.000243) ; f(xmin) = 4.4257247173442E-08; Steps: 57
-Startpoint: ; Minimum: xmin = (1.000187,1.000395) ; f(xmin) = 7.95179124846654E-08; Steps: 80
-Startpoint: ; Minimum: xmin = (1.000143,1.000247) ; f(xmin) = 1.6639110846735E-07; Steps: 84
-Startpoint: ; Minimum: xmin = (0.9998765,0.9997369) ; f(xmin) = 4.16042757146611E-08; Steps: 114
-Exact minimum: xmin = (1, 1) ;  f(xmin) = 0  
 
+Second, see 'Out.higgs_fit.svg': The Breit-Wigner function with the previously determined fitting parameters and the experimental data are plot.

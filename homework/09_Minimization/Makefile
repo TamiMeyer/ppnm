@@ -17,4 +17,4 @@ minimization.dll: ../../matlib/simplex.cs ../../matlib/minimization.cs  ../../ma
 	mcs -target:library -out:./minimization.dll $^ 
 
 clean:
-	$(RM) *.dll *.exe [Oo]ut* *.svg log
+	$(RM) *.dll *.exe [Oo]ut* *.svg log fit.log

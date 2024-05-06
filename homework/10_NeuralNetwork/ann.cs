@@ -67,7 +67,7 @@ public class ann{
         //minimize the cost fuction
         //var (p_opt, step, exceeded_step_max) = minimization.newton(Cp, p_start);
         
-        vector a = p.copy()+dp;
+        vector a = p.copy()-dp;
         vector b = p.copy()+dp;
 
         /*vector a = p.copy();
