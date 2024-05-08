@@ -27,4 +27,5 @@ set ylabel "∫_{-1}^{z} g(x)dx"
 set xlabel "z"
 plot [][] \
  "Out.derivative.data" index 2 with lines linecolor rgb "red" title "ANN anti-derivative", \
+ "Out.spline_antiderivative.data" every ::1 with lines dashtype 3 linecolor rgb "blue" lw 2  title "cspline anti-derivative"
  #FI(x) with lines dashtype 3 linecolor rgb "black" lw 2  title "analytic integral"
