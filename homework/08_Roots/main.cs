@@ -73,9 +73,10 @@ public class main{
         WriteLine("analytic: minima at (3.0, 2.0), (-2.805118, 3.131312), (-3.779310, -3.283186) and (3.584428, -1.848126)\n\n");
 
         WriteLine("---Task B-------");
-        WriteLine(@"See ' .svg':
+        WriteLine(@"See 'Out.wfctAndExact.svg':
         The wavefunction with the lowest eigenenergy E0 was calculated using the ode routines and the rootfinder routine ('Shooting method').
-        The resulting lowest wavefunction is plot, as well as the exact result E0=-½, f0(r)=re^-r. ");
+        The resulting lowest wavefunction is plot, as well as the exact result E0=-½, f0(r)=re^-r.
+        ");
 
         var outstream = new System.IO.StreamWriter("Out.hydrogen_swave.data", append:false);
         double[] rmax_s = {8,2,3,4,5,6,7,9,10, 11,12};
@@ -90,6 +91,10 @@ public class main{
             outstream.WriteLine($"{xlist[i]} {ylist[i][0]}");
         }
         outstream.Close();
+
+        WriteLine(@"See 'Out.ConvergenceOfE0.svg':
+        The convergence of my solution for E0 towards the exact result with respect to the rmax and rmin parameters (separately)
+        as well as with respect to the parameters acc and eps of my ODE integrator is investigated. ");
 
         var outstream_C = new System.IO.StreamWriter("Out.hydrogen_convergence.data", append:false);
         outstream_C.WriteLine($"rmax convergence of E0 (rmin, acc, eps) = (rmin_s[0], acc_s[0], eps_s[0])");
@@ -119,8 +124,12 @@ public class main{
             outstream_C.WriteLine($"{eps_s[i]} {E0}");
         }
         outstream_C.WriteLine("\n\n");
-
         outstream_C.Close();
+
+        WriteLine();
+        WriteLine("---Task C-------");
+
+
         return 0;
     }
 }
