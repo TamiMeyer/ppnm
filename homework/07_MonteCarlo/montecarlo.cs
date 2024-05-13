@@ -44,7 +44,7 @@ public static (double, double) quasi_mc(Func<vector,double> f,vector a,vector b,
     double mean_a=sum_a/N;
     double mean_b=sum_b/N;
     double sigma= Abs(mean_a - mean_b);
-    var result=(mean_a*V,sigma*V);
+    var result=((mean_a+mean_b)/2*V,sigma*V);
     return result;
 }
 
