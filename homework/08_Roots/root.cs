@@ -45,37 +45,5 @@ public static matrix jacobian(Func<vector,vector>f,vector x,vector fx, vector δ
 	return J;
 }
 
-//Quadratic interpolation line-search
-public static int quadratic_interp(
-	Func<vector,vector>f /* the function to find the root of */
-	,vector x            /* the start point */
-	,double acc=1e-3     /* accuracy goal: on exit ‖f(x)‖ should be <acc */
-	,vector δx=null      /* optional δx-vector for calculation of jacobian */
-	,double λmin=1.0/64  /* */
-	){
-    vector fx=f(x), Dx;
-	matrix J;
-	double c, g0, ga0;
-	Func <double, double> g = lambda => g0 +ga0*lambda + c *lambda*lambda;
-	//Func <double, double> ga = lambda => ga0 + 2* c *lambda;
-    do{
-		if(fx.norm() < acc) break; /* job done */
-	    J=jacobian(f,x,fx,δx); //calculate the Jacobian matrix J
-	    Dx = QRGS.solve(J, -fx); //solve the equation: J Dx = -f(x)
-	    double λ=1.0;
-	    do{
-			g0 = 0.5 * fx.norm() * fx.norm();
-			ga0 = - fx.norm() * fx.norm();
-			c = (g(λ) - g0 -ga0*λ) /(λ*λ);
 
-		    z=x+λ*Dx;
-		    fz=f(z);
-		    if( fz.norm() < (1-λ/2)*fx.norm() ) break;
-		    if( λ < λmin ) break; //stop is the step is too small
-		    λ = -ga0 / 2 / c; //next λ //value at which the function g is minimum (i.e. where the derivative of g is 0)
-	    }while(true);
-	    x=z; fx=fz;
-	
-	}while(true);
-	return x;
 }

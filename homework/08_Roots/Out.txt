@@ -58,3 +58,5 @@ See 'Out.wfctAndExact.svg':
 See 'Out.ConvergenceOfE0.svg':
         The convergence of my solution for E0 towards the exact result with respect to the rmax and rmin parameters (separately)
         as well as with respect to the parameters acc and eps of my ODE integrator is investigated. 
+
+---Task C-------
