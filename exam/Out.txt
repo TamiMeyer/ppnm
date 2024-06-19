@@ -21,6 +21,7 @@ See 'Out.smoothQR.svg':
         (using QR-decomposition) with 3 different smoothing parameters lambda.
 
 ---Task B-------
-Signal with random noise is generated. And the smoothing with QR-decomposition is applied.
+See 'Out.smoothQR_generated.svg':
+        Signal with random noise is generated. And the smoothing with QR-decomposition is applied.
 See 'xxxx.svg': 
         xxxx

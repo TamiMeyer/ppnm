@@ -1,5 +1,6 @@
 using System;
 using static System.Console;
+using static System.Math;
 using System.Collections.Generic;
 public class main{
     public static int Main(){
@@ -47,15 +48,31 @@ public class main{
         vector y_smooth_c = smooth.smoothQR(y_raw_vec, lambda_c);
 
         //write noisy and smooth data to new file
-        var outstream=new System.IO.StreamWriter("Out.smoothsignal.data", append:false);
+        var outstream=new System.IO.StreamWriter("Out.smoothsignalQR.data", append:false);
         outstream.WriteLine($"x y_raw lambda={lambda_a} lambda={lambda_b} lambda={lambda_c}");
         for(int i=0; i<y_raw_vec.size; i++){
             outstream.WriteLine($"{x_raw[i]} {y_raw[i]} {y_smooth_a[i]} {y_smooth_b[i]} {y_smooth_c[i]}");
         }
 
         WriteLine("---Task B-------");
-        WriteLine("Signal with random noise is generated. And the smoothing with QR-decomposition is applied.");
+        WriteLine(@"See 'Out.smoothQR_generated.svg':
+        Signal with random noise is generated. And the smoothing with QR-decomposition is applied.");
 
+        //generate clean and noisy signal with SIN-function
+        ////Func<double, double> sin_func = delegate(double z){return Math.Sin(z);};
+        Func<double, double> clean_func = delegate(double z){return Pow(z,6)-3*Pow(z,5)-7*Pow(z,4)+15*Pow(z,3);};
+        var (x, y_clean, y_noisy) = smooth.generateCleanAndNoisySignal(500, clean_func, -2.5, 2.5, 15);
+
+        //smoothing with QR-decomposition
+        double lambda = 8000;
+        vector y_smooth = smooth.smoothQR(y_noisy, lambda);
+
+        //write clean,noisy and smooth data to new file
+        var outstream2=new System.IO.StreamWriter("Out.smoothsignalQR_generated.data", append:false);
+        outstream2.WriteLine($"x y_clean y_noisy lambda={lambda}");
+        for(int i=0; i<y_noisy.size; i++){
+            outstream2.WriteLine($"{x[i]} {y_clean[i]} {y_noisy[i]} {y_smooth[i]}");
+        }
 
         WriteLine(@"See 'xxxx.svg': 
         xxxx");
