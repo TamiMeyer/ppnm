@@ -5,16 +5,16 @@ using System.Collections.Generic;
 public class main{
     public static int Main(){
         WriteLine("---Task A-------");
-        WriteLine("The least-squares signal smoothing is implemented using QR-decomposition to solve the linear equation A*y_smooth=y_raw. \n");
+        WriteLine("The least-squares signal smoothing is implemented using Gram-Schmidt QR-decomposition to solve the linear equation A*y_smooth=y_raw. \n");
         
         //print matrices (just for demonstration)
         WriteLine("Example of matrix D: The second derivative of a discrete signal is approximated by its secondorder difference, Dx,");
         WriteLine("where the matrix D (e.g. for a set of 5 datapoints) is given as:");
-        matrix D = smooth.secondDerivative(5);
+        matrix D = smooth.secondDerivative(7);
         D.print("D = ");
         WriteLine();
         WriteLine("Example of matrix A for smoothing parameter lambda = 1 and 5 data points:");
-        matrix A = smooth.lineqMatrix(1,5);
+        matrix A = smooth.lineqMatrix(1,7);
         A.print("A = 1+λD^TD =  ");
         WriteLine();
 
@@ -57,7 +57,7 @@ public class main{
         WriteLine("---Task B-------");
         WriteLine(@"See 'Out.smoothQR_generated.svg':
         Signal with random noise is generated. And the smoothing with QR-decomposition is applied.");
-
+        WriteLine();
         //generate clean and noisy signal with SIN-function
         ////Func<double, double> sin_func = delegate(double z){return Math.Sin(z);};
         Func<double, double> clean_func = delegate(double z){return Pow(z,6)-3*Pow(z,5)-7*Pow(z,4)+15*Pow(z,3);};
@@ -74,8 +74,24 @@ public class main{
             outstream2.WriteLine($"{x[i]} {y_clean[i]} {y_noisy[i]} {y_smooth[i]}");
         }
 
-        WriteLine(@"See 'xxxx.svg': 
-        xxxx");
+        WriteLine("---Task C.1-------");
+        WriteLine("The linear equation A*y_smooth=y_raw is solved by LU factorization (here I still work with matrices which contain lots of zeros). For the example A from above:");
+
+        var (L,U) = smooth.LUdecomp(A);
+        L.print("L = ");
+        U.print("U = ");
+        matrix LU = L*U;
+        LU.print("Test: LU = ");
+        WriteLine($"LU=A? => {LU.approx(A)}");
+
+
+        WriteLine("---Task C.2-------");
+        WriteLine(@"The matrix A in this linear equation is pentadiagonal banded (has only 5 non-zero diagonals)
+therefore in order to make the method efficient, instead of QR-decopmposition, we use this fact in LU decomposition.
+First, I reduced the number of computations required to determine the matrix A and reduced the required storage for A by getting rid of the zeros in the A matrix.
+Secondly, ");
+
+
 
         return 0;
     }
