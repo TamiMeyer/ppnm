@@ -215,19 +215,23 @@ public static vector smoothLU_eff(
 }
 
 static void fwdsub_eff(vector l, vector ll, vector lll, vector b){
-    /*for(int i = 0; i <b.size; i++){
-        double sum=0;
-        for(int k = 0; k<i; k++) sum+=L[i,k]* b[k];
-        b[i] = (b[i]-sum)/L[i,i];
-    }*/
+    int n = b.size;
+    ///b[0]= b[0]/l[0] (remember that l[0]=0)
+    b[1] = b[1]-ll[0]*b[0];
+    for(int i = 2; i<n; i++){
+        b[i]=b[i]-lll[i-2]*b[i-2]-ll[i-1]*b[i-1];
+    }
 }
 
 static void backsub_eff(vector u, vector uu, vector uuu, vector c){
-    /*for(int i = c.size-1; i >= 0; i--){
-        double sum=0;
-        for(int k = i+1; k<c.size; k++) sum+=U[i,k]* c[k];
-        c[i] = (c[i]-sum)/U[i,i];
-    }*/
+    int n = c.size;
+    c[n-1] = c[n-1]/u[n-1];
+    c[n-2] = (c[n-2]-uu[n-2]*c[n-1])/u[n-2];
+    c[n-3] = (c[n-3]-uu[n-3]*c[n-2]-uuu[0]*c[n-1])/u[n-3];
+    for(int i = n-4; i>=1; i--){
+        c[i] = (c[i]-uu[i]*c[i+1]-uuu[1]*c[i+2])/u[i];
+    }
+    c[0] = (c[0]-uu[0]*c[1]-uuu[0]*c[2])/u[0];
 }
     
 

@@ -6,7 +6,7 @@ set ylabel "signal"
 set title "randomly generated signal smoothened using LU-factorization"
 
 #get the lambda values (smoothing parameters)
-lambda_a=system("awk 'NR==1 {print $4}' Out.smoothsignalQR_generated.data")
+lambda_a=system("awk 'NR==1 {print $4}' Out.smoothsignalLU_generated.data")
 
 plot [-2.5:2.5][] \
 "Out.smoothsignalLU_generated.data" using 1:2 linecolor rgb "black" lt 7 ps 0.3 title "clean signal"\

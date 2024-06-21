@@ -135,8 +135,24 @@ The diagonal elements for the previous example are:");
         uu.print("uu= ");
         WriteLine("The maindiagonal of U is:");
         u.print("u= ");
+        WriteLine();
 
+        WriteLine("Thirdly, a method 'smoothLU_eff' was implemented, that smoothenes a noisy signal vector and makes use of the banded structure of the L and U matrices. ");
+        //clean and noisy data has already been generated: y_clean, y_noisy
+        //smoothing with LU-decomposition
+        vector y_smooth_eff = smooth.smoothLU_eff(y_noisy, lambda);
 
+        //write clean,noisy and smooth data to new file
+        var outstream4=new System.IO.StreamWriter("Out.smoothsignalLU_generated_eff.data", append:false);
+        outstream4.WriteLine($"x y_clean y_noisy lambda={lambda}");
+        for(int i=0; i<y_noisy.size; i++){
+            outstream4.WriteLine($"{x[i]} {y_clean[i]} {y_noisy[i]} {y_smooth_eff[i]}");
+        }
+       
+        outstream.Close();
+        outstream2.Close();
+        outstream3.Close();
+        outstream4.Close();
 
         return 0;
     }

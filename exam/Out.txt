@@ -92,3 +92,5 @@ The superdiagonal of U is:
 uu=         -4      -3.33      -3.29      -3.23      -5.24      -2.03 
 The maindiagonal of U is:
 u=          3       4.67       4.29       4.27       5.32        4.6       1.35 
+
+Thirdly, a method 'smoothLU_eff' was implemented, that smoothenes a noisy signal vector and makes use of the banded structure of the L and U matrices. 
