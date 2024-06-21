@@ -149,10 +149,20 @@ The diagonal elements for the previous example are:");
             outstream4.WriteLine($"{x[i]} {y_clean[i]} {y_noisy[i]} {y_smooth_eff[i]}");
         }
        
+        WriteLine(@"See 'Out.smoothsignalLU_generated_eff.svg':
+        The more efficient LU factorization of the A matrix, which makes use of the special structure of the A, L and U matrices, is applied for smoothing the generated data 
+        from the previous task.
+        The efficient-LU-smoothing achieves the same result as LU and QR, as can be seen from the figure or by comparing the data files of the smoothed signals.");
+        WriteLine($"-> I sucessfully implemented a smoothing method that is more efficent than the QR-smoothing.\n");
+
         outstream.Close();
         outstream2.Close();
         outstream3.Close();
         outstream4.Close();
+
+        WriteLine("---Task C.3-------");
+        WriteLine(@"The last step is to have a look at the operations count for smoothing with QR-decomposition ('smoothQR') in comparison to the efficient LU-factorization smoothing ('smoothLU_eff') 
+for several noisy data sets of different length n.");
 
         return 0;
     }
