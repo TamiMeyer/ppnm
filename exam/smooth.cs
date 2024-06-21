@@ -152,7 +152,6 @@ public static (vector, vector, vector, vector, vector, vector) LUdecomp_eff(int 
     vector uu = new vector(n-1); //superdiagonal
     vector uuu = new vector(2);//supersuperdiagonal (it turns out, that uuu is equal to the supersuperdiagonal c of A)
 
-    double sum = 0;
     //first row of U
     u[0]=a[0];
     uu[0]=b[0];
@@ -179,36 +178,57 @@ public static (vector, vector, vector, vector, vector, vector) LUdecomp_eff(int 
     //fourth and higher
     for(int i=3; i<n-3;i++){
         u[i]=a[3]-ll[i-1]*uu[i-1]-lll[i-2]*c[1];
-        uu[i]=b[2]-ll[i-1]*uuu[i-1];
+        uu[i]=b[2]-ll[i-1]*uuu[1];
         ll[i]=(b[2]-lll[i-1]*uu[i-1])/u[i];
         lll[i]=c[1]/u[i];
     }
 
     //last three rows and coloumns of U and L
     u[n-3]=a[2]-ll[n-3-1]*uu[n-3-1]-lll[n-3-2]*c[1];
-    uu[n-3]=b[1]-ll[n-3-1]*uuu[n-3-1];
+    uu[n-3]=b[1]-ll[n-3-1]*uuu[1];
     ll[n-3]=(b[1]-lll[n-3-1]*uu[n-3-1])/u[n-3];
     lll[n-3]=c[0]/u[n-3];
     //
     u[n-2]=a[1]-ll[n-2-1]*uu[n-2-1]-lll[n-2-2]*c[1];
-    uu[n-2]=b[0]-ll[n-2-1]*uuu[n-2-1];
+    uu[n-2]=b[0]-ll[n-2-1]*uuu[0];
     ll[n-2]=(b[0]-lll[n-2-1]*uu[n-2-1])/u[n-2];
     //
     u[n-1]=a[0]-ll[n-1-1]*uu[n-1-1]-lll[n-1-2]*c[0];
 
     return (l,ll,lll,u,uu,uuu);
+}
 
+/* Returns the smooth signal x, obtained as a solution to the leastsquares problem,
+x : min_x (∥x − y∥^2 + λ∥Dx∥^2), by solving the linear equation Ax=(I + λD^TD)x = y,
+using LU decomposition and making use of the special structure of A*/ 
+public static vector smoothLU_eff(
+    vector y, //signal vector
+    double lambda //  smoothing parameter between 0 (-> no smoothing) and infinity (-> x converges to a linear fit to the data)
+){
+    int n = y.size;
+    var (a,b,c) = lineqMatrix_eff(lambda);
+    var (l,ll,lll,u,uu,uuu) = LUdecomp_eff(n, a, b, c);
+    vector v = y.copy();
+    fwdsub_eff(l,ll,lll, v);//solve Lz=y
+    backsub_eff(u,uu,uuu, v);//solve Ux=z
+    return v;
+}
 
-    /*DELETE//second and third row of U and coloumn of L
-    uuu[1]=c[1];
-    for(int i= 1; i<3;i++){
-        u[i]=a[i]-ll[i-1]*uu[i-1];//INCORRECT
-        uu[i]=b[i]-ll[i-1]*uuu[i-1];
-        ll[i]=(b[i]-lll[i-1]*uu[i-1])/u[i];
-        lll[i]=c[1]/u[i];
+static void fwdsub_eff(vector l, vector ll, vector lll, vector b){
+    /*for(int i = 0; i <b.size; i++){
+        double sum=0;
+        for(int k = 0; k<i; k++) sum+=L[i,k]* b[k];
+        b[i] = (b[i]-sum)/L[i,i];
     }*/
 }
 
+static void backsub_eff(vector u, vector uu, vector uuu, vector c){
+    /*for(int i = c.size-1; i >= 0; i--){
+        double sum=0;
+        for(int k = i+1; k<c.size; k++) sum+=U[i,k]* c[k];
+        c[i] = (c[i]-sum)/U[i,i];
+    }*/
+}
     
 
 }

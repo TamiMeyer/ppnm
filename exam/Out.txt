@@ -78,3 +78,17 @@ The diagonal elements for the previous example are:
 a=         3         10          8          7 
 b=        -4         -6         -4 
 c=         2          1 
+
+Secondly, an LU decomposition method for the A matrix with its special structure was implemented. L and U are banded matrices.
+The main diagonal of L is determined by:
+l=          1 
+The subdiagonal of L is:
+ll=      -1.33     -0.714     -0.767     -0.758     -0.986     -0.441 
+The subsubdiagonal of L is:
+lll=      0.667      0.214      0.233      0.234      0.376 
+The supersuperdiagonal of U is determined by:
+uuu=          2          1 
+The superdiagonal of U is:
+uu=         -4      -3.33      -3.29      -3.23      -5.24      -2.03 
+The maindiagonal of U is:
+u=          3       4.67       4.29       4.27       5.32        4.6       1.35 

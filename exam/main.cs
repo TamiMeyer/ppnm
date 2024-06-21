@@ -4,7 +4,7 @@ using static System.Math;
 using System.Collections.Generic;
 public class main{
     public static int Main(){
-        int n_example = 7;
+        int n_example = 7;//n>=7 
         double lambda_example =1.0;
 
         WriteLine("---Task A-------");
@@ -122,10 +122,19 @@ The diagonal elements for the previous example are:");
         WriteLine();
 
         WriteLine("Secondly, an LU decomposition method for the A matrix with its special structure was implemented. L and U are banded matrices.");
-        var()
-        WriteLine("The main diagonal of L is:");
-
-
+        var(l,ll,lll,u,uu,uuu) = smooth.LUdecomp_eff(n_example, a, b, c);
+        WriteLine("The main diagonal of L is determined by:");
+        l.print("l= ");
+        WriteLine("The subdiagonal of L is:");
+        ll.print("ll= ");
+        WriteLine("The subsubdiagonal of L is:");
+        lll.print("lll= ");
+        WriteLine("The supersuperdiagonal of U is determined by:");
+        uuu.print("uuu= ");
+        WriteLine("The superdiagonal of U is:");
+        uu.print("uu= ");
+        WriteLine("The maindiagonal of U is:");
+        u.print("u= ");
 
 
 
