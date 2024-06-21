@@ -31,7 +31,12 @@ See 'Out.smoothQR_generated.svg':
         Signal with random noise is generated. And the smoothing with QR-decomposition is applied.
 
 ---Task C.1-------
+The matrix A in this linear equation is pentadiagonal banded (has only 5 non-zero diagonals)
+therefore in order to make the method efficient, instead of QR-decopmposition, we use this fact in LU factorization.
+Before making use of the banded structure, I will implement LU factorization of a matrix. And show with an example that it works.
+
 The linear equation A*y_smooth=y_raw is solved by LU factorization (here I still work with matrices which contain lots of zeros). For the example A from above:
+
 L = 
          1          0          0          0          0          0          0 
      -1.33          1          0          0          0          0          0 
@@ -56,7 +61,20 @@ Test: LU =
          0          0          1         -4          8         -6          2 
          0          0          0          1         -6         10         -4 
          0          0          0          0          2         -4          3 
-LU=A? => True
+LU=A? => True 
+
+See 'Out.smoothsignalLU_generated.svg':
+        The LU factorization of the A matrix is applied for smoothing the generated data from the previous task (to make sure the LU factorization works).
+        LU achieves the same result as QR, as can be seen from the figure or by comparing the data files of the smoothed signals.
+
 ---Task C.2-------
-The matrix A in this linear equation is pentadiagonal banded (has only 5 non-zero diagonals)
-therefore in order to make the method efficient, instead of QR-decopmposition, we use this fact in LU decomposition.
+Now, we make use of the banded structure of the A matrix, the fact that A is symmetric and that the each non-zero diagonal is just a 
+constant except from the ends of the diagonal (i.e. the corner elements).
+
+First, I reduced the number of computations required to determine the matrix A and reduced the required storage for A by getting rid of the zeros in the A matrix.
+The A matrix is fully determined by only 9 values: 4 values of the main diagonal (a), 3 values of the sub- and superdiagonal (b), 2 values of the subsub- and supersuperdiagonal (c).
+The diagonal elements for the previous example are:
+
+a=         3         10          8          7 
+b=        -4         -6         -4 
+c=         2          1 

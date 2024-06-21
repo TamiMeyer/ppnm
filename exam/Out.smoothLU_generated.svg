@@ -1610,7 +1610,6 @@
 	<use xlink:href='#gpPt6' transform='translate(560.49,383.84) scale(1.35)' color='rgb(  0,   0, 255)'/>
 	<use xlink:href='#gpPt6' transform='translate(561.52,388.57) scale(1.35)' color='rgb(  0,   0, 255)'/>
 	<use xlink:href='#gpPt6' transform='translate(562.54,393.36) scale(1.35)' color='rgb(  0,   0, 255)'/>
-	<use xlink:href='#gpPt6' transform='translate(563.56,398.15) scale(1.35)' color='rgb(  0,   0, 255)'/>
 	<use xlink:href='#gpPt6' transform='translate(536.76,404.40) scale(1.35)' color='rgb(  0,   0, 255)'/>
 </g>
 	</g>
@@ -1624,7 +1623,7 @@
 	<path stroke='black'  d='M64.14,54.01 L64.14,422.40 L574.82,422.40 L574.82,54.01 L64.14,54.01 Z  '/></g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(319.48,30.91)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="middle">
-		<text><tspan font-family="Arial" >randomly generated signal smoothened using QR-decomposition</tspan></text>
+		<text><tspan font-family="Arial" >randomly generated signal smoothened using LU-factorization</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">

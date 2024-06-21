@@ -4,17 +4,20 @@ using static System.Math;
 using System.Collections.Generic;
 public class main{
     public static int Main(){
+        int n_example = 7;
+        double lambda_example =1.0;
+
         WriteLine("---Task A-------");
         WriteLine("The least-squares signal smoothing is implemented using Gram-Schmidt QR-decomposition to solve the linear equation A*y_smooth=y_raw. \n");
         
         //print matrices (just for demonstration)
         WriteLine("Example of matrix D: The second derivative of a discrete signal is approximated by its secondorder difference, Dx,");
         WriteLine("where the matrix D (e.g. for a set of 5 datapoints) is given as:");
-        matrix D = smooth.secondDerivative(7);
+        matrix D = smooth.secondDerivative(n_example);
         D.print("D = ");
         WriteLine();
         WriteLine("Example of matrix A for smoothing parameter lambda = 1 and 5 data points:");
-        matrix A = smooth.lineqMatrix(1,7);
+        matrix A = smooth.lineqMatrix(lambda_example,n_example);
         A.print("A = 1+λD^TD =  ");
         WriteLine();
 
@@ -75,21 +78,54 @@ public class main{
         }
 
         WriteLine("---Task C.1-------");
-        WriteLine("The linear equation A*y_smooth=y_raw is solved by LU factorization (here I still work with matrices which contain lots of zeros). For the example A from above:");
+        WriteLine(@"The matrix A in this linear equation is pentadiagonal banded (has only 5 non-zero diagonals)
+therefore in order to make the method efficient, instead of QR-decopmposition, we use this fact in LU factorization.
+Before making use of the banded structure, I will implement LU factorization of a matrix. And show with an example that it works.
+
+The linear equation A*y_smooth=y_raw is solved by LU factorization (here I still work with matrices which contain lots of zeros). For the example A from above:
+");
 
         var (L,U) = smooth.LUdecomp(A);
         L.print("L = ");
         U.print("U = ");
         matrix LU = L*U;
         LU.print("Test: LU = ");
-        WriteLine($"LU=A? => {LU.approx(A)}");
+        WriteLine($"LU=A? => {LU.approx(A)} \n");
 
+        WriteLine(@"See 'Out.smoothsignalLU_generated.svg':
+        The LU factorization of the A matrix is applied for smoothing the generated data from the previous task (to make sure the LU factorization works).
+        LU achieves the same result as QR, as can be seen from the figure or by comparing the data files of the smoothed signals.");
+        WriteLine();
+        //clean and noisy data has already been generated: y_clean, y_noisy
+        //smoothing with LU-decomposition
+        y_smooth = smooth.smoothLU(y_noisy, lambda);
+
+        //write clean,noisy and smooth data to new file
+        var outstream3=new System.IO.StreamWriter("Out.smoothsignalLU_generated.data", append:false);
+        outstream3.WriteLine($"x y_clean y_noisy lambda={lambda}");
+        for(int i=0; i<y_noisy.size; i++){
+            outstream3.WriteLine($"{x[i]} {y_clean[i]} {y_noisy[i]} {y_smooth[i]}");
+        }
 
         WriteLine("---Task C.2-------");
-        WriteLine(@"The matrix A in this linear equation is pentadiagonal banded (has only 5 non-zero diagonals)
-therefore in order to make the method efficient, instead of QR-decopmposition, we use this fact in LU decomposition.
+        WriteLine(@"Now, we make use of the banded structure of the A matrix, the fact that A is symmetric and that the each non-zero diagonal is just a 
+constant except from the ends of the diagonal (i.e. the corner elements).
+
 First, I reduced the number of computations required to determine the matrix A and reduced the required storage for A by getting rid of the zeros in the A matrix.
-Secondly, ");
+The A matrix is fully determined by only 9 values: 4 values of the main diagonal (a), 3 values of the sub- and superdiagonal (b), 2 values of the subsub- and supersuperdiagonal (c).
+The diagonal elements for the previous example are:");
+        var (a,b,c) = smooth.lineqMatrix_eff(lambda_example);
+        WriteLine("");
+        a.print("a=");
+        b.print("b=");
+        c.print("c=");
+        WriteLine();
+
+        WriteLine("Secondly, an LU decomposition method for the A matrix with its special structure was implemented. L and U are banded matrices.");
+        var()
+        WriteLine("The main diagonal of L is:");
+
+
 
 
 
