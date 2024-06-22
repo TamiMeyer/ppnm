@@ -164,7 +164,9 @@ The diagonal elements for the previous example are:");
 
         WriteLine("---Task C.3-------");
         WriteLine(@"The last step is to have a look at the operations count for smoothing with QR-decomposition ('smoothQR') in comparison to the efficient LU-factorization smoothing ('smoothLU_eff') 
-for several noisy data sets of different length n.");
+for several noisy data sets of different length N. Therefore, I generate a large noisy signal data set by adding random noise to clean sin-wave data. Then, the required time for smoothing of a 
+subdataset consisting of the first N datapoints is measured. This is done for several values of N and for both methods smoothQR and smoothLU_eff.
+");
 
         //generate noisy signal data with random noise for the timing
         Func<double, double> clean_func_time = delegate(double z){return Math.Sin(z);};
@@ -175,12 +177,20 @@ for several noisy data sets of different length n.");
             outstream5.WriteLine($"{x_time[i]} {y_clean_time[i]} {y_noisy_time[i]}");
         }
          
-
         outstream.Close();
         outstream2.Close();
         outstream3.Close();
         outstream4.Close();
         outstream5.Close();
+        WriteLine(@"See 'Out.smoothTiming.svg':
+        The measured time for xxxxxxxxxxxxxxxxxx
+        
+        -> The smoothLU_eff-method is much faster than the QR method, more than 1000 times faster for a dataset of 2000 points.
+        - Be aware that the timing includes aquiring the noisy data from the 'Out.signalForTime.data'-file. This causes a constant offset in time. For the large dataset this offset is of course larger 
+        than for the small dataset.
+        - smoothQR timing: The timing of the smoothing method which uses QR decomposition scales as N^3, as expected.
+        - smoothLU_eff timing: The timing of the efficient smoothing method which uses LU and makes use of the special banded structure of the involved matrices, is expected to scale as N.
+        ");
 
         return 0;
     }
