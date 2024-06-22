@@ -3,9 +3,14 @@ using static System.Console;
 using static System.Math;
 using System.Collections.Generic;
 public class main{
-    public static int Main(){
+    public static int Main(string[] args){
         int n_example = 7;//n>=7 
         double lambda_example =1.0;
+        int maxmaxN_timing = 0;
+        foreach(var arg in args){
+	        var words = arg.Split(':');
+    	    if(words[0]=="-maxmaxN"){maxmaxN_timing= (int)float.Parse(words[1]);}
+        }
 
         WriteLine("---Task A-------");
         WriteLine("The least-squares signal smoothing is implemented using Gram-Schmidt QR-decomposition to solve the linear equation A*y_smooth=y_raw. \n");
@@ -155,14 +160,27 @@ The diagonal elements for the previous example are:");
         The efficient-LU-smoothing achieves the same result as LU and QR, as can be seen from the figure or by comparing the data files of the smoothed signals.");
         WriteLine($"-> I sucessfully implemented a smoothing method that is more efficent than the QR-smoothing.\n");
 
-        outstream.Close();
-        outstream2.Close();
-        outstream3.Close();
-        outstream4.Close();
+
 
         WriteLine("---Task C.3-------");
         WriteLine(@"The last step is to have a look at the operations count for smoothing with QR-decomposition ('smoothQR') in comparison to the efficient LU-factorization smoothing ('smoothLU_eff') 
 for several noisy data sets of different length n.");
+
+        //generate noisy signal data with random noise for the timing
+        Func<double, double> clean_func_time = delegate(double z){return Math.Sin(z);};
+        var (x_time, y_clean_time, y_noisy_time) = smooth.generateCleanAndNoisySignal(maxmaxN_timing, clean_func_time, 0, 25, 0.3);
+        var outstream5=new System.IO.StreamWriter("Out.signalForTime.data", append:false);
+        outstream5.WriteLine($"x_time y_clean_time y_noisy_time");
+        for(int i=0; i<y_noisy_time.size; i++){
+            outstream5.WriteLine($"{x_time[i]} {y_clean_time[i]} {y_noisy_time[i]}");
+        }
+         
+
+        outstream.Close();
+        outstream2.Close();
+        outstream3.Close();
+        outstream4.Close();
+        outstream5.Close();
 
         return 0;
     }

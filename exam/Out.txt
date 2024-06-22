@@ -101,5 +101,5 @@ See 'Out.smoothsignalLU_generated_eff.svg':
 -> I sucessfully implemented a smoothing method that is more efficent than the QR-smoothing.
 
 ---Task C.3-------
-The last step is to have a look at the operations count for smoothing with QR-decomposition ('smoothQR') in comparison to the efficient LU-factorization smoothing ('smoothLU_eff') for several noisy data sets of different length n.
-
+The last step is to have a look at the operations count for smoothing with QR-decomposition ('smoothQR') in comparison to the efficient LU-factorization smoothing ('smoothLU_eff') 
+for several noisy data sets of different length n.
