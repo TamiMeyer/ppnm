@@ -18,7 +18,7 @@ fit g(x) "Out.timesSmooth.data" index 2 using 1:2 via m,c
 set title "QR-smoothing (small dataset)"
 plot [][] \
  "Out.timesSmooth.data" index 0 every ::1 with points pointtype 7 title "smoothQR"\
- , f(x) title sprintf("cubic fit a*N^3+b with a=%f and b=%f", a, b)
+ , f(x) title sprintf("cubic fit a*N^3+b with a=%.0e and b=%.3f", a, b)
 
 set ytics 0.01
 set title "Efficient LU-smoothing (small dataset)"
@@ -30,6 +30,6 @@ set xlabel "# of datapoints N"
 set title "Efficient LU-smoothing (large dataset)"
 plot [][] \
  "Out.timesSmooth.data" index 2 every ::1 with points pointtype 7 title "smoothLU\\_eff"\
- , g(x) title sprintf("linear fit m*N+c with m=%f and c=%f", m, c)
+ , g(x) title sprintf("linear fit m*N+c with m=%.0e and c=%.3f", m, c)
 
 

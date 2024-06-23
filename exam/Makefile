@@ -44,17 +44,14 @@ Out.timesSmooth.data : timeSmooth.exe Makefile
 Out.smoothQR.svg: plot_smoothQR.gp Out.smoothsignalQR.data
 	gnuplot -e "outputname='$@'" $<
 
-Out.smoothQR_generated.svg: plot_smoothQR_generated.gp Out.smoothsignalQR_generated.data
-	gnuplot -e "outputname='$@'" $<
+Out.smoothQR_generated.svg: plot_smoothAny_generated.gp Out.smoothsignalQR_generated.data
+	gnuplot -e "outputname='$@'; inputname='$(word 2,$^)'; maintitle='Generated signal with random noise smoothened using QR-decomposition'" $<
 
-Out.smoothLU_generated.svg: plot_smoothLU_generated.gp Out.smoothsignalLU_generated.data
-	gnuplot -e "outputname='$@'" $<
+Out.smoothLU_generated.svg: plot_smoothAny_generated.gp Out.smoothsignalLU_generated.data
+	gnuplot -e "outputname='$@'; inputname='$(word 2,$^)'; maintitle='Generated signal with random noise smoothened using LU-factorization'" $<
 
-Out.smoothLU_generated_eff.svg: plot_smoothLU_generated_eff.gp Out.smoothsignalLU_generated_eff.data
-	gnuplot -e "outputname='$@'" $<
-
-Out.smoothOUTfromTIME.svg: plot_smoothAny.gp Out.smoothsignal_LUeff_15000.data
-	gnuplot -e "outputname='$@'" $<
+Out.smoothLU_generated_eff.svg: plot_smoothAny_generated.gp Out.smoothsignalLU_generated_eff.data
+	gnuplot -e "outputname='$@'; inputname='$(word 2,$^)'; maintitle='Generated signal with random noise smoothened using efficient LU-factorization'" $<
 
 Out.smoothTiming.svg: plot_smoothTiming.gp Out.timesSmooth.data
 	gnuplot -e "outputname='$@'" $<

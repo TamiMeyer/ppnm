@@ -1,7 +1,7 @@
 
 
 *******************************************************************************
-Sun Jun 23 13:25:09 2024
+Sun Jun 23 15:53:56 2024
 
 
 FIT:    data read from "Out.timesSmooth.data" index 0 using 1:2
@@ -14,21 +14,21 @@ function used for fitting: f(x)
 fitted parameters initialized with current variable values
 
 iter      chisq       delta/lim  lambda   a             b            
-   0 1.6399169658e+19   0.00e+00  1.17e+09    1.000000e+00   1.000000e+00
-   5 1.4631993062e+00  -2.05e-05  1.17e+04    8.058840e-09   1.000000e+00
+   0 1.6399169654e+19   0.00e+00  1.17e+09    1.000000e+00   1.000000e+00
+   5 1.4688621415e+00  -1.75e-05  1.17e+04    8.172965e-09   1.000000e+00
 
 After 5 iterations the fit converged.
-final sum of squares of residuals : 1.4632
-rel. change during last iteration : -2.04679e-10
+final sum of squares of residuals : 1.46886
+rel. change during last iteration : -1.75429e-10
 
 degrees of freedom    (FIT_NDF)                        : 4
-rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.604814
-variance of residuals (reduced chisquare) = WSSR/ndf   : 0.3658
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.605983
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.367216
 
 Final set of parameters            Asymptotic Standard Error
 =======================            ==========================
-a               = 8.05884e-09      +/- 2.076e-10    (2.576%)
-b               = 1                +/- 0.3433       (34.33%)
+a               = 8.17297e-09      +/- 2.08e-10     (2.545%)
+b               = 1                +/- 0.3439       (34.39%)
 
 correlation matrix of the fit parameters:
                 a      b      
@@ -37,7 +37,7 @@ b              -0.695  1.000
 
 
 *******************************************************************************
-Sun Jun 23 13:25:09 2024
+Sun Jun 23 15:53:56 2024
 
 
 FIT:    data read from "Out.timesSmooth.data" index 2 using 1:2
@@ -50,21 +50,21 @@ function used for fitting: g(x)
 fitted parameters initialized with current variable values
 
 iter      chisq       delta/lim  lambda   m             c            
-   0 3.3083902885e+11   0.00e+00  4.07e+04    1.000000e+00   1.000000e+00
-   8 8.6636255626e-03  -5.03e-06  4.07e-04    7.236724e-08   2.133997e-01
+   0 3.3083906317e+11   0.00e+00  4.07e+04    1.000000e+00   1.000000e+00
+   8 5.7576135614e-03  -7.61e-06  4.07e-04    5.154515e-08   2.113356e-01
 
 After 8 iterations the fit converged.
-final sum of squares of residuals : 0.00866363
-rel. change during last iteration : -5.03364e-11
+final sum of squares of residuals : 0.00575761
+rel. change during last iteration : -7.61406e-11
 
 degrees of freedom    (FIT_NDF)                        : 98
-rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00940236
-variance of residuals (reduced chisquare) = WSSR/ndf   : 8.84043e-05
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00766493
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.87512e-05
 
 Final set of parameters            Asymptotic Standard Error
 =======================            ==========================
-m               = 7.23672e-08      +/- 3.257e-08    (45.01%)
-c               = 0.2134           +/- 0.001873     (0.8779%)
+m               = 5.15452e-08      +/- 2.655e-08    (51.51%)
+c               = 0.211336         +/- 0.001527     (0.7227%)
 
 correlation matrix of the fit parameters:
                 m      c      
