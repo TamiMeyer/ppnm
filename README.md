@@ -25,3 +25,5 @@ Exam structure:
 - A more efficient LU least-squares signal smoothing is implemented by making use of the banded structure and symmetries of the involved matrices.
 - The QR-smoothing, LU-smoothing and efficient LU-smoothing is applied to the generated data.
 - The operation time of smoothing with QR-decomposition ('smoothQR') is compared to  the efficient LU-factorization smoothing ('smoothLU_eff').
+
+Self-evaluation of the project on the scale [0,10]: 10
