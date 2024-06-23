@@ -68,25 +68,26 @@ LU=A? => True
 
 See 'Out.smoothsignalLU_generated.svg':
         The LU factorization of the A matrix is applied for smoothing the generated data from the previous task (to make sure the
-        LU factorization works). LU achieves the same result as QR, as can be seen from the figure or by comparing the data files 
+        LU factorization works). The implementation with LU achieves the same result as the implementation with QR, as can be seen from the figure or by comparing the data files 
         of the smoothed signals.
 
 ---Task C.2-------
-Now, we make use of the banded structure of the A matrix, the fact that A is symmetric and that the each non-zero 
+Now, we make use of the banded structure of the A matrix, the fact that A is symmetric and that each non-zero 
 diagonal is just a constant except from the ends of the diagonal (i.e. the corner elements).
 
-First, I reduced the number of computations required to determine the matrix A and reduced the required storage for A by getting rid of 
-the zeros in the A matrix.
+First, I reduced the number of computations required to determine the matrix A and reduced the required storage for A by getting 
+rid of the zeros in the A matrix.
 The A matrix is fully determined by only 9 values: 4 values of the main diagonal (a), 3 values of the sub- and superdiagonal (b), 2 values
 of the subsub- and supersuperdiagonal (c).
-The diagonal elements for the previous example are:
+The diagonals of the previous example are determined by the following elements:
 
 a=         3         10          8          7 
 b=        -4         -6         -4 
 c=         2          1 
 
-Secondly, an LU decomposition method for the A matrix with its special structure was implemented. L and U are banded matrices.
-The main diagonal of L is determined by:
+Secondly, an LU decomposition method for the A matrix with its special structure was implemented. L and U are banded matrices 
+        due to the structure of A.
+The main diagonal of L in the previous example is determined by:
 l=          1 
 The subdiagonal of L is:
 ll=      -1.33     -0.714     -0.767     -0.758     -0.986     -0.441 
@@ -99,7 +100,7 @@ uu=         -4      -3.33      -3.29      -3.23      -5.24      -2.03
 The maindiagonal of U is:
 u=          3       4.67       4.29       4.27       5.32        4.6       1.35 
 
-Thirdly, a method 'smoothLU_eff' was implemented, that smoothenes a noisy signal vector and makes use of the banded structure of 
+Thirdly, a method 'smoothLU_eff' was implemented, that smoothes a noisy signal vector and makes use of the banded structure of 
 the L and U matrices. 
 See 'Out.smoothsignalLU_generated_eff.svg':
         The more efficient LU factorization of the A matrix, which makes use of the special structure of the A, L and U matrices, is applied 

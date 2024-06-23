@@ -117,7 +117,7 @@ For the example A from above:
 
         WriteLine(@"See 'Out.smoothsignalLU_generated.svg':
         The LU factorization of the A matrix is applied for smoothing the generated data from the previous task (to make sure the
-        LU factorization works). LU achieves the same result as QR, as can be seen from the figure or by comparing the data files 
+        LU factorization works). The implementation with LU achieves the same result as the implementation with QR, as can be seen from the figure or by comparing the data files 
         of the smoothed signals.");
         WriteLine();
 
@@ -141,14 +141,14 @@ For the example A from above:
         }
 
         WriteLine("---Task C.2-------");
-        WriteLine(@"Now, we make use of the banded structure of the A matrix, the fact that A is symmetric and that the each non-zero 
+        WriteLine(@"Now, we make use of the banded structure of the A matrix, the fact that A is symmetric and that each non-zero 
 diagonal is just a constant except from the ends of the diagonal (i.e. the corner elements).
 
-First, I reduced the number of computations required to determine the matrix A and reduced the required storage for A by getting rid of 
-the zeros in the A matrix.
+First, I reduced the number of computations required to determine the matrix A and reduced the required storage for A by getting 
+rid of the zeros in the A matrix.
 The A matrix is fully determined by only 9 values: 4 values of the main diagonal (a), 3 values of the sub- and superdiagonal (b), 2 values
 of the subsub- and supersuperdiagonal (c).
-The diagonal elements for the previous example are:");
+The diagonals of the previous example are determined by the following elements:");
         var (a,b,c) = smooth.lineqMatrix_eff(lambda_example);
         WriteLine("");
         a.print("a=");
@@ -156,9 +156,10 @@ The diagonal elements for the previous example are:");
         c.print("c=");
         WriteLine();
 
-        WriteLine("Secondly, an LU decomposition method for the A matrix with its special structure was implemented. L and U are banded matrices.");
+        WriteLine(@"Secondly, an LU decomposition method for the A matrix with its special structure was implemented. L and U are banded matrices 
+        due to the structure of A.");
         var(l,ll,lll,u,uu,uuu) = smooth.LUdecomp_eff(n_example, a, b, c);
-        WriteLine("The main diagonal of L is determined by:");
+        WriteLine("The main diagonal of L in the previous example is determined by:");
         l.print("l= ");
         WriteLine("The subdiagonal of L is:");
         ll.print("ll= ");
@@ -172,7 +173,7 @@ The diagonal elements for the previous example are:");
         u.print("u= ");
         WriteLine();
 
-        WriteLine(@"Thirdly, a method 'smoothLU_eff' was implemented, that smoothenes a noisy signal vector and makes use of the banded structure of 
+        WriteLine(@"Thirdly, a method 'smoothLU_eff' was implemented, that smoothes a noisy signal vector and makes use of the banded structure of 
 the L and U matrices. ");
         //clean and noisy data has already been generated: y_clean_P, y_noisy_P
         //smoothing with efficient LU-decomposition
