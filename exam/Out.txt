@@ -35,7 +35,8 @@ The matrix A in this linear equation is pentadiagonal banded (has only 5 non-zer
 therefore in order to make the method efficient, instead of QR-decopmposition, we use this fact in LU factorization.
 Before making use of the banded structure, I will implement LU factorization of a matrix. And show with an example that it works.
 
-The linear equation A*y_smooth=y_raw is solved by LU factorization (here I still work with matrices which contain lots of zeros). For the example A from above:
+The linear equation A*y_smooth=y_raw is solved by LU factorization (here I still work with matrices which contain lots of zeros). 
+For the example A from above:
 
 L = 
          1          0          0          0          0          0          0 
@@ -64,15 +65,18 @@ Test: LU =
 LU=A? => True 
 
 See 'Out.smoothsignalLU_generated.svg':
-        The LU factorization of the A matrix is applied for smoothing the generated data from the previous task (to make sure the LU factorization works).
-        LU achieves the same result as QR, as can be seen from the figure or by comparing the data files of the smoothed signals.
+        The LU factorization of the A matrix is applied for smoothing the generated data from the previous task (to make sure the
+        LU factorization works). LU achieves the same result as QR, as can be seen from the figure or by comparing the data files 
+        of the smoothed signals.
 
 ---Task C.2-------
-Now, we make use of the banded structure of the A matrix, the fact that A is symmetric and that the each non-zero diagonal is just a 
-constant except from the ends of the diagonal (i.e. the corner elements).
+Now, we make use of the banded structure of the A matrix, the fact that A is symmetric and that the each non-zero 
+diagonal is just a constant except from the ends of the diagonal (i.e. the corner elements).
 
-First, I reduced the number of computations required to determine the matrix A and reduced the required storage for A by getting rid of the zeros in the A matrix.
-The A matrix is fully determined by only 9 values: 4 values of the main diagonal (a), 3 values of the sub- and superdiagonal (b), 2 values of the subsub- and supersuperdiagonal (c).
+First, I reduced the number of computations required to determine the matrix A and reduced the required storage for A by getting rid of 
+the zeros in the A matrix.
+The A matrix is fully determined by only 9 values: 4 values of the main diagonal (a), 3 values of the sub- and superdiagonal (b), 2 values
+of the subsub- and supersuperdiagonal (c).
 The diagonal elements for the previous example are:
 
 a=         3         10          8          7 
@@ -93,24 +97,36 @@ uu=         -4      -3.33      -3.29      -3.23      -5.24      -2.03
 The maindiagonal of U is:
 u=          3       4.67       4.29       4.27       5.32        4.6       1.35 
 
-Thirdly, a method 'smoothLU_eff' was implemented, that smoothenes a noisy signal vector and makes use of the banded structure of the L and U matrices. 
+Thirdly, a method 'smoothLU_eff' was implemented, that smoothenes a noisy signal vector and makes use of the banded structure of 
+the L and U matrices. 
 See 'Out.smoothsignalLU_generated_eff.svg':
-        The more efficient LU factorization of the A matrix, which makes use of the special structure of the A, L and U matrices, is applied for smoothing the generated data 
-        from the previous task.
-        The efficient-LU-smoothing achieves the same result as LU and QR, as can be seen from the figure or by comparing the data files of the smoothed signals.
+        The more efficient LU factorization of the A matrix, which makes use of the special structure of the A, L and U matrices, is applied 
+        for smoothing the generated data from the previous task.
+        The efficient-LU-smoothing achieves the same result as LU and QR, as can be seen from the figure or by comparing the data files of 
+        the smoothed signals.
 -> I sucessfully implemented a smoothing method that is more efficent than the QR-smoothing.
 
 ---Task C.3-------
-The last step is to have a look at the operations count for smoothing with QR-decomposition ('smoothQR') in comparison to the efficient LU-factorization smoothing ('smoothLU_eff') 
-for several noisy data sets of different length N. Therefore, I generate a large noisy signal data set by adding random noise to clean sin-wave data. Then, the required time for smoothing of a 
-subdataset consisting of the first N datapoints is measured. This is done for several values of N and for both methods smoothQR and smoothLU_eff.
+The last step is to have a look at the operations count for smoothing with QR-decomposition ('smoothQR') in comparison to 
+the efficient LU-factorization smoothing ('smoothLU_eff'), for several noisy data sets of different length N. Therefore, I generate a large noisy 
+signal data set by adding random noise to clean sin-wave data. Then, the required time for smoothing of a subdataset consisting of the first N 
+datapoints is measured. This is done for several values of N and for both methods smoothQR and smoothLU_eff.
 
 See 'Out.smoothTiming.svg':
-        The measured time for xxxxxxxxxxxxxxxxxx
+        The measured time for reading the noisy raw data from a file and smoothing the noisy data is shown in three graphs for the smoothQR-method 
+        and smoothLU_eff-method. Both methods are applied to a small dataset. The efficient LU-smoothing is in addition also applied to a much 
+        larger dataset of 100000 data points.
         
-        -> The smoothLU_eff-method is much faster than the QR method, more than 1000 times faster for a dataset of 2000 points.
-        - Be aware that the timing includes aquiring the noisy data from the 'Out.signalForTime.data'-file. This causes a constant offset in time. For the large dataset this offset is of course larger 
-        than for the small dataset.
+        -> Conclusion: The smoothLU_eff-method is much faster than the QR method, more than 400 times faster for a dataset of 1500 points and more 
+        than 1000 times faster for a dataset of 2000 points (under the hardware and software conditions of my measurement).
+        - Be aware that the timing includes aquiring the noisy data from the 'Out.signalForTime.data'-file. This causes a constant offset in time. 
+        For the large dataset this offset is of course larger than for the small dataset. (For comparability, for the timing with the small/large 
+        dataset, the program reads the complete small/large data set, even if the time for a smaller N is measured).
         - smoothQR timing: The timing of the smoothing method which uses QR decomposition scales as N^3, as expected.
-        - smoothLU_eff timing: The timing of the efficient smoothing method which uses LU and makes use of the special banded structure of the involved matrices, is expected to scale as N.
+        - smoothLU_eff timing: The timing of the efficient smoothing method which uses LU and makes use of the special banded structure of the 
+        involved matrices, is expected to scale as N. We would expect a slight increase in the operation time, as N is increased. The graph with 
+        linear fit shows a slope very close to zero. In the range of, at least, up to 100000 data points, the operation time of the 
+        efficient LU-smoothing is nearly constant.
+
+We see, that making use of the matrix structure allows for a tremendous improvement in the operation time of the smoothing, especially for very large datasets!
         

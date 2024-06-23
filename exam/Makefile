@@ -1,7 +1,7 @@
 CODE = $(filter %.cs,$^)
 LIBS = $(addprefix -reference:,$(filter %.dll,$^))
 DATA = Out.smoothsignalQR.data Out.smoothsignalQR_generated.data Out.smoothsignalLU_generated.data Out.smoothsignalLU_generated_eff.data Out.signalForTime.data
-maxN1 = 2000 #maximum size of dataset for timing of smoothQR
+maxN1 = 1500 #maximum size of dataset for timing of smoothQR
 maxN2 = 100000 #maximum size of dataset for timing of smoothLU_eff
 
 default: Out.txt Out.smoothQR.svg Out.smoothQR_generated.svg Out.smoothLU_generated.svg Out.smoothLU_generated_eff.svg Out.timesSmooth.data Out.smoothTiming.svg
