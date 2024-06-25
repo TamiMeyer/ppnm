@@ -3,7 +3,7 @@ default: Out.txt Out.E0_dr.svg Out.E0_rmax.svg Out.Wfct.svg
 CODE = $(filter %.cs,$^)
 LIBS = $(addprefix -reference:,$(filter %.dll,$^))
 
-Out.txt : main.exe Makefile
+Out.txt: main.exe Makefile
 	mono $< -rmax:10 -dr:0.5 >$@
 
 Out.E0_dr.svg: plot_E0_dr.gpi Out.E0_dr.data
