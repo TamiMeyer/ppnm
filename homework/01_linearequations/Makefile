@@ -26,4 +26,4 @@ matrix.dll :  ../../matlib/vector.cs  ../../matlib/matrix.cs ../../matlib/QRGS.c
 	mcs -target:library -out:./matrix.dll $^
 
 clean:
-	$(RM) *.dll *.exe [Oo]ut* *.data *.svg err
+	$(RM) *.dll *.exe [Oo]ut* *.data *.svg err fit.log
