@@ -122,7 +122,7 @@ See 'Out.smoothTiming.svg':
         
         -> Conclusion: The smoothLU_eff-method is much faster than the QR method, more than 400 times faster for a dataset of 1500 points and more 
         than 1000 times faster for a dataset of 2000 points (under the hardware and software conditions of my measurement).
-        - Be aware that the timing includes aquiring the noisy data from the 'Out.signalForTime.data'-file. This causes a constant offset in time. 
+        - Be aware that the time includes aquiring the noisy data from the 'Out.signalForTime.data'-file. This causes a constant offset in the measured time. 
         For the large dataset this offset is of course larger than for the small dataset. (For comparability, for the timing with the small/large 
         dataset, the program reads the complete small/large data set, even if the time for a smaller N is measured).
         - smoothQR timing: The timing of the smoothing method which uses QR decomposition scales as N^3, as expected.
@@ -131,5 +131,5 @@ See 'Out.smoothTiming.svg':
         linear fit shows a slope very close to zero. In the range of, at least, up to 100000 data points, the operation time of the 
         efficient LU-smoothing is nearly constant.
 
-We see, that making use of the matrix structure allows for a tremendous improvement in the operation time of the smoothing, especially for very large datasets!
+We see that making use of the matrix structure allows for a tremendous improvement in the operation time of the smoothing, especially for very large datasets!
         
