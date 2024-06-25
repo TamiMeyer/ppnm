@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class main{
     public static void Main(string[] args){
         String data = "Out.signalForTime.data";
-        int N = 7;
+        int N = 7;//number of data points that will be smoothed
         int maxN = int.MaxValue; //maximum number of datapoints that should be read from the noisy data file
         String method = "QR";
-        double lambda = 1000;
+        double lambda = 8000;
         foreach(var arg in args){
 	        var words = arg.Split(':');
     	    if(words[0]=="-size"){N= (int)float.Parse(words[1]);}
@@ -64,7 +64,5 @@ public class main{
 
         }
         #pragma warning restore CS0219
-
-
     }
 }

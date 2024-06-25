@@ -4,7 +4,7 @@ using static System.Math;
 using System.Collections.Generic;
 public class main{
     public static int Main(string[] args){
-        int n_example = 7;//n>=7 
+        int n_example = 7;//recommend n>=7 in order to see the entire structure of the A matrix
         double lambda_example =1.0;
         int maxmaxN_timing = 0;
         foreach(var arg in args){
@@ -211,8 +211,8 @@ datapoints is measured. This is done for several values of N and for both method
 ");
 
         //generate noisy signal data with random noise for the timing
-        Func<double, double> clean_func_time = delegate(double z){return Math.Sin(z);};
-        var (x_time, y_clean_time, y_noisy_time) = smooth.generateCleanAndNoisySignal(maxmaxN_timing, clean_func_time, 0, 25, 0.3);
+        Func<double, double> clean_func_time = delegate(double z){return Math.Sin(2*Math.PI*z/5);};
+        var (x_time, y_clean_time, y_noisy_time) = smooth.generateCleanAndNoisySignal(maxmaxN_timing, clean_func_time, 0, maxmaxN_timing/300*5, 0.4);
         var outstream5=new System.IO.StreamWriter("Out.signalForTime.data", append:false);
         outstream5.WriteLine($"x_time y_clean_time y_noisy_time");
         for(int i=0; i<y_noisy_time.size; i++){
