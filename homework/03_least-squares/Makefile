@@ -3,7 +3,7 @@ LIBS = $(addprefix -reference:,$(filter %.dll,$^))
 
 default: Out.txt Out.fit.svg
 
-Out.txt : main.exe Makefile
+Out.txt Out.experiment_fitted.data: main.exe Makefile
 	mono $< -input:experiment.data -output:Out.experiment_fitted.data >$@
 
 Out.fit.svg: plot_fit.gp Out.experiment_fitted.data
