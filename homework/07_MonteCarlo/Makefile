@@ -20,4 +20,4 @@ montecarlo.dll: montecarlo.cs  ../../matlib/vector.cs  ../../matlib/matrix.cs
 	mcs -target:library -out:./montecarlo.dll $^ 
 
 clean:
-	$(RM) *.dll *.exe [Oo]ut* *.svg
+	$(RM) *.dll *.exe [Oo]ut* *.svg fit.log
